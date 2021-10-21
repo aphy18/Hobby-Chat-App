@@ -11,7 +11,7 @@ CREATE TABLE person (
   person_password VARCHAR(255) NOT NULL,
   person_gender VARCHAR(255) NOT NULL,
   person_bio VARCHAR(255) NOT NULL,
-  date_of_membership TIMESTAMPTZ DEFAULT Now()
+  date_of_membership DATE
 );
 
 CREATE TABLE hobby (
