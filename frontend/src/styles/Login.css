@@ -1,3 +1,7 @@
+.login {
+  font-weight: 300;
+}
+
 .master-login-container {
   border: 2px solid black;
   width: 100%;
@@ -29,10 +33,14 @@
 
 .input-field {
   font-size: 22px;
+  height: 42px;
 }
 
 .form-button-submit {
   width: 60%;
   align-self: center;
   font-size: 25px;
+  height: 42px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
 }
