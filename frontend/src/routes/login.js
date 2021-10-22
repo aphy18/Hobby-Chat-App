@@ -8,8 +8,8 @@ export default function Login() {
     <div className="login-container">
      <h1>Login</h1>
      <form className="login-form">
-       <input type="email" placeholder="email" required></input>
-       <input type="password" placeholder="password" required></input>
+       <input type="email" placeholder="email" required className="input-field"></input>
+       <input type="password" placeholder="password" required className="input-field"></input>
        <button type="submit" className="form-button-submit">Submit</button>
      </form>
    </div>
