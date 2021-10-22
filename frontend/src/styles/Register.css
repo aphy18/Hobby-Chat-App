@@ -12,13 +12,16 @@
 }
 
 .register-container {
-  width: 500px;
-  height: 450px;
+  width: 85%;
+  height: 70%;
   border: 2px solid red;
   display: flex;
-  justify-content: space-around;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
+}
+
+.register {
+  align-self: flex-start;
 }
 
 .register-form {
@@ -29,5 +32,12 @@
   flex-direction: column;
   justify-content: space-around;
   margin-bottom: 3%;
+}
+
+.button-container {
+  border: 2px solid grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 

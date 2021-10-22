@@ -6,9 +6,9 @@ CREATE TABLE person (
   id SERIAL PRIMARY KEY,
   first_name VARCHAR(255) NOT NULL,
   last_name VARCHAR(255) NOT NULL,
-  person_address VARCHAR(255) NOT NULL,
   person_email VARCHAR(255) NOT NULL,
   person_password VARCHAR(255) NOT NULL,
+  password_confirm VARCHAR(255) NOT NULL,
   person_gender VARCHAR(255) NOT NULL,
   person_bio VARCHAR(255) NOT NULL,
   date_of_membership DATE
