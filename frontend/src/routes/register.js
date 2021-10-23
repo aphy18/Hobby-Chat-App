@@ -6,9 +6,10 @@ export default function Register() {
     <>
     <div className="master-register-container">
      <div className="register-container">
+     
       <h1 className="register-header"><i>Register</i></h1>
+     
       <form className="register-form">
-        <span className="register-subheading">Register a new account</span>
         <div className="register-form-left-and-right">
         <div className="register-form-left">
         <input type="text" placeholder="first name" required className="register-input-field"></input>

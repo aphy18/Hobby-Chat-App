@@ -1,5 +1,16 @@
+.header-container {
+  display: flex;
+  border: 2px solid black;
+  width: 800px;
+  height: 70px;
+  display: flex;
+  justify-content: space-evenly;
+  align-self: center;
+}
+
 .register-header {
   font-weight: 500;
+  /* border: 2px solid red; */
 }
 
 .register-subheading {
@@ -23,7 +34,7 @@
 
 .register-container {
   width: 70%;
-  height: 75%;
+  height: 63%;
   border: 2px solid black;
   display: flex;
   flex-direction: column;
@@ -35,7 +46,7 @@
   align-self: center;
 }
 .register-form {
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
   width: 90%;
   height: 550px;
   display: flex;
@@ -51,7 +62,7 @@
   width: 98%;
   height: 400px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 }
 
@@ -70,6 +81,7 @@
   font-size: 22px;
   height: 42px;
   width: 300px;
+
 }
 
 
