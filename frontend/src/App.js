@@ -3,11 +3,13 @@ import Login from './routes/login';
 import Register from './routes/register';
 import Home from './routes/home';
 import ViewProfile from './routes/ViewProfile';
+import Nav from './components/Nav'
 
 
 function App() {
   return (
     <Router>
+      <Nav />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
