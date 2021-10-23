@@ -3,7 +3,7 @@
 }
 
 .master-register-container {
-  border: 2px solid black;
+  /* border: 2px solid black; */
   width: 100%;
   height: 900px;
   display: flex;
@@ -22,8 +22,8 @@
 }
 
 .register-form {
-  border: 2px solid blue;
-  width: 90%;
+  /* border: 2px solid blue; */
+  width: 100%;
   height: 400px;
   display: flex;
   flex-direction: column;
@@ -32,7 +32,7 @@
 }
 
 .register-form-left-and-right {
-  border: 2px solid purple;
+  /* border: 2px solid purple; */
   width: 100%;
   height: 500px;
   display: flex;
@@ -42,13 +42,17 @@
 
 .register-form-left,
 .register-form-right {
-  border: 2px solid black;
-  width: 300px;
-  height: 180px;
+  /* border: 2px solid black; */
+  width: 550px;
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 8px;
 }
 
 .button-container {
-  border: 2px solid grey;
+  /* border: 2px solid grey; */
   display: flex;
   justify-content: center;
   align-items: center;
