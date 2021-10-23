@@ -3,7 +3,7 @@
 }
 
 .master-register-container {
-  /* border: 2px solid black; */
+  border: 2px solid black;
   width: 100%;
   height: 900px;
   display: flex;
@@ -12,13 +12,13 @@
 }
 
 .register-container {
-  width: 80%;
+  width: 70%;
   height: 65%;
   border: 2px solid red;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .register-header {
@@ -26,33 +26,34 @@
 }
 .register-form {
   border: 2px solid blue;
-  width: 74%;
+  width: 90%;
   height: 550px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   margin-bottom: 3%;
+  flex-wrap: wrap;
 }
 
 .register-form-left-and-right {
   border: 2px solid purple;
-  width: 830px;
+  width: 98%;
   height: 400px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
 .register-form-left,
 .register-form-right {
-  border: 2px solid black;
+  /* border: 2px solid black; */
   width: 400px;
   height: 95%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .register-input-field {
@@ -60,6 +61,7 @@
   height: 42px;
   width: 300px;
 }
+
 
 .button-container {
   /* border: 2px solid grey; */
@@ -69,7 +71,19 @@
   width: 250px;
   height: 40px;
   margin-top: 1.5%;
+  align-self: center;
 }
 
+.register-image {
+  border: 2px solid black;
+  width: 80px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  margin: 1%;
+  align-self: flex-start;
+}
 
 

@@ -22,6 +22,8 @@ export default function Register() {
         <input type="password" placeholder="password" required className="register-input-field"></input>
         <input type="password" placeholder="re-enter password" required className="register-input-field"></input>
         </div>
+        <span className="register-image"><i class="fa-solid fa-registered"></i></span>
+        <span className="register-image"><i class="fa-solid fa-user"></i></span>
         </div>
         <div className="button-container">
       <button type="submit" className="form-button-submit">Submit</button>
