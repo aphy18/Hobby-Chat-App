@@ -8,9 +8,8 @@
     align-items: center;
 }
 
-.home-container {
+.header-container {
   border: 2px solid red;
-  width: 95%;
   height: 500px;
   margin-top: 4%;
   display: flex;
@@ -22,19 +21,39 @@
 
 .master-about-container {
   border: 2px solid purple;
-  width: 95%;
-  height: 700px;
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .master-features-container {
   border: 2px solid blue;
-  width: 95%;
   height: 800px;
 }
 
 .master-footer-container {
   border: 2px solid red;
-  width: 95%;
   height: 400px;
+}
+
+.header-container,
+.master-about-container,
+.master-features-container,
+.master-footer-container {
+  width: 100%;
+  margin: 0 0 4% 0;
+}
+
+.about-us {
+  border: 2px solid red;
+  font-size: 80px;
+}
+
+.about-us-container {
+  width: 95%;
+  border: 2px solid black;
+  height: 500px;
 }
 
