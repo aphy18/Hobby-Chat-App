@@ -30,7 +30,11 @@
 
 .master-features-container {
   border: 2px solid blue;
-  height: 800px;
+  height: 1200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .master-footer-container {
@@ -48,12 +52,45 @@
 
 .about-us {
   border: 2px solid red;
-  font-size: 80px;
+  font-size: 100px;
 }
 
 .about-us-container {
   width: 95%;
   border: 2px solid black;
   height: 500px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
+.about-box {
+  border: 2px solid black;
+  width: 400px;
+  height: 350px;
+}
+
+.features {
+  font-size: 100px;
+}
+
+.features-container {
+  border: 2px solid red;
+  width: 80%;
+  height: 500px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.features-image {
+  border: 2px solid black;
+  width: 300px;
+  height: 300px;
+}
+
+.features-description {
+  border: 2px solid black;
+  width: 500px;
+  height: 200px;
+}

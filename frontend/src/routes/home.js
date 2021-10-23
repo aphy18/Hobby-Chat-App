@@ -16,7 +16,15 @@ export default function Home() {
      </div>
    </div>
    <div className="master-features-container">
-
+    <h2 className="features">Features</h2>
+    <div className="features-container">
+    <div className="features-image"></div>
+      <div className="features-description"></div>
+    </div>
+    <div className="features-container">
+      <div className="features-description"></div>
+      <div className="features-image"></div>
+    </div>
    </div>
    <div className="master-footer-container">
 
