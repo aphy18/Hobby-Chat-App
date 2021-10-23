@@ -6,7 +6,7 @@ export default function Login() {
   <>
    <div className="master-login-container">
     <div className="login-container">
-     <h1 className="login">Login</h1>
+     <h1 className="login"><i>Login</i></h1>
      <form className="login-form">
        <input type="email" placeholder="email" required className="input-field"></input>
        <input type="password" placeholder="password" required className="input-field"></input>

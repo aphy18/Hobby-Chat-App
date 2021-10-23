@@ -98,14 +98,18 @@
 
 .register-image {
   /* border: 2px solid black; */
-  width: 60px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 20px;
   margin: 0.2%;
   align-self: flex-start;
+}
+
+#gender-select {
+  width: 312px;
 }
 
 

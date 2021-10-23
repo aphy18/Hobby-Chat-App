@@ -14,7 +14,7 @@ export default function Register() {
         <div className="register-form-left">
         <input type="text" placeholder="first name" required className="register-input-field"></input>
         <input type="text" placeholder="last name" required className="register-input-field"></input>
-        <select className="register-input-field">
+        <select className="register-input-field" id="gender-select">
           <option value="male">Male</option>
           <option value="female">Female</option>
           <option value="other">Other</option>
