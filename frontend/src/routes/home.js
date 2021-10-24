@@ -1,40 +1,48 @@
-import homeStyles from '../styles/Home.css'
-import bodyStyles from '../styles/Body.css'
+import { useEffect } from 'react';
+import '../styles/Home.css';
+import '../styles/Body.css';
+import Aos from "aos";
+import 'aos/dist/aos.css';
+
 
 export default function Home() {
+
+  useEffect(() => {
+    Aos.init({duration: 1000})
+  }, [])
+
   return (
     <>
-    <div className="grand-master-home-container">
     <div className="master-home-container">
    <div className="home-header-container">
    <h1 className="home-header">Welcome to Chattr</h1>
    </div>
-   <div className="the-about-container">
+
+   <div data-aos="fade-up" className="the-about-container">
    <h2 className="about-us">About us</h2>
      <div className="about-us-container">
-       <div className="about-box"></div>
-       <div className="about-box"></div>
-       <div className="about-box"></div>
+       <div data-aos="flip-right" className="about-box"></div>
+       <div data-aos="flip-right" className="about-box"></div>
+       <div data-aos="flip-right" className="about-box"></div>
      </div>
    </div>
-   <div className="main-features-container">
+  
+   
+   <div data-aos="fade-up" className="main-features-container">
    <h2 className="features">Features</h2>
-    <div className="features-container">
+    <div data-aos="fade-left" className="features-container">
     <div className="features-image"></div>
       <div className="features-description"></div>
     </div>
-    <div className="features-container">
+    <div data-aos="fade-right" className="features-container">
       <div className="features-description"></div>
       <div className="features-image"></div>
     </div>
    </div>
-   <div className="master-footer-container">
-
-   </div>
+  
 
    <div className="footer">
      
-   </div>
    </div>
    </div>
    </>
