@@ -1,11 +1,13 @@
 import homeStyles from '../styles/Home.css'
+import bodyStyles from '../styles/Body.css'
 
 export default function Home() {
   return (
     <>
+    <div className="grand-master-home-container">
     <div className="master-home-container">
    <div className="home-header-container">
-   <h2 className="home-header">Welcome to chatter</h2>
+   <h1 className="home-header">Welcome to Chattr</h1>
    </div>
    <div className="the-about-container">
    <h2 className="about-us">About us</h2>
@@ -28,6 +30,11 @@ export default function Home() {
    </div>
    <div className="master-footer-container">
 
+   </div>
+
+   <div className="footer">
+     
+   </div>
    </div>
    </div>
    </>

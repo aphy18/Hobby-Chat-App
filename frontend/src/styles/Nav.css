@@ -2,24 +2,25 @@
   height: 100px;
   width: 99%;
   padding: 0 10px;
-  border: 2px solid navy;
+  margin: 0px;
+  /* border: 2px solid navy; */
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: grey;
 	position: sticky;
 	top: 0;
-  margin: 0;
+
 }
 
 .nav-span {
-  border: 2px solid black;
+  /* border: 2px solid black; */
   width: 85px;
   height: 85px;
 }
 
 .nav-list {
-  border: 2px solid black;
+  /* border: 2px solid black; */
   display: flex;
   justify-content: space-evenly;
   align-items: center;
