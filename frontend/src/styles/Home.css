@@ -7,22 +7,24 @@
     justify-content: space-evenly;
     align-items: center;
     scroll-margin: 0;
+    margin: 0;
     
 }
 
-.header-container {
-  border: 2px solid red;
+.home-header-container {
+  border: 2px solid navy;
+  width: 90%;
   height: 300px;
-  margin-top: 4%;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 60px;
-
 }
 
-.master-about-container {
+
+.the-about-container {
   border: 2px solid purple;
+  width: 95%;
   height: 800px;
   display: flex;
   flex-direction: column;
@@ -32,6 +34,16 @@
 
 .master-features-container {
   border: 2px solid blue;
+  height: 1200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.main-features-container {
+  border: 2px solid blue;
+  width: 95%;
   height: 1200px;
   display: flex;
   flex-direction: column;
@@ -83,6 +95,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin: 2% 0;
 }
 
 .features-image {
