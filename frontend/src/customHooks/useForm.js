@@ -12,7 +12,7 @@ export default function useForm(callback, initValues={}) {
 
     setValues({
       ...values,
-      [name]:values
+      [name]:value
     });
   };
 
