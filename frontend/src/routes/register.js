@@ -17,7 +17,7 @@ export default function Register() {
       return;
     }
     console.log('form submitted')
-    // setValues({})
+    setValues({})
   }
 
   function submitFormData() {
@@ -45,6 +45,7 @@ export default function Register() {
         <input type="text" name="first_name" placeholder="first name" required className="register-input-field" value={values.first_name} onChange={handleChange}></input>
         <input type="text" name="last_name" placeholder="last name" required className="register-input-field" value={values.last_name} onChange={handleChange}></input>
         <select name="gender" className="register-input-field" id="gender-select" value={values.gender} onChange={handleChange}>
+          <option>Select a Gender</option>
           <option value="male">Male</option>
           <option value="female">Female</option>
           <option value="other">Other</option>
