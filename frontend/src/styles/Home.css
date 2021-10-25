@@ -73,7 +73,7 @@
 
 .about-us-container {
   width: 95%;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   height: 500px;
   display: flex;
   justify-content: space-evenly;

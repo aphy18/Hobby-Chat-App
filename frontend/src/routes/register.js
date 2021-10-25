@@ -12,6 +12,7 @@ export default function Register() {
       <form className="register-form">
         <div className="register-form-left-and-right">
         <div className="register-form-left">
+        <input type="text" placeholder="username" required className="register-input-field"></input>
         <input type="text" placeholder="first name" required className="register-input-field"></input>
         <input type="text" placeholder="last name" required className="register-input-field"></input>
         <select className="register-input-field" id="gender-select">
@@ -21,6 +22,7 @@ export default function Register() {
         </select>
         </div>
         <div className="register-form-right">
+        <input type="text" placeholder="address" required className="register-input-field"></input>
         <input type="email" placeholder="email" required className="register-input-field"></input>
         <input type="password" placeholder="password" required className="register-input-field"></input>
         <input type="password" placeholder="re-enter password" required className="register-input-field"></input>
