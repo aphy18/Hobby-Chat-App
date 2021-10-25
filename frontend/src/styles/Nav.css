@@ -14,9 +14,13 @@
 }
 
 .nav-span {
-  /* border: 2px solid black; */
-  width: 85px;
+  border: 2px solid black;
+  width: 200px;
   height: 85px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
 
 .nav-list {
@@ -31,4 +35,5 @@
 .nav-item {
   list-style: none;
   color: black;
+  text-decoration: none;
 }

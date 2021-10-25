@@ -1,10 +1,10 @@
-import navStyles from '../styles/Nav.css'
+import '../styles/Nav.css';
 
 
 export default function Nav() {
   return (
     <nav className="nav">
-      <span className="nav-span"></span>
+      <span className="nav-span">Username</span>
      <ul className="nav-list">
        <a href='/#about-us' className="nav-item">about us</a>
        <a href='/#features-container' className="nav-item">features</a>
