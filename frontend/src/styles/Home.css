@@ -26,12 +26,12 @@
 
 
 .the-about-container {
-  /* border: 2px solid purple; */
+  border: 2px solid purple;
   width: 95%;
   height: 800px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   /* background-color: grey; */
 }
@@ -49,21 +49,21 @@
 
 .footer {
   border: 2px solid red;
-  height: 200px;
+  height: 300px;
   width: 80%;
   /* background-color: grey; */
 }
 
 
 
-.header-container,
+/* .header-container,
 .master-about-container,
 .master-features-container,
 .footer {
   width: 100%;
   margin: 0 0 4% 0;
   
-}
+} */
 
 .about-us {
   /* border: 2px solid red; */
@@ -73,7 +73,7 @@
 
 .about-us-container {
   width: 95%;
-  /* border: 2px solid black; */
+  border: 2px solid black;
   height: 500px;
   display: flex;
   justify-content: space-evenly;

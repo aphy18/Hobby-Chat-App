@@ -1,5 +1,5 @@
-import loginStyles from '../styles/Login.css'
-import bodyStyles from '../styles/Body.css'
+import '../styles/Login.css'
+import '../styles/Body.css'
 
 export default function Login() {
   return (

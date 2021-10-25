@@ -6,11 +6,11 @@ export default function Nav() {
     <nav className="nav">
       <span className="nav-span"></span>
      <ul className="nav-list">
-       <li className="nav-item">about us</li>
-       <li className="nav-item">features</li>
-       <li className="nav-item">contact</li>
-       <li className="nav-item"><i class="fas fa-sign-in-alt"></i></li>
-       <li className="nav-item"><i class="fas fa-user-cog"></i></li>
+       <a href='/#about-us' className="nav-item">about us</a>
+       <a href='/#features-container' className="nav-item">features</a>
+       <a href='/#contact' className="nav-item">contact</a>
+       <a href='/login' className="nav-item"><i class="fas fa-sign-in-alt"></i></a>
+       <a href='/profile' className="nav-item"><i class="fas fa-user-cog"></i></a>
      </ul>
     </nav>
   )

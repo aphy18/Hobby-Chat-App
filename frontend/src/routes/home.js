@@ -18,23 +18,23 @@ export default function Home() {
    <h1 className="home-header">Welcome to Chattr</h1>
    </div>
 
-   <div data-aos="fade-up" className="the-about-container">
+   <div data-aos="fade-up" className="the-about-container" id="about-us">
    <h2 className="about-us">About us</h2>
      <div className="about-us-container">
-       <div data-aos="zoom-in"  data-aos-duration="1000" className="about-box"></div>
-       <div data-aos="zoom-in" data-aos-duration="1000" className="about-box"></div>
-       <div data-aos="zoom-in" data-aos-duration="1000" className="about-box"></div>
+       <div data-aos="zoom-in"  data-aos-duration="800" className="about-box"></div>
+       <div data-aos="zoom-in" data-aos-duration="800" className="about-box"></div>
+       <div data-aos="zoom-in" data-aos-duration="800" className="about-box"></div>
      </div>
    </div>
   
    
-   <div data-aos="fade-up" className="main-features-container">
+   <div data-aos="fade-up" className="main-features-container" id="features-container">
    <h2 className="features">Features</h2>
     <div data-aos="fade-left" className="features-container">
     <div className="features-image"></div>
       <div className="features-description"></div>
     </div>
-    <div data-aos="fade-right" className="features-container">
+    <div data-aos="fade-right" className="features-container" id="contact">
       <div className="features-description"></div>
       <div className="features-image"></div>
     </div>

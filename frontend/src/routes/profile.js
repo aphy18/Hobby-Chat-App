@@ -1,5 +1,5 @@
 import '../styles/Profile.css'
-import noUserPicture from '../images/profile-picture.jpeg'
+
 
 export default function Profile(){
   return (
