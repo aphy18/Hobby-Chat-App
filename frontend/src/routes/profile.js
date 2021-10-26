@@ -1,7 +1,11 @@
 import '../styles/Profile.css'
+// import axios from 'axios';
+// import { useContext } from 'react';
+// import { authContext } from '../provider/AuthProvider';
 
 
 export default function Profile(){
+  
   return (
     <>
     <form className="profile-form">

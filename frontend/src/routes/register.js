@@ -2,34 +2,32 @@ import '../styles/Register.css'
 import '../styles/Body.css'
 import useForm from '../customHooks/useForm'
 import axios from 'axios'
+import { useHistory } from 'react-router-dom'
 
 export default function Register() {
   
-  const { values, setValues, handleChange, handleSubmit } = useForm(handleRegistration)
+  const { values, setValues, handleChange, handleSubmit } = useForm(handleRegistration);
+  const history = useHistory();
 
-  function handleRegistration(){
-    // if (values.password.length < 4) {
-    //   console.log('password must be more than 3 characters')
-    //   return;
-    // }
+  function handleRegistration() {
     if (values.password !== values.password_confirm) {
       console.log('passwords do not match')
       return;
     }
     console.log('form submitted')
     setValues({})
+    history.push('/login')
+    
   }
 
   function submitFormData() {
-    const sendData = async () => {
-      const formData = await Promise.all([
-        axios.post(`http://localhost:8080/register`, { values })
-      ])
-      await console.log('response data -->', formData)
-      return formData.data;
+    axios.post(`http://localhost:8080/register`, { values })
+      .then((res) => {
+        console.log('response data -->', res.data)
+        return res.data;
+      })
     }
-    sendData()
-  }
+    
 
   return (
     <>
@@ -61,7 +59,7 @@ export default function Register() {
         <span className="register-image"><i class="fa-solid fa-user"></i></span>
         </div>
         <div className="button-container">
-      <button type="submit" className="form-button-submit" onClick={submitFormData}>Submit</button>
+      <button type="submit" className="form-button-submit" onClick={() => submitFormData()}>Submit</button>
       </div>
       </form>
     </div>

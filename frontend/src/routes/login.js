@@ -1,16 +1,19 @@
 import '../styles/Login.css'
 import '../styles/Body.css'
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import useForm from '../customHooks/useForm'
 import axios from 'axios';
 import { useHistory } from 'react-router-dom'
+import { authContext } from '../provider/AuthProvider';
 
 
 
 export default function Login() {
   const { values, setValues, handleChange, handleSubmit } = useForm(handleLogin);
-  const [user, isUserLoggedIn] = useState(false);
+  const { login } = useContext(authContext)
   const history = useHistory();
+  const email = values.email;
+  const password = values.password;
 
   function handleLogin(){
    if (!values.email) {
@@ -22,21 +25,27 @@ export default function Login() {
      console.log('Password required')
      return;
    }
-   isUserLoggedIn(true);
+   
    setValues({})
-   history.push('/')
+   history.push('/');
   }
 
-  function userLogin() {
-    const sendData = async () => {
-      const formData = await Promise.all([
-        axios.post(`http://localhost:8080/login`, { values })
-      ])
-      await console.log('response data -->', formData)
-      return formData.data;
-    }
-    sendData()
+  const userLogin = () => {
+    axios.post(`http://localhost:8080/login`, { values })
+    .then((res) => {
+      const userObj = res.data;
+      console.log("RES.DATA 22 ---->", userObj)
+      if (!userObj) {
+        return;
+      } else {
+        login(email, password, userObj);
+      }
+    })
   }
+
+
+ 
+
   return (
   <>
    <div className="master-login-container">

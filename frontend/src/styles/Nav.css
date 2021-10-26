@@ -14,7 +14,7 @@
 }
 
 .nav-span {
-  border: 2px solid black;
+  /* border: 2px solid black; */
   width: 200px;
   height: 85px;
   display: flex;
