@@ -15,7 +15,7 @@ export default function Home() {
     <>
     <div className="master-home-container">
    <div className="home-header-container">
-   <h1 className="home-header">Welcome to Chattr</h1>
+   <h1 className="home-header">Welcome to Chatter</h1>
    </div>
 
    <div data-aos="fade-up" className="the-about-container" id="about-us">

@@ -14,8 +14,10 @@ export default function Login() {
   const history = useHistory();
   const email = values.email;
   const password = values.password;
+  
+  // console logs are saved when we push to the 'frozen world' the window.histroy.go() refreshes the page
 
-  function handleLogin(){
+   function handleLogin(){
    if (!values.email) {
      console.log('Email required')
      return;
@@ -29,7 +31,9 @@ export default function Login() {
    setValues({})
    history.push('/');
   }
-
+  
+  // in the frozen state we get the res.data
+  
   const userLogin = () => {
     axios.post(`http://localhost:8080/login`, { values })
     .then((res) => {
