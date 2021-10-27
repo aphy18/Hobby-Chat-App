@@ -1,18 +1,37 @@
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import '../styles/Home.css';
 import '../styles/Body.css';
 import Aos from "aos";
 import 'aos/dist/aos.css';
+import { authContext } from '../provider/AuthProvider';
+import Lottie from 'react-lottie';
+import loadingData from "../animations/9930-loading-ring-medium.json";
+
 
 
 export default function Home() {
+
+  // const { user } = useContext(authContext)
 
   useEffect(() => {
     Aos.init({duration: 1000})
   }, [])
 
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: loadingData,
+    rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice",
+   },
+}
+  
+
+  // if user show spinney animation first then load the html
+
   return (
     <>
+    <Lottie options={defaultOptions} width={400} height={400} />
     <div className="master-home-container">
    <div className="home-header-container">
    <h1 className="home-header">Welcome to Chatter</h1>
@@ -39,12 +58,11 @@ export default function Home() {
       <div className="features-image"></div>
     </div>
    </div>
-  
-
    <div className="footer">
      
    </div>
    </div>
+
    </>
   )
 }

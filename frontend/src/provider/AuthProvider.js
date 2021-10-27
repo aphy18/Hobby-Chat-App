@@ -1,5 +1,4 @@
-import { createContext, useState, useEffect, useRef } from "react";
-import lottie from "lottie-web";
+import { createContext, useState } from "react";
 
 export const authContext = createContext();
 
@@ -7,9 +6,7 @@ export default function AuthProvider(props){
 
   const [auth, setAuth] = useState(false);
   const [user, setUser] = useState(null);
-   
-  const container = useRef(null)
-
+  
   // login function is for setting localstorage
   function login(email, password, obj) {
     setAuth(true);
@@ -21,22 +18,22 @@ export default function AuthProvider(props){
 
     setAccountInfo
     .then(() => {
-      console.log('authprovider 23')
-      window.history.go()
-        lottie.loadAnimation({
-          container: container.current,
-          renderer: 'svg',
-          loop: true,
-          autoplay: true,
-          animationData: require('../animations/9930-loading-ring-medium.json')
-        })
-      })
-     }
-
+    window.history.go()
+  })
+}
+   
   function logout() {
+   const loggingOut = new Promise((res,rej) => {
     setAuth(false);
     setUser(null);
     localStorage.setItem('user', null);
+    res(console.log('logout successful'))
+   })
+
+   loggingOut
+   .then(() => {
+     window.location.href = 'login'
+   })
   }
 
   const userData = { auth, user, setUser, login, logout }

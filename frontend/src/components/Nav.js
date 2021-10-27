@@ -1,12 +1,14 @@
 import '../styles/Nav.css';
 import { useContext, useEffect, useState } from 'react';
 import { authContext } from '../provider/AuthProvider';
+import { useHistory } from 'react-router-dom'
 
 
 
 export default function Nav() {
   const { logout, user, setUser, auth, setAuth } = useContext(authContext);
   let userObj = JSON.parse(localStorage.getItem('user'))
+  const history = useHistory()
 
   
   
@@ -28,7 +30,7 @@ export default function Nav() {
         <a href='/#about-us' className="nav-item">about us</a>
         <a href='/#features-container' className="nav-item">features</a>
         <a href='/#contact' className="nav-item">contact</a>
-        <a href='/login' className="nav-item" onClick={() => logout()}><i class="fas fa-sign-in-alt"></i></a>
+        <span className="nav-item" onClick={() => logout()}><i class="fas fa-sign-in-alt"></i></span>
         <a href='/profile' className="nav-item"><i class="fas fa-user-cog"></i></a>
       </ul>
     </nav>
