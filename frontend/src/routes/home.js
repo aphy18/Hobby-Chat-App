@@ -1,40 +1,40 @@
-import { useEffect, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { authContext } from '../provider/AuthProvider';
 import '../styles/Home.css';
 import '../styles/Body.css';
 import Aos from "aos";
 import 'aos/dist/aos.css';
-import { authContext } from '../provider/AuthProvider';
-import Lottie from 'react-lottie';
-import loadingData from "../animations/9930-loading-ring-medium.json";
-
+import PulseLoader from "react-spinners/PulseLoader";
 
 
 export default function Home() {
 
-  // const { user } = useContext(authContext)
+  const [loading, setLoading] = useState(false);
+
+  const { user } = useContext(authContext);
 
   useEffect(() => {
     Aos.init({duration: 1000})
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false)
+    }, 2000);
   }, [])
 
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: loadingData,
-    rendererSettings: {
-    preserveAspectRatio: "xMidYMid slice",
-   },
-}
-  
-
-  // if user show spinney animation first then load the html
-
-  return (
+  if (loading && user) {
+    return (
+      <div className="master-loading-container">
+      <PulseLoader className="loading" loading={loading} size={30} />
+      </div>
+    )
+  } else {
+      
+   return (
     <>
-    <Lottie options={defaultOptions} width={400} height={400} />
-    <div className="master-home-container">
+  <div className="master-home-container">
+   
    <div className="home-header-container">
-   <h1 className="home-header">Welcome to Chatter</h1>
+   <h1 data-aos="fade-up" className="home-header">Welcome to Chatter</h1>
    </div>
 
    <div data-aos="fade-up" className="the-about-container" id="about-us">
@@ -61,8 +61,10 @@ export default function Home() {
    <div className="footer">
      
    </div>
-   </div>
 
+   </div>
+    
    </>
   )
+  }
 }

@@ -13,6 +13,20 @@
     /* overflow-x: hidden; */
 }
 
+.master-loading-container {
+  /* border: 2px solid black; */
+  width: 100%;
+  max-width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  scroll-margin: 0;
+  margin: 0px;
+  padding: 0px;
+  /* overflow-x: hidden; */
+}
+
 .home-header-container {
   /* border: 2px solid navy; */
   width: 90%;
@@ -23,6 +37,10 @@
   font-size: 60px;
   /* background-color: grey; */
 }
+
+/* .home-header {
+  color: white;
+} */
 
 
 .the-about-container {

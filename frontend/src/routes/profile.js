@@ -2,6 +2,7 @@ import '../styles/Profile.css'
 import { useContext } from 'react';
 import { authContext } from '../provider/AuthProvider';
 
+
 export default function Profile() {
 
   const { user } = useContext(authContext);

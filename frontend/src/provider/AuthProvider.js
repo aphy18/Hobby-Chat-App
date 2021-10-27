@@ -1,11 +1,14 @@
 import { createContext, useState } from "react";
 
+
+
 export const authContext = createContext();
 
 export default function AuthProvider(props){
 
   const [auth, setAuth] = useState(false);
   const [user, setUser] = useState(null);
+ 
   
   // login function is for setting localstorage
   function login(email, password, obj) {
@@ -18,23 +21,16 @@ export default function AuthProvider(props){
 
     setAccountInfo
     .then(() => {
-    window.history.go()
+      console.log('refresh')
   })
 }
    
   function logout() {
-   const loggingOut = new Promise((res,rej) => {
-    setAuth(false);
-    setUser(null);
-    localStorage.setItem('user', null);
-    res(console.log('logout successful'))
-   })
-
-   loggingOut
-   .then(() => {
-     window.location.href = 'login'
-   })
-  }
+  window.location.href = 'login'
+  setAuth(false);
+  setUser(null);
+  localStorage.setItem('user', null);
+ }
 
   const userData = { auth, user, setUser, login, logout }
 

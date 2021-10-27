@@ -8,14 +8,17 @@ import { authContext } from '../provider/AuthProvider';
 
 
 
-export default function Login() {
+export default function Login(props) {
   const { values, setValues, handleChange, handleSubmit } = useForm(handleLogin);
   const { login } = useContext(authContext)
   const history = useHistory();
   const email = values.email;
   const password = values.password;
+  // const [loginValidation, setLoginValidation] = useState(false)
   
   // console logs are saved when we push to the 'frozen world' the window.histroy.go() refreshes the page
+
+
 
    function handleLogin(){
    if (!values.email) {
@@ -27,9 +30,8 @@ export default function Login() {
      console.log('Password required')
      return;
    }
-   
+   props.setLoggedIn(true)
    setValues({})
-   history.push('/');
   }
   
   // in the frozen state we get the res.data
@@ -49,19 +51,28 @@ export default function Login() {
 
 
  
-
+ if (!props.loggedIn) {
   return (
-  <>
-   <div className="master-login-container">
-    <div className="login-container">
-     <h1 className="login"><i>Login</i></h1>
-     <form className="login-form" onSubmit={handleSubmit}>
-       <input type="email" name="email" placeholder="email"className="input-field" onChange={handleChange} required></input>
-       <input type="password" name="password" placeholder="password" className="input-field" onChange={handleChange}  required></input>
-       <button type="submit" className="form-button-submit" onClick={userLogin}>Submit</button>
-     </form>
-   </div>
-   </div>
-   </>
-  )
+    <>
+     <div className="master-login-container">
+      <div className="login-container">
+       <h1 className="login"><i>Login</i></h1>
+       <form className="login-form" onSubmit={handleSubmit}>
+         <input type="email" name="email" placeholder="email"className="input-field" onChange={handleChange} required></input>
+         <input type="password" name="password" placeholder="password" className="input-field" onChange={handleChange}  required></input>
+         <button type="submit" className="form-button-submit" onClick={userLogin}>Submit</button>
+       </form>
+     </div>
+     </div>
+     </>
+    )
+ } else {
+   return (
+     
+    <div className="master-login-container">
+       <p>You have logged in! Click <a href='/' to go home>here</a></p>
+    </div>
+    
+   )
+  }
 }

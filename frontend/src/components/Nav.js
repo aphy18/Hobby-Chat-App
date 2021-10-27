@@ -1,14 +1,15 @@
 import '../styles/Nav.css';
 import { useContext, useEffect, useState } from 'react';
 import { authContext } from '../provider/AuthProvider';
-import { useHistory } from 'react-router-dom'
 
 
 
-export default function Nav() {
+
+export default function Nav(props) {
   const { logout, user, setUser, auth, setAuth } = useContext(authContext);
+  
   let userObj = JSON.parse(localStorage.getItem('user'))
-  const history = useHistory()
+
 
   
   
@@ -16,13 +17,14 @@ export default function Nav() {
   useEffect(() => {
     if (userObj) {
       setUser(userObj)
+      
     }
   },[])
   
   
   //  if the user exists (the data from the local storage)
 
-  if (user) {
+  if (props.navState) {
     return (
     <nav className="nav">
       <span className="nav-span">Welcome back {userObj.username}!</span>
