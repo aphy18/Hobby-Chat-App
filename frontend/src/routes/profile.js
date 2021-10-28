@@ -1,6 +1,7 @@
 import '../styles/Profile.css'
 import { useState } from 'react';
 import useForm from '../customHooks/useForm.js'
+import axios from 'axios';
 
 export default function Profile() {
   
@@ -8,7 +9,18 @@ export default function Profile() {
 
   function handleProfile() {
     console.log('changes made')
+    setValues({})
   }
+
+  const sendProfileData = () => {
+    axios.put(`http://localhost:8080/profile`, { values })
+    .then((res) => {
+      console.log('res.data for profile 14 -->', res.data)
+      return res.data
+    })
+  }
+
+
   const [profile, setProfile] = useState(false);
   let userObj = JSON.parse(localStorage.getItem('user'))
 
@@ -48,7 +60,7 @@ export default function Profile() {
      return (
       <>
       <div className="profile-container">
-      <form className="profile-form" onSubmit={handleProfile}>
+      <form className="profile-form" onSubmit={handleSubmit}>
       <div className="profile-picture">
        <span><i class="fas fa-user"></i></span>
       </div>
@@ -66,10 +78,10 @@ export default function Profile() {
         {/* <textarea className="bio" placeholder="Talk a bit about yourself"></textarea> */}
       </div>
       <div className="profile-button-container">
-      <button type="button" className="profile-button">Save Changes</button>
-      <button type="button" className="profile-button" onClick={() => setProfile(false)}>Cancel</button>
-      <button type="button" className="profile-button">Change Password</button>
-      <button type="button" className="profile-button">Upload Profile Picture</button>
+      <button className="profile-button" onClick={() => sendProfileData()}>Save Changes</button>
+      <button className="profile-button" onClick={() => setProfile(false)}>Cancel</button>
+      <button className="profile-button">Change Password</button>
+      <button className="profile-button">Upload Profile Picture</button>
       </div>
       </form>
       </div>
