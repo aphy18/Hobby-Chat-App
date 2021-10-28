@@ -11,6 +11,7 @@ export default function AuthProvider(props){
  
   
   // login function is for setting localstorage
+  
   function login(email, password, obj) {
     setAuth(true);
     const setAccountInfo = new Promise((res,rej) => {
