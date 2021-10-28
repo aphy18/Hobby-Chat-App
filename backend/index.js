@@ -20,6 +20,8 @@ app.post('/register', async(req,res) => {
     console.log('hashed password -->', password);
     console.log('hashed password 2 -->', password_confirm);
 
+    // get back to this
+
     const userRegistration = await pool.query(
       `INSERT INTO person (username, first_name, last_name, person_gender, person_address, person_email, person_password, password_confirm) 
       values ($1, $2, $3, $4, $5, $6, $7, $8)
@@ -51,20 +53,23 @@ app.post('/login', async(req,res) => {
   }
 });
 
-app.put('/profile', async(req,res) => {
+app.put('/profile/:id', async(req,res) => {
   try {
+    console.log('req.bodyyy ->', req.body);
     const { username, first_name, last_name, gender, address, email } = req.body.values;
+    const { id } = req.params;
     const updateProfile = await pool.query(
       `UPDATE person
       SET username = $1,
-      first_name = $2
-      last_name = $3
-      gender = $4
-      person_address = $5
-      person_email = $6`,
-      [username,first_name,last_name,gender,address,email]);
+      first_name = $2,
+      last_name = $3,
+      person_gender = $4,
+      person_address = $5,
+      person_email = $6
+      WHERE id = ${id}`,
+      [username, first_name, last_name, gender, address, email]);
     res.json(updateProfile.rows[0]);
-    console.log('updates profile -->', updateProfile.rows[0]);
+    console.log('updated profile values -->', updateProfile.rows[0]);
 
   } catch (err) {
     console.log(err.message);

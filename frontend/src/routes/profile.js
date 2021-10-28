@@ -6,6 +6,8 @@ import axios from 'axios';
 export default function Profile() {
   
   const { values, setValues, handleChange, handleSubmit } = useForm(handleProfile)
+  let userObj = JSON.parse(localStorage.getItem('user'))
+  const [profile, setProfile] = useState(false);
 
   function handleProfile() {
     console.log('changes made')
@@ -13,17 +15,15 @@ export default function Profile() {
   }
 
   const sendProfileData = () => {
-    axios.put(`http://localhost:8080/profile`, { values })
+    axios.put(`http://localhost:8080/profile/${userObj.id}`, { values })
     .then((res) => {
       console.log('res.data for profile 14 -->', res.data)
       return res.data
     })
+    .catch((err) => {
+      console.log(err)
+    })
   }
-
-
-  const [profile, setProfile] = useState(false);
-  let userObj = JSON.parse(localStorage.getItem('user'))
-
 
   // don't want profile to be dependent on state (it will show you can't be here before logging out)
    if (userObj.username && !profile) {
