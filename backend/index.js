@@ -52,7 +52,23 @@ app.post('/login', async(req,res) => {
 });
 
 app.put('/profile', async(req,res) => {
+  try {
+    const { username, first_name, last_name, gender, address, email } = req.body.values;
+    const updateProfile = await pool.query(
+      `UPDATE person
+      SET username = $1,
+      first_name = $2
+      last_name = $3
+      gender = $4
+      person_address = $5
+      person_email = $6`,
+      [username,first_name,last_name,gender,address,email]);
+    res.json(updateProfile.rows[0]);
+    console.log('updates profile -->', updateProfile.rows[0]);
 
+  } catch (err) {
+    console.log(err.message);
+  }
 });
 
 

@@ -4,11 +4,11 @@ import useForm from '../customHooks/useForm.js'
 
 export default function Profile() {
   
-  // const { values, handleChange, handleSubmit } = useForm(handleProfile)
+  const { values, setValues, handleChange, handleSubmit } = useForm(handleProfile)
 
-  // function handleProfile() {
-  //   console.log('changes made')
-  // }
+  function handleProfile() {
+    console.log('changes made')
+  }
   const [profile, setProfile] = useState(false);
   let userObj = JSON.parse(localStorage.getItem('user'))
 
@@ -48,17 +48,17 @@ export default function Profile() {
      return (
       <>
       <div className="profile-container">
-      <form className="profile-form">
+      <form className="profile-form" onSubmit={handleProfile}>
       <div className="profile-picture">
        <span><i class="fas fa-user"></i></span>
       </div>
       <div className="new-user-info">
-       <span>username:</span> <textarea className="new-text" placeholder="enter a new username"></textarea>
-       <span>first name:</span><textarea className="new-text" placeholder="enter a first name"></textarea>
-       <span>last name:</span><textarea className="new-text" placeholder="enter a last name"></textarea>
-       <span>gender:</span> <textarea className="new-text" placeholder="enter a new gender"></textarea>
-       <span>address:</span> <textarea className="new-text" placeholder="enter a new address"></textarea>
-       <span>email:</span> <textarea className="new-text" placeholder="enter a new email"></textarea>
+       <span>username:</span><textarea name="username" value={values.username} className="new-text" placeholder="enter a new username" onChange={handleChange}></textarea>
+       <span>first name:</span><textarea name="first_name" value={values.first_name} className="new-text" placeholder="enter a first name" onChange={handleChange}></textarea>
+       <span>last name:</span><textarea name="last_name" value={values.last_name} className="new-text" placeholder="enter a last name" onChange={handleChange}></textarea>
+       <span>gender:</span><textarea name="gender" value={values.gender} className="new-text" placeholder="enter a new gender" onChange={handleChange}></textarea>
+       <span>address:</span><textarea name="address" value={values.address} className="new-text" placeholder="enter a new address" onChange={handleChange}></textarea>
+       <span>email:</span><textarea name="email" value={values.email} className="new-text" placeholder="enter a new email" onChange={handleChange}></textarea>
       </div>
       <div className="bio-container">
         <p className="bio-header">Bio:</p>
