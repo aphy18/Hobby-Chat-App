@@ -71,7 +71,7 @@ export default function Login(props) {
    return (
      
     <div className="master-login-container">
-       <alert>HELLO</alert>
+       <p>HELLO</p>
     </div>
     
    )
