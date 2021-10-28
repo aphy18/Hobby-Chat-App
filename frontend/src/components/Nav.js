@@ -24,10 +24,10 @@ export default function Nav(props) {
   
   //  if the user exists (the data from the local storage)
 
-  if (props.navState) {
+  if (user) {
     return (
     <nav className="nav">
-      <span className="nav-span">Welcome back {userObj.username}!</span>
+      <span className="nav-span">{userObj.username}!</span>
       <ul className="nav-list">
         <a href='/#about-us' className="nav-item">about us</a>
         <a href='/#features-container' className="nav-item">features</a>

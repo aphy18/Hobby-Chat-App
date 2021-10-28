@@ -1,14 +1,11 @@
 import '../styles/Profile.css'
-import { useContext } from 'react';
-import { authContext } from '../provider/AuthProvider';
-
 
 export default function Profile() {
-
-  const { user } = useContext(authContext);
+  
   let userObj = JSON.parse(localStorage.getItem('user'))
 
-   if (user) {
+  // don't want profile to be dependent on state (it will show you can't be here before logging out)
+   if (userObj.username) {
     return (
       <>
       <div className="profile-container">

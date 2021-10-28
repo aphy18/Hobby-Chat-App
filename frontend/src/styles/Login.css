@@ -44,3 +44,7 @@
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
 }
+
+.login-prompt {
+  border: 2px solid black;
+}

@@ -8,13 +8,13 @@ import Nav from './components/Nav'
 
 
 function App() {
-  const [loginValidation, setLoginValidation] = useState(false)
+  
 
   return (
     <Router>
-      <Nav navState={loginValidation} />
+      <Nav />
       <Switch>
-        <Route exact path="/" component={Home} loggedIn={loginValidation} setLoggedIn={setLoginValidation} />
+        <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/profile" component={Profile} />

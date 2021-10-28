@@ -14,7 +14,7 @@ export default function Login(props) {
   const history = useHistory();
   const email = values.email;
   const password = values.password;
-  // const [loginValidation, setLoginValidation] = useState(false)
+  const [loginValidation, setLoginValidation] = useState(false)
   
   // console logs are saved when we push to the 'frozen world' the window.histroy.go() refreshes the page
 
@@ -30,7 +30,8 @@ export default function Login(props) {
      console.log('Password required')
      return;
    }
-   props.setLoggedIn(true)
+  
+   setLoginValidation(true)
    setValues({})
   }
   
@@ -51,7 +52,7 @@ export default function Login(props) {
 
 
  
- if (!props.loggedIn) {
+ if (!loginValidation) {
   return (
     <>
      <div className="master-login-container">
@@ -70,7 +71,7 @@ export default function Login(props) {
    return (
      
     <div className="master-login-container">
-       <p>You have logged in! Click <a href='/' to go home>here</a></p>
+       <alert>HELLO</alert>
     </div>
     
    )

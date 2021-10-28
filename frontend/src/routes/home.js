@@ -18,13 +18,13 @@ export default function Home() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false)
-    }, 2000);
+    }, 1000);
   }, [])
 
   if (loading && user) {
     return (
       <div className="master-loading-container">
-      <PulseLoader className="loading" loading={loading} size={30} />
+      <PulseLoader className="loading" loading={loading} size={35} />
       </div>
     )
   } else {
