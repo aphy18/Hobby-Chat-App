@@ -14,21 +14,16 @@ app.post('/register', async(req,res) => {
   console.log('reqbody -->', req.body);
   try {
     const { username, first_name, last_name, gender, address, email, password, password_confirm } = req.body.values;
-    // const salt = await bcrypt.genSalt(10);
-    // const hashedPassword = await bcrypt.hashSync(password, salt);
-    // console.log("salt --->", salt);
-    // console.log("hashed pass -->", hashedPassword);
+    const hashedPassword = await bcryptjs.hashSync(password, 10);
+    const hashedPasswordConfirm = await bcryptjs.hashSync(password_confirm, 10);
 
-    const hashedPassword = bcryptjs.hashSync(password, 10);
-    const hashedPasswordConfirm = bcryptjs.hashSync(password_confirm, 10);
-
-    console.log('hashed password -->');
-    console.log('hashed password 2 -->');
+    console.log('hashed password -->', hashedPassword);
+    console.log('hashed password 2 -->', hashedPasswordConfirm);
 
     const userRegistration = await pool.query(
       `INSERT INTO person (username, first_name, last_name, person_gender, person_address, person_email, person_password, password_confirm) 
       values ($1, $2, $3, $4, $5, $6, $7, $8)
-      RETURNING * `, [username, first_name, last_name, gender, address, email, password, password_confirm]);
+      RETURNING * `, [username, first_name, last_name, gender, address, email, hashedPassword, hashedPasswordConfirm]);
     res.json(userRegistration.rows[0]);
     console.log('User registration ---->', userRegistration.rows[0]);
   } catch (err) {
