@@ -22,8 +22,8 @@ app.post('/register', async(req,res) => {
     const hashedPassword = bcryptjs.hashSync(password, 10);
     const hashedPasswordConfirm = bcryptjs.hashSync(password_confirm, 10);
 
-    console.log('hashed password -->', hashedPassword);
-    console.log('hashed password 2 -->', hashedPasswordConfirm);
+    console.log('hashed password -->');
+    console.log('hashed password 2 -->');
 
     const userRegistration = await pool.query(
       `INSERT INTO person (username, first_name, last_name, person_gender, person_address, person_email, person_password, password_confirm) 
