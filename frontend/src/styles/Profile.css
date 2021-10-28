@@ -28,6 +28,21 @@
   justify-content: space-evenl;
 }
 
+.new-user-info {
+  border: 2px solid red;
+  width: 90%;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.new-text {
+ width: 50%;
+  
+  
+}
+
 .bio-container {
   border: 2px solid red;
   width: 90%;
