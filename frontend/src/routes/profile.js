@@ -19,9 +19,11 @@ export default function Profile() {
         <p className="profile-item">Gender: {userObj.person_gender}</p>
         <p className="profile-item">Address: {userObj.person_address}</p>
         <p className="profile-item">Email: {userObj.person_email}</p>
+      <div className="profile-button-container">
       <button>Edit</button>
       <button>Change Password</button>
       <button>Upload Profile Picture</button>
+      </div>
       </form>
       </div>
       </>

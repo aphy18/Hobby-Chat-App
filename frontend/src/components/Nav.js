@@ -1,17 +1,14 @@
 import '../styles/Nav.css';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { authContext } from '../provider/AuthProvider';
 
 
 
 
 export default function Nav(props) {
-  const { logout, user, setUser, auth, setAuth } = useContext(authContext);
+  const { logout, user, setUser } = useContext(authContext);
   
   let userObj = JSON.parse(localStorage.getItem('user'))
-
-
-  
   
   // user (which was once null) is now being set to the res.json in the local storage
   useEffect(() => {
@@ -21,9 +18,7 @@ export default function Nav(props) {
     }
   },[])
   
-  
   //  if the user exists (the data from the local storage)
-
   if (user) {
     return (
     <nav className="nav">
