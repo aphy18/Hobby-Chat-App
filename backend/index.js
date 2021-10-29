@@ -89,6 +89,19 @@ app.put('/profile/:id', async(req,res) => {
   }
 });
 
+app.get('/messageList', async(req,res) => {
+  try {
+    const getAllUserInfo = await pool.query(
+      `SELECT id, username, first_name, last_name, person_gender, 
+        person_address, person_email, person_bio FROM person ORDER BY id`
+    );
+    res.json(getAllUserInfo.rows);
+    console.log('All user info --->', getAllUserInfo.rows);
+  } catch (err) {
+    console.log(err.message);
+  }
+});
+
 
 app.listen(port, () => {
   console.log(`app listening on port ${port}`);
