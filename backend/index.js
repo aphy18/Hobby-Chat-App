@@ -57,9 +57,8 @@ app.get('/profile/:id', async(req,res) => {
   try {
     const { id } = req.params;
     const getUserProfile = await pool.query(
-      `SELECT username, first_name, last_name, person_gender, 
-      person_address, person_email, person_bio FROM person WHERE id = ${id}`
-    );
+      `SELECT id, username, first_name, last_name, person_gender, 
+      person_address, person_email, person_bio FROM person WHERE id = ${id}`);
     console.log('getting user profile -->', getUserProfile.rows[0]);
     res.json(getUserProfile.rows[0]);
   } catch (err) {

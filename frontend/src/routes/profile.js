@@ -8,6 +8,8 @@ export default function Profile() {
   let userObj = JSON.parse(localStorage.getItem('user'))
   const [profile, setProfile] = useState(false);
   const [data, setData] = useState({});
+
+  console.log('userOBJ 11', userObj)
   
 
    function sendProfileData(){
@@ -18,24 +20,23 @@ export default function Profile() {
         values[attr] = data.data[attr];
       }
     }
-    
-    const userData = axios.put(`http://localhost:8080/profile/${userObj.id}`, { values })
-    console.log('FINAL VALUES', values);
-    console.log('res.data for profile 14 -->', userData);
+    const updateUserData = axios.put(`http://localhost:8080/profile/${userObj.id}`, { values })
     setProfile(false);
     localStorage.setItem('user',JSON.stringify(values))
-    return userData;
-
+    return updateUserData;
   }
 
   async function getProfileData(){
-    // the entire axios link is the response itself
-    const userData = await axios.get(`http://localhost:8080/profile/${userObj.id}`, { values })
-    return setData(userData)
+  // the entire axios link is the response itself
+    const getUserData = await axios.get(`http://localhost:8080/profile/${userObj.id}`, { values })
+    return setData(getUserData)
+
   }
     
     useEffect(() => {
+
     getProfileData();
+
   },[])
   
   console.log('i am data -->',data)
