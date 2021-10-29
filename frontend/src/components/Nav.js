@@ -2,9 +2,6 @@ import '../styles/Nav.css';
 import { useContext, useEffect } from 'react';
 import { authContext } from '../provider/AuthProvider';
 
-
-
-
 export default function Nav(props) {
   const { logout, user, setUser } = useContext(authContext);
   
@@ -24,6 +21,7 @@ export default function Nav(props) {
     <nav className="nav">
       <span className="nav-span">{userObj.username}</span>
       <ul className="nav-list">
+        <a href='/' className="nav-item"><i class="fas fa-home"></i></a>
         <a href='/#about-us' className="nav-item">about us</a>
         <a href='/#features-container' className="nav-item">features</a>
         <a href='/#contact' className="nav-item">contact</a>
@@ -37,6 +35,7 @@ export default function Nav(props) {
       <nav className="nav">
       <span className="nav-span"></span>
      <ul className="nav-list">
+       <a href='/' className="nav-item"><i class="fas fa-home"></i></a>
        <a href='/#about-us' className="nav-item">about us</a>
        <a href='/#features-container' className="nav-item">features</a>
        <a href='/#contact' className="nav-item">contact</a>
