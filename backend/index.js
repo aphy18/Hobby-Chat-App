@@ -53,6 +53,20 @@ app.post('/login', async(req,res) => {
   }
 });
 
+app.get('/profile/:id', async(req,res) => {
+  try {
+    const { id } = req.params;
+    const getUserProfile = await pool.query(
+      `SELECT username, first_name, last_name, person_gender, 
+      person_address, person_email, person_bio FROM person WHERE id = ${id}`
+    );
+    console.log('getting user profile -->', getUserProfile.rows[0]);
+    res.json(getUserProfile.rows[0]);
+  } catch (err) {
+    console.log(err.message);
+  }
+});
+
 app.put('/profile/:id', async(req,res) => {
   try {
     console.log('req.bodyyy ->', req.body);
@@ -68,8 +82,8 @@ app.put('/profile/:id', async(req,res) => {
       person_email = $6
       WHERE id = ${id}`,
       [username, first_name, last_name, gender, address, email]);
-    res.json(updateProfile.rows[0]);
-    console.log('updated profile values -->', updateProfile.rows[0]);
+    res.json(updateProfile.rows);
+    console.log('updated profile values -->', updateProfile.rows);
 
   } catch (err) {
     console.log(err.message);

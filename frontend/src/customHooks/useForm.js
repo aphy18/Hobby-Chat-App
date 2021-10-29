@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-export default function useForm(callback) {
-  const [values, setValues] = useState({})
+export default function useForm(callback, initVal = {}) {
+  const [values, setValues] = useState(initVal)
 
   const handleChange = e => {
     const { name, value } = e.target
