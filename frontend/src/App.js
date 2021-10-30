@@ -12,18 +12,35 @@ function App() {
   let userObj = JSON.parse(localStorage.getItem('user'))
   console.log('userObj from home', userObj)
 
-  return (
-    <Router>
-      <Nav />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/register" component={Register} />
-        <Route exact path={`/profile/${userObj.id}`} component={Profile} />
-        <Route exact path="/messagelist" component={MessageList} />
-      </Switch>
-    </Router>
-  )
+  if (!userObj) {
+    return (
+      <Router>
+        <Nav />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/messagelist" component={MessageList} />
+        </Switch>
+      </Router>
+    )
+  
+  } else {
+    return (
+      <Router>
+        <Nav />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path={`/profile/${userObj.id}`} component={Profile} />
+          <Route exact path="/messagelist" component={MessageList} />
+        </Switch>
+      </Router>
+    )
+  
+  }
 }
 
 export default App;
+
