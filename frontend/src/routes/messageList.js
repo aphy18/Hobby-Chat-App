@@ -25,10 +25,11 @@ export default function MessageList() {
   
   
   const users = data.map(user => {
+    console.log('user 28', user)
     return (
       <>
       <div className="message-list-container">
-        <MessageOption />
+        <MessageOption user={user}/>
       </div>
       </>
     )
