@@ -56,6 +56,12 @@ export default function Profile() {
     return (
       <>
       <div className="profile-container">
+      <div className="profile-button-container">
+      <button className="profile-button" onClick={() => setProfile(true)}>Edit</button>
+      <button className="profile-button">Change Password</button>
+      <button className="profile-button">Upload Profile Picture</button>
+      </div>
+      <div className="profile-and-hobby-container">
       <form className="profile-form">
       <div className="profile-picture">
        <span><i class="fas fa-user"></i></span>
@@ -71,13 +77,9 @@ export default function Profile() {
       <div className="bio-container">
         <p className="bio-header">Bio:</p>
         <p className="bio"> {data.person_bio}</p>
-        
       </div>
       </form>
-      <div className="profile-button-container">
-      <button className="profile-button" onClick={() => setProfile(true)}>Edit</button>
-      <button className="profile-button">Change Password</button>
-      <button className="profile-button">Upload Profile Picture</button>
+      <form className="hobby-form"></form>
       </div>
       </div>
       </>
