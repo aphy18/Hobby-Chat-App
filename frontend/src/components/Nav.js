@@ -25,7 +25,7 @@ export default function Nav() {
         <a href='/#features' className="nav-item">features</a>
         <a href='/#contact' className="nav-item">contact</a>
         <span className="nav-item" onClick={() => logout()}><i class="fas fa-sign-in-alt"></i></span>
-        <a href='/profile' className="nav-item"><i class="fas fa-user-cog"></i></a>
+        <a href={`/profile/${userObj.id}`} className="nav-item"><i class="fas fa-user-cog"></i></a>
       </ul>
     </nav>
     )

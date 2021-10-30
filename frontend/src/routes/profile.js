@@ -18,10 +18,11 @@ export default function Profile() {
         values[attr] = data[attr];
       }
     }
-    const updateUserData = axios.put(`http://localhost:8080/profile/${userObj.id}`, { values })
+    axios.put(`http://localhost:8080/profile/${userObj.id}`, { values })
     setProfile(false);
     localStorage.setItem('user',JSON.stringify(values))
-    return updateUserData;
+    alert('changes saved')
+    window.location.reload()
   }
 
   async function getProfileData(){
@@ -104,13 +105,13 @@ export default function Profile() {
         <p className="bio-header">Bio:</p>
         <textarea name="person_bio" value={values.bio} className="bio" onChange={handleChange} placeholder="Talk a bit about yourself"></textarea>
       </div>
+      </form>
       <div className="profile-button-container">
       <button className="profile-button" onClick={() => sendProfileData()}>Save Changes</button>
       <button className="profile-button" onClick={() => setProfile(false)}>Cancel</button>
       <button className="profile-button">Change Password</button>
       <button className="profile-button">Upload Profile Picture</button>
       </div>
-      </form>
       </div>
       </>
      )
