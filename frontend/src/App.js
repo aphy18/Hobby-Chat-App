@@ -5,6 +5,7 @@ import Home from './routes/home';
 import Profile from './routes/profile';
 import MessageList from './routes/messageList';
 import Nav from './components/Nav';
+import NewHobby from './components/NewHobby';
 
 
 
@@ -35,6 +36,7 @@ function App() {
           <Route exact path="/register" component={Register} />
           <Route exact path={`/profile/${userObj.id}`} component={Profile} />
           <Route exact path="/messagelist" component={MessageList} />
+          <Route exact path="/hobby" component={NewHobby} />
         </Switch>
       </Router>
     )

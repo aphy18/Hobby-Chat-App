@@ -8,7 +8,7 @@ export default function Profile() {
   let userObj = JSON.parse(localStorage.getItem('user'))
   const [profile, setProfile] = useState(false);
   const [data, setData] = useState({});
-
+ 
 
   function sendProfileData(){
     for (let attr in data) {
@@ -48,16 +48,13 @@ export default function Profile() {
     console.log('form submitted')
   }
 
-  if (!userObj && !profile) {
-    return (
-      <p>You must be logged in to view your profile</p>
-    )
-  } else if (data && !profile) {
+  if (data && !profile) {
     return (
       <>
       <div className="profile-container">
       <div className="profile-button-container">
       <button className="profile-button" onClick={() => setProfile(true)}>Edit</button>
+      <a href="/hobby"><button className="profile-button">Add Hobby</button></a> 
       <button className="profile-button">Change Password</button>
       <button className="profile-button">Upload Profile Picture</button>
       </div>
@@ -79,7 +76,7 @@ export default function Profile() {
         <p className="bio"> {data.person_bio}</p>
       </div>
       </form>
-      <form className="hobby-form" id="hobby-form">
+      <div className="hobby-form" id="hobby-form">
         <div className="hobby-header-container">
           <h3 className="hobby-header">Hobbies</h3>
         </div>
@@ -90,12 +87,12 @@ export default function Profile() {
        </div>
        </div>
 
-      </form>
+      </div>
       </div>
       </div>
       </>
      )
-   } if (data && profile) {
+   } else if (data && profile) {
   
     console.log('values 86 -->', values)
 
