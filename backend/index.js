@@ -82,8 +82,9 @@ app.get('/profile/:id', async(req,res) => {
 app.put('/profile/:id', async(req,res) => {
   try {
     console.log('req.bodyyy ->', req.body);
-    const { username, first_name, last_name, person_gender, person_address, person_email } = req.body.values;
+    const { username, first_name, last_name, person_gender, person_address, person_email, person_bio } = req.body.values;
     const { id } = req.params;
+    console.log('received values -->', req.body);
     const updateProfile = await pool.query(
       `UPDATE person
       SET username = $1,
@@ -91,11 +92,12 @@ app.put('/profile/:id', async(req,res) => {
       last_name = $3,
       person_gender = $4,
       person_address = $5,
-      person_email = $6
+      person_email = $6,
+      person_bio = $7
       WHERE id = ${id}`,
-      [username, first_name, last_name, person_gender, person_address, person_email]);
-    res.json(updateProfile.rows);
+      [username, first_name, last_name, person_gender, person_address, person_email, person_bio]);
     console.log('updated profile values -->', updateProfile.rows);
+    res.json(updateProfile.rows);
 
   } catch (err) {
     console.log(err.message);

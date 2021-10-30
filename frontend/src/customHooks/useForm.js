@@ -8,7 +8,7 @@ export default function useForm(callback, initVal = {}) {
 
     console.log('name -->', name);
     console.log('value -->', value);
-    console.log('values obj -->', values);
+    
 
     setValues({
       ...values,

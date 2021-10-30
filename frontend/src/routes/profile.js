@@ -69,8 +69,8 @@ export default function Profile() {
       </div>
       <div className="bio-container">
         <p className="bio-header">Bio:</p>
-        <p className="bio">Hello i am whale i love whales</p>
-        {/* <textarea className="bio" placeholder="Talk a bit about yourself"></textarea> */}
+        <p className="bio"> {data.person_bio}</p>
+        
       </div>
       </form>
       <div className="profile-button-container">
@@ -102,8 +102,7 @@ export default function Profile() {
       </div>
       <div className="bio-container">
         <p className="bio-header">Bio:</p>
-        <p className="bio">Hello i am whale i love whales</p>
-        {/* <textarea className="bio" placeholder="Talk a bit about yourself"></textarea> */}
+        <textarea name="person_bio" value={values.bio} className="bio" onChange={handleChange} placeholder="Talk a bit about yourself"></textarea>
       </div>
       <div className="profile-button-container">
       <button className="profile-button" onClick={() => sendProfileData()}>Save Changes</button>

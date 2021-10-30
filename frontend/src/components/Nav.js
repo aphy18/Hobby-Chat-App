@@ -22,7 +22,7 @@ export default function Nav() {
       <ul className="nav-list">
         <a href='/' className="nav-item"><i class="fas fa-home"></i></a>
         <a href='/#about-us' className="nav-item">about us</a>
-        <a href='/#features-container' className="nav-item">features</a>
+        <a href='/#features' className="nav-item">features</a>
         <a href='/#contact' className="nav-item">contact</a>
         <span className="nav-item" onClick={() => logout()}><i class="fas fa-sign-in-alt"></i></span>
         <a href='/profile' className="nav-item"><i class="fas fa-user-cog"></i></a>

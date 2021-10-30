@@ -27,7 +27,7 @@ export default function Home() {
   useEffect(() => {
     getUserData();
     setLoading(true);
-    Aos.init({duration: 1000})
+    Aos.init({duration: 1200})
     setTimeout(() => {
       setLoading(false)
     }, 1000);
@@ -72,7 +72,7 @@ export default function Home() {
    </div>
   
    
-   <div data-aos="fade-up" className="main-features-container" id="features-container">
+   <div data-aos="fade-up" className="main-features-container" id="features">
    <h2 className="features">Features</h2>
     <div data-aos="fade-left" className="features-container">
     <div className="features-image"></div>
