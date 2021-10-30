@@ -9,15 +9,13 @@ export default function Profile() {
   const [profile, setProfile] = useState(false);
   const [data, setData] = useState({});
 
-  console.log('userOBJ 11', userObj)
-  
 
-   function sendProfileData(){
-    for (let attr in data.data) {
+  function sendProfileData(){
+    for (let attr in data) {
       console.log('attr', attr);
       console.log('almost ripping my hair out --->', values[attr]);
       if (!values[attr]) {
-        values[attr] = data.data[attr];
+        values[attr] = data[attr];
       }
     }
     const updateUserData = axios.put(`http://localhost:8080/profile/${userObj.id}`, { values })
@@ -27,9 +25,13 @@ export default function Profile() {
   }
 
   async function getProfileData(){
+    if (userObj === null) {
+      console.log('end of the road');
+      return;
+    }
   // the entire axios link is the response itself
     const getUserData = await axios.get(`http://localhost:8080/profile/${userObj.id}`, { values })
-    return setData(getUserData)
+    return setData(getUserData.data)
 
   }
     
@@ -45,8 +47,11 @@ export default function Profile() {
     console.log('form submitted')
   }
 
-  // don't want profile to be dependent on state (it will show you can't be here before logging out)
-   if (userObj.username && !profile) {
+  if (!userObj && !profile) {
+    return (
+      <p>You must be logged in to view your profile</p>
+    )
+  } else if (data && !profile) {
     return (
       <>
       <div className="profile-container">
@@ -55,12 +60,12 @@ export default function Profile() {
        <span><i class="fas fa-user"></i></span>
       </div>
       <div className="user-info">
-      <p className="profile-item">Username: {userObj.username}</p>
-        <p className="profile-item">First Name: {userObj.first_name}</p>
-        <p className="profile-item">Last Name: {userObj.last_name}</p>
-        <p className="profile-item">Gender: {userObj.person_gender}</p>
-        <p className="profile-item">Address: {userObj.person_address}</p>
-        <p className="profile-item">Email: {userObj.person_email}</p>
+      <p className="profile-item">Username: {data.username}</p>
+        <p className="profile-item">First Name: {data.first_name}</p>
+        <p className="profile-item">Last Name: {data.last_name}</p>
+        <p className="profile-item">Gender: {data.person_gender}</p>
+        <p className="profile-item">Address: {data.person_address}</p>
+        <p className="profile-item">Email: {data.person_email}</p>
       </div>
       <div className="bio-container">
         <p className="bio-header">Bio:</p>
@@ -76,7 +81,7 @@ export default function Profile() {
       </div>
       </>
      )
-   } else if (userObj.username && profile) {
+   } if (data && profile) {
   
     console.log('values 86 -->', values)
 

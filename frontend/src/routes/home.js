@@ -38,11 +38,12 @@ export default function Home() {
    if (home[obj].id === userObj.id) {
      console.log('YES', home[obj])
      setHome(home[obj])
-     }
+    }
   }
-
-
+  
   console.log('new state', home)
+
+ 
 
 
 

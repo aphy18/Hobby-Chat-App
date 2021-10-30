@@ -2,7 +2,7 @@ import '../styles/Nav.css';
 import { useContext, useEffect } from 'react';
 import { authContext } from '../provider/AuthProvider';
 
-export default function Nav(props) {
+export default function Nav() {
   const { logout, user, setUser } = useContext(authContext);
   
   let userObj = JSON.parse(localStorage.getItem('user'))
@@ -11,7 +11,6 @@ export default function Nav(props) {
   useEffect(() => {
     if (userObj) {
       setUser(userObj)
-      
     }
   },[])
   

@@ -27,7 +27,7 @@ export default function AuthProvider(props){
 }
    
   function logout() {
-  window.location.href = 'login'
+  window.location.href = '/login'
   setAuth(false);
   setUser(null);
   localStorage.setItem('user', null);
