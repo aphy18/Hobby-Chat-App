@@ -1,5 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
-import { authContext } from '../provider/AuthProvider';
+import { useState, useEffect } from 'react';
 import '../styles/Home.css';
 import '../styles/Body.css';
 import Aos from "aos";
@@ -13,9 +12,8 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [home, setHome] = useState([]);
   const userObj = JSON.parse(localStorage.getItem('user'))
-
-  const { user } = useContext(authContext);
-
+  
+  
   async function getUserData(){
     console.log('base home', home)
     if (userObj === null) {
@@ -62,7 +60,7 @@ export default function Home() {
     <div className="home-header-container">
      <h1 data-aos="fade-up" className="home-header">Welcome to Chatter</h1>
     </div>
-
+    <span className="home-page-welcome-back" data-aos="fade-up">Nice to see you back {home.username}! 😊 </span>
    <div data-aos="fade-up" className="the-about-container" id="about-us">
    <h2 className="about-us">About us</h2>
      <div className="about-us-container">
@@ -84,7 +82,7 @@ export default function Home() {
       <div className="features-image"></div>
     </div>
    </div>
-   <span className="home-page-welcome-back" data-aos="zoom-in-up" data-aos-duration="500">Nice to see you back!</span>
+   <a href='/messageList' className="home-page-view-users" data-aos="zoom-in-up" data-aos-duration="500">View all users here</a>
    <div className="footer">
   </div>
   </div>

@@ -132,7 +132,9 @@
   height: 200px;
 }
 
-.home-page-click-here {
+.home-page-click-here,
+.home-page-welcome-back,
+.home-page-view-users {
   font-size: 40px;
   text-decoration: none;
   color: black;
