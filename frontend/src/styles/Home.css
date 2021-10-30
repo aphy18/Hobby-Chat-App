@@ -131,3 +131,9 @@
   width: 500px;
   height: 200px;
 }
+
+.home-page-click-here {
+  font-size: 40px;
+  text-decoration: none;
+  color: black;
+}

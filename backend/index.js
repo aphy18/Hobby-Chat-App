@@ -9,6 +9,19 @@ const bcrypt = require('bcryptjs');
 app.use(cors());
 app.use(express.json());
 
+app.get('/', async(req,res) => {
+  try {
+    const getAllUserInfo = await pool.query(
+      `SELECT id, username, first_name, last_name, person_gender, 
+        person_address, person_email, person_bio FROM person ORDER BY id`
+    );
+    res.json(getAllUserInfo.rows);
+    console.log('JUST GOT TO HOME PAGE', getAllUserInfo.rows);
+  } catch (err) {
+    console.log(err.message);
+  }
+});
+
 
 app.post('/register', async(req,res) => {
   console.log('reqbody -->', req.body);
