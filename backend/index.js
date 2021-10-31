@@ -104,6 +104,28 @@ app.put('/profile/:id', async(req,res) => {
   }
 });
 
+app.get('/hobby/:id', async(req,res) => {
+  const { id } = req.params;
+  const getHobbyInfo = await pool.query(
+    `SELECT * FROM hobby WHERE person_id = ${id}`
+  );
+  console.log('everything i can see on this page -->', getHobbyInfo.rows);
+  res.json(getHobbyInfo.rows);
+});
+
+app.post('/hobby/:id', async(req,res) => {
+  try {
+    const { hobby_name,level_of_expertise,my_spending_estimate, amount_of_time_doing_hobby, person_id } = req.body.values;
+    console.log('req.body -->', req.body.values);
+    await pool.query(
+      `INSERT INTO hobby (hobby_name,level_of_expertise,my_spending_estimate, amount_of_time_doing_hobby, person_id)
+      VALUES ($1, $2, $3, $4, $5);`,[hobby_name, level_of_expertise, my_spending_estimate, amount_of_time_doing_hobby, person_id]);
+  } catch (err) {
+    console.log(err.message);
+  }
+});
+
+
 app.get('/messageList', async(req,res) => {
   try {
     const getAllUserInfo = await pool.query(
@@ -116,6 +138,8 @@ app.get('/messageList', async(req,res) => {
     console.log(err.message);
   }
 });
+
+
 
 
 app.listen(port, () => {
