@@ -25,3 +25,7 @@
   justify-content: space-evenly;
   align-items: center;
 }
+
+.new-hobby-input {
+  font-size: 40px;
+}

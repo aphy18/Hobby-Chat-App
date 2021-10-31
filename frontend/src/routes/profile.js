@@ -4,8 +4,9 @@ import useForm from '../customHooks/useForm.js'
 import axios from 'axios';
 
 export default function Profile() {
-  const { values, setValues, handleChange, handleSubmit } = useForm(handleProfile)
+  const { values, handleChange, handleSubmit } = useForm(handleProfile)
   let userObj = JSON.parse(localStorage.getItem('user'))
+  
   const [profile, setProfile] = useState(false);
   const [data, setData] = useState({});
  
@@ -54,7 +55,7 @@ export default function Profile() {
       <div className="profile-container">
       <div className="profile-button-container">
       <button className="profile-button" onClick={() => setProfile(true)}>Edit</button>
-      <a href="/hobby"><button className="profile-button">Add Hobby</button></a> 
+      <a href={`/hobby/${userObj.id}`}><button className="profile-button">Add Hobby</button></a> 
       <button className="profile-button">Change Password</button>
       <button className="profile-button">Upload Profile Picture</button>
       </div>
