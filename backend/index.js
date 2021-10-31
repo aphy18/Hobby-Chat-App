@@ -115,12 +115,11 @@ app.get('/hobby/:id', async(req,res) => {
 
 app.post('/hobby/:id', async(req,res) => {
   try {
-    const { hobby_name, level_of_expertise, my_spending_estimate, amount_of_time_doing_hobby, person_id } = req.body.values;
-    const addHobby = await pool.query(
-      `INSERT INTO hobby (hobby_name, level_of_expertise, my_spending_estimate, amount_of_time_doing_hobby, person_id)
-      VALUES ($1, $2, $3, $4, $5)`,[hobby_name, level_of_expertise, my_spending_estimate, amount_of_time_doing_hobby, person_id]);
-    console.log('this is the hobby being added -->', addHobby.rows[0]);
-    res.json(addHobby.rows[0]);
+    const { hobby_name,level_of_expertise,my_spending_estimate, amount_of_time_doing_hobby, person_id } = req.body.values;
+    console.log('req.body -->', req.body.values);
+    await pool.query(
+      `INSERT INTO hobby (hobby_name,level_of_expertise,my_spending_estimate, amount_of_time_doing_hobby, person_id)
+      VALUES ($1, $2, $3, $4, $5);`,[hobby_name, level_of_expertise, my_spending_estimate, amount_of_time_doing_hobby, person_id]);
   } catch (err) {
     console.log(err.message);
   }

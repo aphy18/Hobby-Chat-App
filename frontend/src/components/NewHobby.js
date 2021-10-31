@@ -5,7 +5,7 @@ import '../styles/NewHobby.css'
 
 export default function NewHobby() {
 
-  const {values, handleChange, handleSubmit } = useForm(handleNewHobby)
+  const { values, handleChange, handleSubmit } = useForm(handleNewHobby)
   let userObj = JSON.parse(localStorage.getItem('user'))
   const [hobbyState,setHobbyState] = useState([])
 
@@ -15,21 +15,20 @@ export default function NewHobby() {
     setHobbyState(userData.data[0])
   }
 
-  console.log('hobby state is..', hobbyState)
+  console.log('hobby state is.. 18', hobbyState)
 
   useEffect(() => {
     getUserData()
   }, [])
 
   function handleNewHobby() {
-    values.id = hobbyState.id
     values.person_id = hobbyState.person_id
-    axios.post(`http://localhost:8080/hobby/${userObj.id}`)
+    axios.post(`http://localhost:8080/hobby/${userObj.id}`, { values })
     console.log('hobby submitted')
-    console.log('updated values -->', values)
+    console.log('updated values --> 29', values)
   }
 
-  console.log('values', values)
+  console.log('values 32', values)
   return (
     <>
     <h1>New Hobby</h1>
