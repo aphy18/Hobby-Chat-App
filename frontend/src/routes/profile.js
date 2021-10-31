@@ -9,8 +9,8 @@ export default function Profile() {
   let userObj = JSON.parse(localStorage.getItem('user'))
   
   const [profile, setProfile] = useState(false);
-  const [hobbyData, setHobbyData] = useState({});
   const [profileData, setProfileData] = useState({});
+  const [hobbyData, setHobbyData] = useState([]);
   const [textLength, setTextLength] = useState(0);
   // const [disabled, setDisabled] = useState(true)
  
@@ -33,9 +33,9 @@ export default function Profile() {
       console.log('end of the road');
       return;
     }
-    const getUserData = await axios.get(`http://localhost:8080/profile/${userObj.id}`, { values })
-    setHobbyData(getUserData.data)
-    setProfileData(getUserData.data[0])
+    const getUserData = await axios.get(`http://localhost:8080/profile/${userObj.id}`, { values });
+    setProfileData(getUserData.data[0]);
+    setHobbyData(getUserData.data);
   }
     
     useEffect(() => {
@@ -50,8 +50,7 @@ export default function Profile() {
     }
     },[values])
   
-  
-    console.log('THIS HOBBY DATA -->', hobbyData)
+
     console.log('THIS PROFILE DATA -->', profileData)
  
   function handleProfile() {
@@ -60,7 +59,7 @@ export default function Profile() {
 
   
 
-  if (hobbyData && !profile) {
+  if (profileData && !profile) {
     return (
       <>
       <div className="profile-container">
@@ -93,14 +92,14 @@ export default function Profile() {
           <h3 className="hobby-header">Hobbies</h3>
         </div>
         <div className="hobby-info-container">
-        <Hobby hobbyData={hobbyData}/>
-        </div>
+          <Hobby hobbyData={hobbyData}/>
+       </div>
       </div>
       </div>
       </div>
       </>
      )
-   } else if (hobbyData && profile) {
+   } else if (profileData && profile) {
   
     console.log('values 86 -->', values)
 
