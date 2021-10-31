@@ -9,17 +9,16 @@ export default function Profile() {
   let userObj = JSON.parse(localStorage.getItem('user'))
   
   const [profile, setProfile] = useState(false);
-  const [data, setData] = useState({});
-  const [textLength, setTextLength] = useState(0)
+  const [hobbyData, setHobbyData] = useState({});
+  const [profileData, setProfileData] = useState({});
+  const [textLength, setTextLength] = useState(0);
   // const [disabled, setDisabled] = useState(true)
  
 
   function sendProfileData(){
-    for (let attr in data) {
-      console.log('attr', attr);
-      console.log('almost ripping my hair out --->', values[attr]);
+    for (let attr in profileData) {
       if (!values[attr]) {
-        values[attr] = data[attr];
+        values[attr] = profileData[attr];
       }
     }
     axios.put(`http://localhost:8080/profile/${userObj.id}`, { values })
@@ -30,19 +29,20 @@ export default function Profile() {
   }
 
   async function getProfileData() {
-    // if (userObj === null) {
-    //   console.log('end of the road');
-    //   return;
-    // }
+    if (userObj === null) {
+      console.log('end of the road');
+      return;
+    }
     const getUserData = await axios.get(`http://localhost:8080/profile/${userObj.id}`, { values })
-    return setData(getUserData.data)
+    setHobbyData(getUserData.data)
+    setProfileData(getUserData.data[0])
   }
     
     useEffect(() => {
       getProfileData();
     },[])
 
-    console.log('hi i am data -->', data)
+    
 
     useEffect(() => {
     if (values.person_bio) {
@@ -51,6 +51,8 @@ export default function Profile() {
     },[values])
   
   
+    console.log('THIS HOBBY DATA -->', hobbyData)
+    console.log('THIS PROFILE DATA -->', profileData)
  
   function handleProfile() {
     console.log('form submitted')
@@ -58,7 +60,7 @@ export default function Profile() {
 
   
 
-  if (data && !profile) {
+  if (hobbyData && !profile) {
     return (
       <>
       <div className="profile-container">
@@ -74,16 +76,16 @@ export default function Profile() {
        <span><i class="fas fa-user"></i></span>
       </div>
       <div className="user-info">
-      <p className="profile-item">Username: {data.username}</p>
-        <p className="profile-item">First Name: {data.first_name}</p>
-        <p className="profile-item">Last Name: {data.last_name}</p>
-        <p className="profile-item">Gender: {data.person_gender}</p>
-        <p className="profile-item">Address: {data.person_address}</p>
-        <p className="profile-item">Email: {data.person_email}</p>
+      <p className="profile-item">Username: {profileData.username}</p>
+        <p className="profile-item">First Name: {profileData.first_name}</p>
+        <p className="profile-item">Last Name: {profileData.last_name}</p>
+        <p className="profile-item">Gender: {profileData.person_gender}</p>
+        <p className="profile-item">Address: {profileData.person_address}</p>
+        <p className="profile-item">Email: {profileData.person_email}</p>
       </div>
       <div className="bio-container">
         <p className="bio-header">Bio:</p>
-        <p className="bio"> {data.person_bio}</p>
+        <p className="bio"> {profileData.person_bio}</p>
       </div>
       </form>
       <div className="hobby-form" id="hobby-form">
@@ -91,14 +93,14 @@ export default function Profile() {
           <h3 className="hobby-header">Hobbies</h3>
         </div>
         <div className="hobby-info-container">
-        <Hobby hobbyData={data}/>
+        <Hobby hobbyData={hobbyData}/>
         </div>
       </div>
       </div>
       </div>
       </>
      )
-   } else if (data && profile) {
+   } else if (hobbyData && profile) {
   
     console.log('values 86 -->', values)
 
