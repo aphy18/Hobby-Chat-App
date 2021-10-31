@@ -9,6 +9,8 @@ export default function Profile() {
   
   const [profile, setProfile] = useState(false);
   const [data, setData] = useState({});
+  const [textLength, setTextLength] = useState(0)
+  // const [disabled, setDisabled] = useState(true)
  
 
   function sendProfileData(){
@@ -26,28 +28,32 @@ export default function Profile() {
     window.location.reload()
   }
 
-  async function getProfileData(){
+  async function getProfileData() {
     if (userObj === null) {
       console.log('end of the road');
       return;
     }
-  // the entire axios link is the response itself
     const getUserData = await axios.get(`http://localhost:8080/profile/${userObj.id}`, { values })
     return setData(getUserData.data)
-
   }
     
     useEffect(() => {
+      getProfileData();
+    },[])
 
-    getProfileData();
-
-  },[])
+    useEffect(() => {
+    if (values.person_bio) {
+      setTextLength(values.person_bio.length)
+    }
+    },[values])
   
   console.log('i am data -->',data)
  
   function handleProfile() {
     console.log('form submitted')
   }
+
+  
 
   if (data && !profile) {
     return (
@@ -100,7 +106,13 @@ export default function Profile() {
      return (
       <>
       <div className="profile-container">
-      <form className="profile-form" onSubmit={handleSubmit}>
+      <div className="profile-button-container">
+      <button className="profile-button" onClick={() => sendProfileData()}>Save Changes</button>
+      <button className="profile-button" onClick={() => setProfile(false)}>Cancel</button>
+      <button className="profile-button">Change Password</button>
+      <button className="profile-button">Upload Profile Picture</button>
+      </div>
+      <form className="new-profile-form" onSubmit={handleSubmit}>
       <div className="profile-picture">
        <span><i class="fas fa-user"></i></span>
       </div>
@@ -115,14 +127,9 @@ export default function Profile() {
       <div className="bio-container">
         <p className="bio-header">Bio:</p>
         <textarea name="person_bio" value={values.bio} className="bio" onChange={handleChange} placeholder="Talk a bit about yourself"></textarea>
+        <p>{textLength}/100</p>
       </div>
       </form>
-      <div className="profile-button-container">
-      <button className="profile-button" onClick={() => sendProfileData()}>Save Changes</button>
-      <button className="profile-button" onClick={() => setProfile(false)}>Cancel</button>
-      <button className="profile-button">Change Password</button>
-      <button className="profile-button">Upload Profile Picture</button>
-      </div>
       </div>
       </>
      )
