@@ -70,10 +70,13 @@ app.get('/profile/:id', async(req,res) => {
   try {
     const { id } = req.params;
     const getUserProfile = await pool.query(
-      `SELECT id, username, first_name, last_name, person_gender, 
-      person_address, person_email, person_bio FROM person WHERE id = ${id}`);
-    console.log('getting user profile -->', getUserProfile.rows[0]);
-    res.json(getUserProfile.rows[0]);
+      `SELECT person.id, person.username, person.first_name, person.last_name, person.person_gender, 
+      person.person_address, person.person_email, person.person_bio, hobby_name, level_of_expertise, amount_of_time_doing_hobby, my_spending_estimate
+      FROM person
+      JOIN hobby ON person.id = person_id
+      WHERE person.id = ${id}`);
+    console.log('getting user profile -->', getUserProfile.rows);
+    res.json(getUserProfile.rows);
   } catch (err) {
     console.log(err.message);
   }

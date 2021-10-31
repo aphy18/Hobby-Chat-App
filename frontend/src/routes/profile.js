@@ -41,6 +41,8 @@ export default function Profile() {
       getProfileData();
     },[])
 
+    console.log('hi i am data -->', data)
+
     useEffect(() => {
     if (values.person_bio) {
       setTextLength(values.person_bio.length)
