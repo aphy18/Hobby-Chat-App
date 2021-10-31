@@ -27,6 +27,7 @@ export default function NewHobby() {
     axios.post(`http://localhost:8080/hobby/${userObj.id}`, { values })
     console.log('hobby submitted')
     console.log('updated values --> 29', values)
+    window.location.href=`/profile/${userObj.id}`
   }
 
   console.log('values 32', values)
