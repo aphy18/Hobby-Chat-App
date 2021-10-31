@@ -20,7 +20,7 @@
 
 .profile-form,
 .hobby-form {
-  border: 2px solid black;
+  border: 2px solid green;
   width: 500px;
   height: 800px;
   display: flex;

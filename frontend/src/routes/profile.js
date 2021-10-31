@@ -2,6 +2,7 @@ import '../styles/Profile.css'
 import { useState, useEffect } from 'react';
 import useForm from '../customHooks/useForm.js'
 import axios from 'axios';
+import Hobby from '../components/Hobby.js'
 
 export default function Profile() {
   const { values, handleChange, handleSubmit } = useForm(handleProfile)
@@ -29,10 +30,10 @@ export default function Profile() {
   }
 
   async function getProfileData() {
-    if (userObj === null) {
-      console.log('end of the road');
-      return;
-    }
+    // if (userObj === null) {
+    //   console.log('end of the road');
+    //   return;
+    // }
     const getUserData = await axios.get(`http://localhost:8080/profile/${userObj.id}`, { values })
     return setData(getUserData.data)
   }
@@ -49,7 +50,7 @@ export default function Profile() {
     }
     },[values])
   
-  console.log('i am data -->',data)
+  
  
   function handleProfile() {
     console.log('form submitted')
@@ -90,12 +91,8 @@ export default function Profile() {
           <h3 className="hobby-header">Hobbies</h3>
         </div>
         <div className="hobby-info-container">
-        <div className="hobby-info">
+        <Hobby hobbyData={data}/>
         </div>
-      <div className="hobby-info">
-       </div>
-       </div>
-
       </div>
       </div>
       </div>
