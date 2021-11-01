@@ -38,7 +38,7 @@ function App() {
           <Route exact path={`/profile/${userObj.id}`} component={Profile} />
           <Route exact path={`/hobby/${userObj.id}`} component={NewHobby} />
           <Route exact path="/messagelist" component={MessageList} />
-          <Route exact path="/message" component={Message} />
+          <Route exact path="/message/:id" component={Message} />
         </Switch>
       </Router>
     )
