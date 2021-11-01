@@ -5,7 +5,7 @@ const pool = new Pool({
   password: "chatter18",
   database: "hobby_chat_app",
   host: "localhost",
-  port: 5432
+  port: 5432,
 });
 
 module.exports = pool;

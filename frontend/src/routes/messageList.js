@@ -5,13 +5,16 @@ import MessageOption from '../components/MessageOption';
 import axios from 'axios';
 
 export default function MessageList() {
+  let userObj = JSON.parse(localStorage.getItem('user'))
 
-  const [data,setData] = useState([])
+  const [data,setData] = useState([]);
+  const [msg,setMsg] = useState([]);
   
   async function getAllUserData() {
     const userData = await axios.get(`http://localhost:8080/messageList`);
-    console.log('this is user data ---->', userData)
+    console.log('this is user data ---->', userData.data)
     setData(userData.data)
+    
 
   }
   
@@ -20,16 +23,18 @@ export default function MessageList() {
     
   }, [])
 
-  console.log('hi im data --->', data)
+  const filterUsers = data.filter(user => user.id !== userObj.id)
+
+  console.log('filtered users', filterUsers)
+
   
-  
-  
-  const users = data.map(user => {
+  const users = filterUsers.map(user => {
+    
     console.log('user 28', user)
     return (
       <>
       <div className="message-list-container">
-        <MessageOption user={user}/>
+        <MessageOption user={user} data={data}/>
       </div>
       </>
     )

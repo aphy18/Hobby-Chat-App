@@ -5,6 +5,8 @@ const pool = require('./db');
 const cors = require('cors');
 const port = 8080;
 const bcrypt = require('bcryptjs');
+const server = require('http').createServer(app);
+const io = require('socket.io')(server, { cors: { origin: "*" }});
 
 app.use(cors());
 app.use(express.json());
@@ -143,8 +145,13 @@ app.get('/messageList', async(req,res) => {
 });
 
 
-
-
 app.listen(port, () => {
   console.log(`app listening on port ${port}`);
+});
+
+
+io.on('connection', socket => {
+  socket.on('message', ({ name, message}) => {
+    io.emit('message', { name, message});
+  });
 });

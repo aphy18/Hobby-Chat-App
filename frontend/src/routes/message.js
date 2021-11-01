@@ -4,6 +4,12 @@ import io from 'socket.io-client';
 
 
 export default function Message(){
+  const socket = io('http://localhost:8080/message')
+    socket.on('connection', () => {
+       console.log('connected')
+    })
+
+
   const [state, setState] = useState({message: '', name: ''})
   const [chat, setChat] = useState([])
   return (
