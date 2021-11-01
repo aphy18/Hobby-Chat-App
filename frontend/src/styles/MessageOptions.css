@@ -1,6 +1,6 @@
 .message-option-container {
   border: 2px solid blue;
-  width: 100%;
+  width: 90%;
   height: 100px;
   display: flex;
   justify-content: space-between;

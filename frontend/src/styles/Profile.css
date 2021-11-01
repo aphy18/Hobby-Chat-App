@@ -39,7 +39,7 @@
 }
 
 .new-profile-form {
- width: 700px;
+ width: 900px;
  height: 1000px;
  border: 2px solid black;
  display: flex;
@@ -69,7 +69,7 @@
 
 .hobby-header-container {
   width: 90%;
-  border: 2px solid black;
+  border: 3px outset black;
   height: 100px;
   display: flex;
   justify-content: center;
@@ -106,7 +106,7 @@
 }
 
 .hobby-info {
-  border: 5px dashed black;
+  border: 5px double black;
   background-color: rgb(236, 185, 193);
   align-items: center;
   width: 300px;
@@ -170,11 +170,9 @@
   height: 60px;
   border-radius: 20px;
   background-color: rgb(238, 203, 209);
-  border: 0.5px solid black;
 }
 
 .profile-button:hover {
   background-color: rgb(230, 154, 167);
-  
-
+  color: white;
 }
