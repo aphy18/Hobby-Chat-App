@@ -90,6 +90,7 @@ export default function Profile() {
       <div className="hobby-form" id="hobby-form">
         <div className="hobby-header-container">
           <h3 className="hobby-header">Hobbies</h3>
+          {/* <span className="hobby-underline"></span> */}
         </div>
         <div className="hobby-info-container">
           <Hobby hobbyData={hobbyData}/>
