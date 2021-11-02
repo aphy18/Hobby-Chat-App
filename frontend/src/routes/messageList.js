@@ -45,6 +45,7 @@ export default function MessageList() {
     
   }, [])
 
+  console.log('current user 48 -->', currentUser)
   
 
   return (
@@ -53,11 +54,4 @@ export default function MessageList() {
     </>
   )
   
-
-
-  
-   
-    
-  
-
 }

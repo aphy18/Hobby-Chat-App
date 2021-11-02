@@ -144,6 +144,18 @@ app.get('/messageList', async(req,res) => {
   }
 });
 
+app.post('/messageList', async(req,res) => {
+  const { id, username } = req.body.currentUser;
+  try {
+    console.log('req.bodyyyyy -->', req.body.currentUser);
+    const postCurrentUser = await pool.query(`
+    INSERT INTO text_message (sender_id, sender_username) VALUES ($1, $2)`, [id, username]);
+    console.log('current user rows', postCurrentUser.rows);
+    res.json(postCurrentUser.rows);
+  } catch (err) {
+    console.log(err.message);
+  }
+});
 
 app.listen(port, () => {
   console.log(`app listening on port ${port}`);
