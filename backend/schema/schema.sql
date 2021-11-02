@@ -29,5 +29,7 @@ CREATE TABLE text_message (
   id SERIAL PRIMARY KEY,
   text_message VARCHAR(255),
   sender_username VARCHAR(255) NOT NULL, 
-  sender_id VARCHAR(255) NOT NULL
+  sender_id VARCHAR(255) NOT NULL,
+  receiver_id VARCHAR(255) NOT NULL
 );
+

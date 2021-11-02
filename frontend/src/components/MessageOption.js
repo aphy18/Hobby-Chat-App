@@ -7,7 +7,7 @@ export default function MessageOption(props) {
     <div className="message-option-container">
       <span className="message-option-img">Image</span>
       <div className="message-option-click-container">
-      <span href={`/message/${props.user.id}`} className="message-option-click" onClick={props.onClick}><i>Click to message {props.user.username}</i></span>
+      <a href={`/message/${props.user.id}`} className="message-option-click" onClick={props.onClick}><i>Click to message {props.user.username}</i></a>
       <i class="fas fa-comments"></i>
       </div>
       <span className="message-option-username">To: {props.user.username}</span>

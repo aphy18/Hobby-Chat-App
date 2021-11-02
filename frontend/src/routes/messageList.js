@@ -8,9 +8,12 @@ export default function MessageList() {
   let userObj = JSON.parse(localStorage.getItem('user'))
 
   const [data,setData] = useState([]);
-  const [currentUser,setCurrentUser] = useState({});
+  const [currentUser,setCurrentUser] = useState([]);
+  const arr = []
+  const [userIds, setUserIds] = useState({});
   
   async function getAllUserData() {
+    
     const userData = await axios.get(`http://localhost:8080/messageList`);
     console.log('this is user data ---->', userData.data)
     setData(userData.data)
@@ -24,10 +27,21 @@ export default function MessageList() {
   }
 
   function postCurrentUser() {
-    axios.post(`http://localhost:8080/messageList`, { currentUser })
+    axios.post(`http://localhost:8080/messageList`, { currentUser, arr })
   }
 
   const filterUsers = data.filter(user => user.id !== userObj.id)
+  
+  
+
+  filterUsers.map(obj => {
+      arr.push(obj.id)
+    }
+  )
+
+  console.log('arr', arr)
+
+
   const users = filterUsers.map(user => {
     
     console.log('user 28', user)
@@ -42,12 +56,13 @@ export default function MessageList() {
 
   useEffect(() => {
     getAllUserData();
-    
   }, [])
 
-  console.log('current user 48 -->', currentUser)
-  
+  // function getOtherUserIds(){
+  //   console.log("filtered obj", filterUsers)
+  // }
 
+  
   return (
     <>
     {users}

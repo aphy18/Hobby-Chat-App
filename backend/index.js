@@ -145,17 +145,33 @@ app.get('/messageList', async(req,res) => {
 });
 
 app.post('/messageList', async(req,res) => {
-  const { id, username } = req.body.currentUser;
   try {
-    console.log('req.bodyyyyy -->', req.body.currentUser);
+    const { id, username } = req.body.currentUser;
+    const { arr } = req.body;
+    console.log('req.bodyyyyy -->', req.body);
+  
     const postCurrentUser = await pool.query(`
-    INSERT INTO text_message (sender_id, sender_username) VALUES ($1, $2)`, [id, username]);
+    INSERT INTO text_message (sender_id, sender_username, receiver_id) VALUES ($1, $2, $3)`, [id, username, arr]);
     console.log('current user rows', postCurrentUser.rows);
     res.json(postCurrentUser.rows);
   } catch (err) {
     console.log(err.message);
   }
 });
+
+app.get('/message/:id', async(req,res) => {
+  try {
+
+    const getUserInfo = await pool.query(
+      `SELECT * FROM text_message`
+    );
+    console.log(getUserInfo.rows);
+    res.json(getUserInfo.rows);
+  } catch (err) {
+    console.log(err.message);
+  }
+});
+
 
 app.listen(port, () => {
   console.log(`app listening on port ${port}`);
