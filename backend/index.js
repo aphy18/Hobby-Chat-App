@@ -152,8 +152,8 @@ app.post('/messageList', async(req,res) => {
   
     const postCurrentUser = await pool.query(`
     INSERT INTO text_message (sender_id, sender_username, receiver_id) VALUES ($1, $2, $3)`, [id, username, arr]);
-    console.log('current user rows', postCurrentUser.rows);
-    res.json(postCurrentUser.rows);
+    console.log('current user rows', postCurrentUser.rows[0]);
+    res.json(postCurrentUser.rows[0]);
   } catch (err) {
     console.log(err.message);
   }
@@ -161,10 +161,9 @@ app.post('/messageList', async(req,res) => {
 
 app.get('/message/:id', async(req,res) => {
   try {
-
+    const receiverId = req.params;
     const getUserInfo = await pool.query(
-      `SELECT * FROM text_message`
-    );
+      `SELECT * FROM text_message`);
     console.log(getUserInfo.rows);
     res.json(getUserInfo.rows);
   } catch (err) {
