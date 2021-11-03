@@ -23,7 +23,9 @@ export default function Nav() {
           <a href='/' className="nav-item"><i class="fas fa-home"></i></a>
           <div className="nav-expand">
             <a href='/#about-us' className="nav-item">about us</a>
+            <p>|</p>
             <a href='/#features' className="nav-item">features</a>
+            <p>|</p>
             <a href='/#contact' className="nav-item">contact</a>
           </div>
           <span className="nav-item" onClick={() => logout()}><i class="fas fa-sign-in-alt"></i></span>
@@ -39,7 +41,9 @@ export default function Nav() {
           <a href='/' className="nav-item"><i class="fas fa-home"></i></a>
           <div className="nav-expand">
             <a href='/#about-us' className="nav-item">about us</a>
+            <p>|</p>
             <a href='/#features' className="nav-item">features</a>
+            <p>|</p>
             <a href='/#contact' className="nav-item">contact</a>
           </div>
           <a href='/register' className="nav-item"><i class="fas fa-user-plus"></i></a>

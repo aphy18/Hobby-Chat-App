@@ -26,10 +26,11 @@
 .nav-list {
   /* border: 2px solid black; */
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  width: 500px;
+  width: 250px;
   height: 85px;
+  padding-right: 1em;
 }
 
 .nav-item {
@@ -43,22 +44,30 @@
 display: none;
 }
 .nav-list:hover .nav-expand{
-  
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   width: 250px;
-  animation: left-to-right 1s ease-in-out forwards
-  /* transform: translateX(-100%); */
+  animation: left-to-right 0.75s ease-in-out forwards;
+}
+.nav-list:hover {
+  animation: expansion 0.4s ease-in-out forwards;
 }
 @keyframes left-to-right{
   0%{
-    
-    transform: translateX(-100%);
+    overflow: visible;
+    opacity: 0;
+    transform: translateX(-10%);
   }
   100%{
-    
-    transform: translateX(2%);
+    opacity: 1;
+  }
+}
+@keyframes expansion{
+  0%{
+  }
+  100%{
+    width: 500px;
   }
 }
 
