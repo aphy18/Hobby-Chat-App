@@ -30,19 +30,16 @@ export default function MessageList() {
     axios.post(`http://localhost:8080/messageList`, { currentUser, arr })
   }
 
-  const filterUsers = data.filter(user => user.id !== userObj.id)
   
-  
-
-  filterUsers.map(obj => {
+  data.map(obj => {
       arr.push(obj.id)
     }
   )
 
-  console.log('arr', arr)
+  console.log('arr 3x', arr)
 
 
-  const users = filterUsers.map(user => {
+  const mapOverArr = data.map(user => {
     
     console.log('user 28', user)
     return (
@@ -57,15 +54,10 @@ export default function MessageList() {
   useEffect(() => {
     getAllUserData();
   }, [])
-
-  // function getOtherUserIds(){
-  //   console.log("filtered obj", filterUsers)
-  // }
-
   
   return (
     <>
-    {users}
+    {mapOverArr}
     </>
   )
   

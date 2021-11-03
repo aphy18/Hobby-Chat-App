@@ -161,10 +161,9 @@ app.post('/messageList', async(req,res) => {
 
 app.get('/message/:id', async(req,res) => {
   try {
-    const receiverId = req.params;
     const getUserInfo = await pool.query(
-      `SELECT * FROM text_message`);
-    console.log(getUserInfo.rows);
+      `SELECT receiver_id FROM text_message`);
+    // console.log(getUserInfo.rows);
     res.json(getUserInfo.rows);
   } catch (err) {
     console.log(err.message);

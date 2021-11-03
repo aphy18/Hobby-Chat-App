@@ -11,15 +11,15 @@ export default function Message(){
   const [idArr,setIdArr] = useState([])
   const arr = []
   const splitPathName = parseInt(window.location.pathname.split('/')[2])
+  let userObj = JSON.parse(localStorage.getItem('user'))
 
   async function getUserData() {
     const userData = await axios.get(`http://localhost:8080/message/${splitPathName}`);
-    console.log('this is user data ---->', userData.data)
-    console.log('this is user data ---->', userData.data[0].receiver_id)
-    SetNonLoggedInUsers(userData.data[0].receiver_id)
+    // console.log('this is user data ---->', userData.data[20].receiver_id)
+    SetNonLoggedInUsers(userData.data[20].receiver_id)
     
     for (let user in nonLoggedInUsers) {
-      console.log('non logged in ulol -->', parseInt(nonLoggedInUsers[user]))
+      // console.log('non logelld in ulol -->', parseInt(nonLoggedInUsers[user]))
       if (!isNaN(nonLoggedInUsers[user])) {
         arr.push(parseInt(nonLoggedInUsers[user]))
       }
@@ -27,22 +27,24 @@ export default function Message(){
    
    setIdArr(arr)
 }
+  
 
 
   function submitMessage(){
-    console.log('message smitted')
+    console.log('yay')
   }
 
   useEffect(() => {
     getUserData()
+    
   },[idArr])
 
-  console.log('id array', idArr)
+  
   
  
   const mapOverId = idArr.map(userID => {
-    console.log('id 44', userID)
-    console.log('pahnalme', splitPathName)
+    // console.log('id 44', userID)
+    // console.log('pahnalme', splitPathName)
     if (userID === splitPathName) {
       return (
         <div className="master-message-container">
@@ -51,8 +53,8 @@ export default function Message(){
           <button>Send Message</button>
          </form>
       </div>
-      ) 
-    } 
+      )
+    }
 })
 
 return (
