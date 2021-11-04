@@ -8,24 +8,25 @@ import useForm from '../customHooks/useForm';
 export default function Message(){
   const { values, handleChange, handleSubmit } = useForm(submitMessage)
   const [nonLoggedInUsers,SetNonLoggedInUsers] = useState({})
-  const [idArr,setIdArr] = useState([])
+  const [state,setState] = useState([])
+  const [render,setRender] = useState(false)
   const arr = []
   const splitPathName = parseInt(window.location.pathname.split('/')[2])
-  let userObj = JSON.parse(localStorage.getItem('user'))
-
+  
   async function getUserData() {
     const userData = await axios.get(`http://localhost:8080/message/${splitPathName}`);
-    // console.log('this is user data ---->', userData.data[20].receiver_id)
+    console.log('this is user data ---->', userData.data[20].receiver_id)
     SetNonLoggedInUsers(userData.data[20].receiver_id)
     
     for (let user in nonLoggedInUsers) {
-      // console.log('non logelld in ulol -->', parseInt(nonLoggedInUsers[user]))
+      console.log('loge -->', parseInt(nonLoggedInUsers[user]))
       if (!isNaN(nonLoggedInUsers[user])) {
         arr.push(parseInt(nonLoggedInUsers[user]))
       }
     }
    
-   setIdArr(arr)
+    setState(arr)
+    setRender(true)
 }
   
 
@@ -37,31 +38,35 @@ export default function Message(){
   useEffect(() => {
     getUserData()
     
-  },[idArr])
+  },[render])
 
   
   
  
-  const mapOverId = idArr.map(userID => {
-    // console.log('id 44', userID)
-    // console.log('pahnalme', splitPathName)
+ 
+  const mapOverId = state.map((userID) => {
+    console.log('is ->', userID)
     if (userID === splitPathName) {
       return (
         <div className="master-message-container">
           <form className="message-form" onSubmit={handleSubmit}>
-           <input type="text" name="message" value={values.message}></input>
+           <input type="text" name="message" value={values.message} onChange={handleChange}></input>
           <button>Send Message</button>
          </form>
+         <div className="chat-log">
+
+         </div>
       </div>
       )
     }
 })
 
+
 return (
   <>
   {mapOverId}
   </>
-)
+ )
 }
 
   
