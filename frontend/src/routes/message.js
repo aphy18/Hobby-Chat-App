@@ -50,8 +50,9 @@ export default function Message(){
       return (
         <div className="master-message-container">
           <form className="message-form" onSubmit={handleSubmit}>
-           <input type="text" name="message" value={values.message} onChange={handleChange}></input>
-          <button>Send Message</button>
+          <h1>Type Your Message</h1>
+           <textarea className="input-area" type="text" name="message" value={values.message} onChange={handleChange}></textarea>
+          <button className="message-page-button">Send Message</button>
          </form>
          <div className="chat-log">
 

@@ -11,6 +11,20 @@
   width: 600px;
   height: 600px;
   border: 2px solid red; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.input-area {
+  width: 90%;
+  height: 200px;
+}
+
+.message-page-button {
+  width: 200px;
+  height: 80px;
 }
 
 .chat-log {
