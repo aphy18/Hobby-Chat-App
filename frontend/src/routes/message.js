@@ -12,11 +12,16 @@ export default function Message(){
   const [render,setRender] = useState(false)
   const arr = []
   const splitPathName = parseInt(window.location.pathname.split('/')[2])
-  
+
+  function socketConnection(){
+    const socket = io('http://localhost:8080')
+    console.log(socket)
+  }
+   
   async function getUserData() {
     const userData = await axios.get(`http://localhost:8080/message/${splitPathName}`);
-    console.log('this is user data ---->', userData.data[20].receiver_id)
-    SetNonLoggedInUsers(userData.data[20].receiver_id)
+    console.log('this is user data ---->', userData.data[0].receiver_id)
+    SetNonLoggedInUsers(userData.data[0].receiver_id)
     
     for (let user in nonLoggedInUsers) {
       console.log('loge -->', parseInt(nonLoggedInUsers[user]))
@@ -37,6 +42,7 @@ export default function Message(){
 
   useEffect(() => {
     getUserData()
+    socketConnection()
     
   },[render])
 
@@ -50,8 +56,7 @@ export default function Message(){
       return (
         <div className="master-message-container">
           <form className="message-form" onSubmit={handleSubmit}>
-          <h1>Type Your Message</h1>
-           <textarea className="input-area" type="text" name="message" value={values.message} onChange={handleChange}></textarea>
+           <textarea type="text" className= "input-area" name="message" value={values.message} onChange={handleChange}></textarea>
           <button className="message-page-button">Send Message</button>
          </form>
          <div className="chat-log">
@@ -69,6 +74,7 @@ return (
   </>
  )
 }
+
 
   
  
