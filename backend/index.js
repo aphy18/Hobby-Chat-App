@@ -151,7 +151,7 @@ app.post('/messageList', async(req,res) => {
     console.log('req.bodyyyyy -->', req.body);
   
     const postCurrentUser = await pool.query(`
-    INSERT INTO send_message (sender_id, sender_username, receiver_id) VALUES ($1, $2, $3)`, [id, username, arr]);
+    INSERT INTO id_storage (receiver_id) VALUES ($1)`, [arr]);
     console.log('current user rows', postCurrentUser.rows[0]);
     res.json(postCurrentUser.rows[0]);
   } catch (err) {
@@ -163,7 +163,7 @@ app.post('/messageList', async(req,res) => {
 
 app.get('/message/:id', async(req,res) => {
   try {
-    const getUserInfo = await pool.query(`SELECT receiver_id FROM send_message`);
+    const getUserInfo = await pool.query(`SELECT receiver_id FROM id_storage`);
     console.log('receiver ids', getUserInfo.rows);
     res.json(getUserInfo.rows);
   } catch (err) {
@@ -177,7 +177,7 @@ app.post('/message/:id', async(req,res) => {
   // const receiverId = parseInt(req.params.id);
   const idealReceiverId = req.body.idealArr[0];
   try {
-    const postMessage = await pool.query(`INSERT INTO text_message (text_message, sender_username, sender_id, receiver_id) VALUES ($1, $2, $3, $4)`, [message, username, id, idealReceiverId]);
+    const postMessage = await pool.query(`INSERT INTO send_message (text_message, sender_username, sender_id, receiver_id) VALUES ($1, $2, $3, $4)`, [message, username, id, idealReceiverId]);
     console.log('posting the message',postMessage.rows);
     console.log('this is ideal', idealReceiverId);
     console.log("this is receiver id", req.body);

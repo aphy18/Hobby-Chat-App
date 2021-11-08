@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS person CASCADE;
 DROP TABLE IF EXISTS hobby CASCADE;
 DROP TABLE IF EXISTS send_message CASCADE;
+DROP TABLE IF EXISTS id_storage;
 
 CREATE TABLE person (
   id SERIAL PRIMARY KEY,
@@ -31,4 +32,8 @@ CREATE TABLE send_message (
   sender_username VARCHAR(255) NOT NULL, 
   sender_id INTEGER NOT NULL,
   receiver_id VARCHAR(255) NOT NULL
-)
+);
+
+CREATE TABLE id_storage (
+  receiver_id VARCHAR(255) NOT NULL
+);
