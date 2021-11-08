@@ -142,6 +142,8 @@ app.get('/messageList', async(req,res) => {
   }
 });
 
+// this is where receiver_id is set
+
 app.post('/messageList', async(req,res) => {
   try {
     const { id, username } = req.body.currentUser;
@@ -149,7 +151,7 @@ app.post('/messageList', async(req,res) => {
     console.log('req.bodyyyyy -->', req.body);
   
     const postCurrentUser = await pool.query(`
-    INSERT INTO text_message (sender_id, sender_username, receiver_id) VALUES ($1, $2, $3)`, [id, username, arr]);
+    INSERT INTO send_message (sender_id, sender_username, receiver_id) VALUES ($1, $2, $3)`, [id, username, arr]);
     console.log('current user rows', postCurrentUser.rows[0]);
     res.json(postCurrentUser.rows[0]);
   } catch (err) {
@@ -161,14 +163,29 @@ app.post('/messageList', async(req,res) => {
 
 app.get('/message/:id', async(req,res) => {
   try {
-    const getUserInfo = await pool.query(
-      `SELECT receiver_id FROM text_message WHERE id = 1`);
+    const getUserInfo = await pool.query(`SELECT receiver_id FROM send_message`);
+    console.log('receiver ids', getUserInfo.rows);
     res.json(getUserInfo.rows);
   } catch (err) {
     console.log(err.message);
   }
 });
 
+app.post('/message/:id', async(req,res) => {
+  const { message } = req.body.values;
+  const { id, username } = req.body.userObj;
+  // const receiverId = parseInt(req.params.id);
+  const idealReceiverId = req.body.idealArr[0];
+  try {
+    const postMessage = await pool.query(`INSERT INTO text_message (text_message, sender_username, sender_id, receiver_id) VALUES ($1, $2, $3, $4)`, [message, username, id, idealReceiverId]);
+    console.log('posting the message',postMessage.rows);
+    console.log('this is ideal', idealReceiverId);
+    console.log("this is receiver id", req.body);
+    res.json(postMessage.rows);
+  } catch (err) {
+    console.log(err.message);
+  }
+});
 
 server.listen(port, () => {
   console.log(`app listening on port ${port}`);
@@ -178,10 +195,10 @@ server.listen(port, () => {
 // all io code in this function
 
 io.on('connection', (socket) => {
-  console.log('user connected to socket', socket.id);
+  // console.log('user connected to socket', socket.id);
 
   socket.on('disconnect', () => {
-    console.log('user disconnected from socket');
+    // console.log('user disconnected from socket');
   });
 });
 

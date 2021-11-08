@@ -11,7 +11,7 @@ export default function Home() {
 
   const [loading, setLoading] = useState(false);
   const [home, setHome] = useState([]);
-  const userObj = JSON.parse(localStorage.getItem('user'))
+  const userObj = JSON.parse(localStorage.getItem('user'));
   
   
   async function getUserData(){
