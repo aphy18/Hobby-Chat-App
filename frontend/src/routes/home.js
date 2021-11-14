@@ -70,11 +70,11 @@ export default function Home() {
          <p className="about-us-picture"><i class="fas fa-hands-helping"></i></p>
        </div>
        <div data-aos="zoom-in" data-aos-duration="800" className="about-box">
-         <p className="about-us-text">Our development team always looks for feeback. Feel free to shoot us an email for any constructive criticism you may have</p>
+         <p className="about-us-text">We constantly look for feeback. Feel free to shoot us an email for any constructive criticism you may have</p>
          <p className="about-us-picture"><i class="fas fa-comment-alt"></i></p>
        </div>
        <div data-aos="zoom-in" data-aos-duration="800" className="about-box">
-         <p className="about-us-text">All of your support means so much in our journey. We consider all of our users apart of that jounrey to make something special</p>
+         <p className="about-us-text">Chatter appreicates all of your support! We wish you the best in your hobbying journey! You rock Chatter Squad!</p>
          <p className="about-us-picture"><i class="fas fa-heart"></i></p>
        </div>
      </div>
