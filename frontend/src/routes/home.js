@@ -109,16 +109,24 @@ export default function Home() {
           >
             <h2 className="features">Features</h2>
             <div data-aos="fade-left" className="features-container">
-              <div className="features-image"></div>
-              <div className="features-description"></div>
+              <div className="features-image">
+              <p className="features-icon"><i class="fas fa-search"></i></p>
+              </div>
+              <div className="features-description">
+                <p className="features-text">Discover users in our website!</p>
+              </div>
             </div>
             <div
               data-aos="fade-right"
               className="features-container"
               id="contact"
             >
-              <div className="features-description"></div>
-              <div className="features-image"></div>
+              <div className="features-description">
+              <p className="features-text">Message users who share your interests!</p>
+              </div>
+              <div className="features-image">
+                <p className="features-icon"><i class="fas fa-comment-dots"></i></p>
+              </div>
             </div>
           </div>
           {home.id ? <a
