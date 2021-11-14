@@ -120,12 +120,19 @@ export default function Home() {
      <div data-aos="fade-up" className="main-features-container" id="features-container">
      <h2 className="features">Features</h2>
       <div data-aos="fade-left" className="features-container">
-      <div className="features-image"></div>
-        <div className="features-description"></div>
+      <div className="features-image">
+
+      </div>
+        <div className="features-description">
+          <p>um hi</p>
+        </div>
       </div>
       <div data-aos="fade-right" className="features-container" id="contact">
-        <div className="features-description"></div>
-        <div className="features-image"></div>
+        <div className="features-description">
+        </div>
+        <div className="features-image">
+
+        </div>
       </div>
      </div>
      <a className="home-page-click-here" href="/register" data-aos="zoom-in-up" data-aos-duration="500">Click to Register Now!</a>
