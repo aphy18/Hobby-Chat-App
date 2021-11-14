@@ -66,10 +66,17 @@ export default function Home() {
    <h2 className="about-us">About us</h2>
      <div className="about-us-container">
        <div data-aos="zoom-in"  data-aos-duration="800" className="about-box">
-         <p></p>
+         <p className="about-us-text">We value a user friendly experience! Our website serves as a gateway to new relationships among all of our users.</p>
+         <p className="about-us-picture"><i class="fas fa-hands-helping"></i></p>
        </div>
-       <div data-aos="zoom-in" data-aos-duration="800" className="about-box"></div>
-       <div data-aos="zoom-in" data-aos-duration="800" className="about-box"></div>
+       <div data-aos="zoom-in" data-aos-duration="800" className="about-box">
+         <p className="about-us-text">Our development team always looks for feeback. Feel free to shoot us an email for any constructive criticism you may have</p>
+         <p className="about-us-picture"><i class="fas fa-comment-alt"></i></p>
+       </div>
+       <div data-aos="zoom-in" data-aos-duration="800" className="about-box">
+         <p className="about-us-text">All of your support means so much in our journey. We consider all of our users apart of that jounrey to make something special</p>
+         <p className="about-us-picture"><i class="fas fa-heart"></i></p>
+       </div>
      </div>
    </div>
   
