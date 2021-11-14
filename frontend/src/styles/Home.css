@@ -144,6 +144,10 @@
   height: 300px;
 }
 
+.features-text {
+  border: 2px solid black;
+}
+
 .features-description {
   border: 2px solid black;
   width: 500px;
