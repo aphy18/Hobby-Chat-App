@@ -146,7 +146,6 @@ app.get('/messageList', async(req,res) => {
 
 app.post('/messageList', async(req,res) => {
   try {
-    const { id, username } = req.body.currentUser;
     const { arr } = req.body;
     console.log('req.bodyyyyy -->', req.body);
   
@@ -163,8 +162,11 @@ app.post('/messageList', async(req,res) => {
 
 app.get('/message/:id', async(req,res) => {
   try {
+    console.log('REQ BODY 165', req.body);
     const getUserInfo = await pool.query(`SELECT receiver_id FROM id_storage`);
-    console.log('receiver ids', getUserInfo.rows);
+    console.log('id storage and send message', getUserInfo.rows);
+    const seeMessage = await pool.query(`SELECT * FROM send_message`);
+    console.log('all messages',seeMessage.rows);
     res.json(getUserInfo.rows);
   } catch (err) {
     console.log(err.message);
@@ -174,13 +176,10 @@ app.get('/message/:id', async(req,res) => {
 app.post('/message/:id', async(req,res) => {
   const { message } = req.body.values;
   const { id, username } = req.body.userObj;
-  // const receiverId = parseInt(req.params.id);
-  const idealReceiverId = req.body.idealArr[0];
+  const receiverId = parseInt(req.params.id);
+
   try {
-    const postMessage = await pool.query(`INSERT INTO send_message (text_message, sender_username, sender_id, receiver_id) VALUES ($1, $2, $3, $4)`, [message, username, id, idealReceiverId]);
-    console.log('posting the message',postMessage.rows);
-    console.log('this is ideal', idealReceiverId);
-    console.log("this is receiver id", req.body);
+    const postMessage = await pool.query(`INSERT INTO send_message (text_message, sender_username, sender_id, receiver_id) VALUES ($1, $2, $3, $4)`, [message, username, id, receiverId]);
     res.json(postMessage.rows);
   } catch (err) {
     console.log(err.message);
@@ -195,10 +194,15 @@ server.listen(port, () => {
 // all io code in this function
 
 io.on('connection', (socket) => {
-  // console.log('user connected to socket', socket.id);
+  console.log('user connected to socket', socket.id);
 
   socket.on('disconnect', () => {
-    // console.log('user disconnected from socket');
+    console.log('user disconnected from socket');
+  });
+
+  socket.on('message', (data, value) => {
+    io.emit('message', data);
+    console.log("data from message -->", data);
   });
 });
 

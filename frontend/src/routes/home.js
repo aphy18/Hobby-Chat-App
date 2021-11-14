@@ -65,7 +65,9 @@ export default function Home() {
    <div data-aos="fade-up" className="the-about-container" id="about-us">
    <h2 className="about-us">About us</h2>
      <div className="about-us-container">
-       <div data-aos="zoom-in"  data-aos-duration="800" className="about-box"></div>
+       <div data-aos="zoom-in"  data-aos-duration="800" className="about-box">
+         <p></p>
+       </div>
        <div data-aos="zoom-in" data-aos-duration="800" className="about-box"></div>
        <div data-aos="zoom-in" data-aos-duration="800" className="about-box"></div>
      </div>

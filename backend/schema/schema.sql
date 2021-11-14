@@ -26,14 +26,16 @@ CREATE TABLE hobby (
   person_id INTEGER REFERENCES person(id) ON DELETE CASCADE
 );
 
+CREATE TABLE id_storage (
+  id SERIAL PRIMARY KEY,
+  receiver_id VARCHAR(255) NOT NULL
+);
+
 CREATE TABLE send_message (
   id SERIAL PRIMARY KEY,
   text_message VARCHAR(255),
   sender_username VARCHAR(255) NOT NULL, 
   sender_id INTEGER NOT NULL,
-  receiver_id VARCHAR(255) NOT NULL
-);
-
-CREATE TABLE id_storage (
-  receiver_id VARCHAR(255) NOT NULL
+  receiver_id VARCHAR(255) NOT NULL,
+  storage_id INTEGER REFERENCES id_storage(id) ON DELETE CASCADE
 );
