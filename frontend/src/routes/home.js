@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import "../styles/Home.css";
 import "../styles/Body.css";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import PulseLoader from "react-spinners/PulseLoader";
 import axios from "axios";
+import ParticleBackground from "../components/Particles";
+
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
@@ -47,12 +49,18 @@ export default function Home() {
     );
   } else {
     return (
-      <>
+        <>
+        
         <div className="master-home-container">
-          <div className="home-header-container">
-            <h1 data-aos="fade-up" className="home-header">
+        <div className="home-header-container" data-aos="fade-up">
+        <ParticleBackground />
+          <div className="header-container">
+          <h1 className="home-header">
               Welcome to Chatter
             </h1>
+          </div>
+           
+            <ParticleBackground />
           </div>
           <span className="home-page-welcome-back" data-aos="fade-up">
             {home.id ? <p>Nice to see you back {home.username} 😊</p> : null}
@@ -135,12 +143,19 @@ export default function Home() {
             data-aos="zoom-in-up"
             data-aos-duration="500"
           >
-            View all users here
-          </a> : <a href="/register">Click to register</a>}
+            View the user message list here
+          </a> : <a href="/register" className="home-page-view-users" data-aos="zoom-in-up"
+            data-aos-duration="500">Click to register</a>}
        
-          <div className="footer"></div>
+          <div className="footer">
+            <p>Contact me at aphason1@gmail.com</p>
+            <p>Github: aphy18</p>
+            <p>Frontend Libraries: ParticleJS, Animate on Scroll, Socket io Client, Font Awesome, Axios</p>
+            <p>Backend Libraries: Express, Nodemon</p>
+          </div>
+          
         </div>
-      </>
+        </>
     );
   }
 }

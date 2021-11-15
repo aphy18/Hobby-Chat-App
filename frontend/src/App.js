@@ -7,6 +7,7 @@ import MessageList from './routes/messageList';
 import Message from './routes/message';
 import Nav from './components/Nav';
 import NewHobby from './components/NewHobby';
+import Particles from "react-particles-js";
 
 
 
