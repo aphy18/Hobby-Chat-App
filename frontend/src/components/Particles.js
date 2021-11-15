@@ -17,7 +17,7 @@ export default function ParticleBackground(){
           "value": 4,
           "random": true,
           "anim": {
-              "speed": 4,
+              "speed": 2,
               "size_min": 1
           }
       },
@@ -34,7 +34,7 @@ export default function ParticleBackground(){
   "interactivity": {
       "events": {
           "onhover": {
-              "enable": true,
+              "enable": false,
               "mode": "bubble"
           },
           "onclick": {

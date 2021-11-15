@@ -59,7 +59,7 @@ export default function Home() {
               Welcome to Chatter
             </h1>
           </div>
-           
+            <ParticleBackground />
             <ParticleBackground />
           </div>
           <span className="home-page-welcome-back" data-aos="fade-up">
@@ -110,6 +110,8 @@ export default function Home() {
             </div>
           </div>
 
+          <ParticleBackground />
+
           <div
             data-aos="fade-up"
             className="main-features-container"
@@ -137,6 +139,7 @@ export default function Home() {
               </div>
             </div>
           </div>
+          <ParticleBackground />
           {home.id ? <a
             href="/messageList"
             className="home-page-view-users"
