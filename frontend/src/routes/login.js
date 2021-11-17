@@ -1,6 +1,6 @@
 import '../styles/Login.css'
 import '../styles/Body.css'
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import useForm from '../customHooks/useForm'
 import axios from 'axios';
 import { useHistory } from 'react-router-dom'
@@ -10,34 +10,52 @@ import { authContext } from '../provider/AuthProvider';
 
 export default function Login(props) {
   const { values, setValues, handleChange, handleSubmit } = useForm(handleLogin);
-  const { login } = useContext(authContext)
-  const history = useHistory();
+  const { login } = useContext(authContext);
+  const [data,setData] = useState([])
+  const [error,setError] = useState(null);
+  const checkEmails = [];
+  const [renderData,setRenderData] = useState(false)
   const email = values.email;
   const password = values.password;
-  const [loginValidation, setLoginValidation] = useState(false)
+  const [loginValidation, setLoginValidation] = useState(false);
   
   // console logs are saved when we push to the 'frozen world' the window.histroy.go() refreshes the page
 
+  useEffect(() => {
+    getData()
+  },[renderData])
 
-
-   function handleLogin(){
-   if (!values.email) {
-     console.log('Email required')
-     return;
-   }
-
-   if (!values.password) {
-     console.log('Password required')
-     return;
-   }
-  
-   setLoginValidation(true)
-   setValues({})
+  async function getData() {
+    const getData = await axios.get('http://localhost:8080/login')
+    setData(getData.data)
+    console.log('data',data)
+    setRenderData(true)
   }
   
-  // in the frozen state we get the res.data
+  function handleLogin(){
+
+    for(let obj of data) {
+      checkEmails.push(obj.person_email)
+    }
+
+    for (let personInfo of data) {
+      if (personInfo.person_email === values.email) {
+        if (personInfo.person_password === values.password) {
+          console.log('your in -->', personInfo)
+        } else {
+          setError('password is incorrect')
+          return;
+        }
+      } 
+    }
+
+
+   setLoginValidation(true)
+   setValues({})
+   userLogin()
+  }
   
-  const userLogin = () => {
+  function userLogin(){
     axios.post(`http://localhost:8080/login`, { values })
     .then((res) => {
       const userObj = res.data;
@@ -50,9 +68,7 @@ export default function Login(props) {
     })
   }
 
-
- 
- if (!loginValidation) {
+  if (!loginValidation) {
   return (
     <>
      <div className="master-login-container">
@@ -61,7 +77,8 @@ export default function Login(props) {
        <form className="login-form" onSubmit={handleSubmit}>
          <input type="email" name="email" placeholder="email"className="input-field" onChange={handleChange} required></input>
          <input type="password" name="password" placeholder="password" className="input-field" onChange={handleChange}  required></input>
-         <button type="submit" className="form-button-submit" onClick={userLogin}>Submit</button>
+         {!error ? null : <p>{error}</p>}
+         <button type="submit" className="form-button-submit">Submit</button>
        </form>
      </div>
      </div>

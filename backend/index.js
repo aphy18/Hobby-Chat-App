@@ -33,7 +33,6 @@ app.get('/register', async(req,res) => {
     const getData = await pool.query(
       `SELECT person_email FROM person`
     );
-    console.log('CONSOLE LOG THIS',getData.rows);
     res.json(getData.rows);
   } catch (err) {
     console.log(err.message);
@@ -62,6 +61,19 @@ app.post('/register', async(req,res) => {
     console.log(err.message);
   }
 });
+
+app.get('/login', async(req,res) => {
+  try {
+    const getData = await pool.query(
+      `SELECT person_email,person_password FROM person`
+    );
+    console.log(getData.rows);
+    res.json(getData.rows);
+  } catch (err) {
+    console.log(err.message);
+  }
+});
+
 
 app.post('/login', async(req,res) => {
   try {

@@ -49,7 +49,7 @@ export default function Register() {
     submitFormData()
     console.log('form submitted')
     setValues({})
-    // history.push('/login')
+    history.push('/login')
     
   }
 
