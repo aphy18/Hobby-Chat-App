@@ -1,12 +1,12 @@
 .nav {
-  height: 100px;
+  height: 80px;
   width: 100%;
   margin: 0px;
   /* border: 2px solid navy; */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(241, 235, 235);
+  background-color: white;
 	position: sticky;
 	top: 0;
   z-index: 2;

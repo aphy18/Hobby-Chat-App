@@ -1,5 +1,6 @@
 import '../styles/Register.css'
 import '../styles/Body.css'
+import { useState } from 'react'
 import useForm from '../customHooks/useForm'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
@@ -7,13 +8,22 @@ import { useHistory } from 'react-router-dom'
 export default function Register() {
   
   const { values, setValues, handleChange, handleSubmit } = useForm(handleRegistration);
+  const [error,setError] = useState(null)
   const history = useHistory();
 
   function handleRegistration() {
     if (values.password !== values.password_confirm) {
-      console.log('passwords do not match')
+      setError('passwords do not match')
+      console.log('error -->', error)
+      return;
+
+    } else if (values.password.length < 8) {
+      setError('password must be at least 8 characters')
+      console.log('error -->', error)
       return;
     }
+    
+    submitFormData()
     console.log('form submitted')
     setValues({})
     history.push('/login')
@@ -58,8 +68,9 @@ export default function Register() {
         <span className="register-image"><i class="fa-solid fa-registered"></i></span>
         <span className="register-image"><i class="fa-solid fa-user"></i></span>
         </div>
+        {error === null ? null : <p>{error}</p>}
         <div className="button-container">
-      <button type="submit" className="form-button-submit" onClick={() => submitFormData()}>Submit</button>
+      <button type="submit" className="form-button-submit">Submit</button>
       </div>
       </form>
     </div>

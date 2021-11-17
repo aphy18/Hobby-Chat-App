@@ -8,7 +8,7 @@ export default function ParticleBackground(){
     params={{
     "particles": {
       "number": {
-          "value": 300,
+          "value": 100,
           "density": {
               "enable": false
           }
