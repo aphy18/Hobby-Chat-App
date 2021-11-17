@@ -14,6 +14,7 @@ export default function Login(props) {
   const [data,setData] = useState([])
   const [error,setError] = useState(null);
   const checkEmails = [];
+  const currentEmail = [];
   const [renderData,setRenderData] = useState(false)
   const email = values.email;
   const password = values.password;
@@ -31,13 +32,29 @@ export default function Login(props) {
     console.log('data',data)
     setRenderData(true)
   }
-  
-  function handleLogin(){
 
+  
+  function handleLogin() {
     for(let obj of data) {
       checkEmails.push(obj.person_email)
     }
+    
+    for (let userEmail of checkEmails) {
+      console.log('user email', userEmail)
+      if(userEmail === values.email) {
+        currentEmail.push(userEmail)
+      }
+      
+    }
 
+    console.log('check email',checkEmails)
+    console.log('current email', currentEmail)
+
+    if (currentEmail.length === 0) {
+      setError('email does not exist');
+      return;
+    }
+    
     for (let personInfo of data) {
       if (personInfo.person_email === values.email) {
         if (personInfo.person_password === values.password) {
@@ -46,13 +63,13 @@ export default function Login(props) {
           setError('password is incorrect')
           return;
         }
-      } 
+      }
     }
 
 
-   setLoginValidation(true)
-   setValues({})
-   userLogin()
+    setLoginValidation(true)
+    setValues({})
+    userLogin()
   }
   
   function userLogin(){
