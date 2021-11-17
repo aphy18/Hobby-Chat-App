@@ -28,6 +28,18 @@ app.get('/', async(req,res) => {
   }
 });
 
+app.get('/register', async(req,res) => {
+  try {
+    const getData = await pool.query(
+      `SELECT person_email FROM person`
+    );
+    console.log('CONSOLE LOG THIS',getData.rows);
+    res.json(getData.rows);
+  } catch (err) {
+    console.log(err.message);
+  }
+});
+
 
 app.post('/register', async(req,res) => {
   console.log('reqbody -->', req.body);

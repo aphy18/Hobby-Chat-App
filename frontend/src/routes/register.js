@@ -1,6 +1,6 @@
 import '../styles/Register.css'
 import '../styles/Body.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import useForm from '../customHooks/useForm'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
@@ -9,15 +9,38 @@ export default function Register() {
   
   const { values, setValues, handleChange, handleSubmit } = useForm(handleRegistration);
   const [error,setError] = useState(null)
+  const [data,setData] = useState([])
+  const [renderData,setRenderData] = useState(false)
   const history = useHistory();
 
+  useEffect(() => {
+    getData()
+  },[renderData])
+
+  async function getData() {
+    const getData = await axios.get('http://localhost:8080/register')
+    setData(getData.data)
+    console.log('data',data)
+    setRenderData(true)
+  }
+
   function handleRegistration() {
+
+    for (let email of data) {
+      if (email.person_email === values.email) {
+        setError('email is already taken')
+        return;
+      }
+    }
+
     if (values.password !== values.password_confirm) {
       setError('passwords do not match')
       console.log('error -->', error)
       return;
 
-    } else if (values.password.length < 8) {
+    } 
+    
+    if (values.password.length < 8) {
       setError('password must be at least 8 characters')
       console.log('error -->', error)
       return;
@@ -26,7 +49,7 @@ export default function Register() {
     submitFormData()
     console.log('form submitted')
     setValues({})
-    history.push('/login')
+    // history.push('/login')
     
   }
 
@@ -68,7 +91,7 @@ export default function Register() {
         <span className="register-image"><i class="fa-solid fa-registered"></i></span>
         <span className="register-image"><i class="fa-solid fa-user"></i></span>
         </div>
-        {error === null ? null : <p>{error}</p>}
+        {error === null ? null : <p className="error">{error}</p>}
         <div className="button-container">
       <button type="submit" className="form-button-submit">Submit</button>
       </div>
