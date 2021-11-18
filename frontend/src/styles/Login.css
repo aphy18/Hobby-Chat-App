@@ -48,3 +48,7 @@
 .login-prompt {
   border: 2px solid black;
 }
+
+#error {
+  align-self: center;
+}

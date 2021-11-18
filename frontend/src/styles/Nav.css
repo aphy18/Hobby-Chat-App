@@ -6,7 +6,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
+  background-color: black;
 	position: sticky;
 	top: 0;
   z-index: 2;
@@ -20,6 +20,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color: white;
   
 }
 
@@ -35,7 +36,7 @@
 
 .nav-item {
   list-style: none;
-  color: black;
+  color: white;
   text-decoration: none;
 }
 
@@ -43,6 +44,7 @@
 .nav-expand{
 display: none;
 }
+
 .nav-list:hover .nav-expand{
   display: flex;
   justify-content: space-between;
@@ -53,6 +55,7 @@ display: none;
 .nav-list:hover {
   animation: expansion 0.4s ease-in-out forwards;
 }
+
 @keyframes left-to-right{
   0%{
     overflow: visible;

@@ -5,6 +5,7 @@ import useForm from '../customHooks/useForm'
 import axios from 'axios';
 import { useHistory } from 'react-router-dom'
 import { authContext } from '../provider/AuthProvider';
+import ParticleBackground from "../components/Particles";
 
 
 
@@ -94,7 +95,7 @@ export default function Login(props) {
        <form className="login-form" onSubmit={handleSubmit}>
          <input type="email" name="email" placeholder="email"className="input-field" onChange={handleChange} required></input>
          <input type="password" name="password" placeholder="password" className="input-field" onChange={handleChange}  required></input>
-         {!error ? null : <p>{error}</p>}
+         {!error ? null : <p className="error" id="error">{error}</p>}
          <button type="submit" className="form-button-submit">Submit</button>
        </form>
      </div>

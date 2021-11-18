@@ -66,7 +66,7 @@ export default function Profile() {
       <div className="profile-button-container">
       <button className="profile-button" onClick={() => setProfile(true)}>Edit</button>
       <a href={`/hobby/${userObj.id}`}><button className="profile-button">Add Hobby</button></a> 
-      <button className="profile-button">Change Password</button>
+      <a href="/changepassword"><button className="profile-button">Change Password</button></a>
       <button className="profile-button">Upload Profile Picture</button>
       </div>
       <div className="profile-and-hobby-container">

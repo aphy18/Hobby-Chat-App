@@ -92,7 +92,8 @@
 
 .footer {
   border: 2px solid red;
-  height: 200px;
+  background-color: grey;
+  height: 160px;
   width: 100%;
 }
 
@@ -197,4 +198,11 @@
   font-size: 40px;
   text-decoration: none;
   color: black;
+  border: 2px solid black;
+}
+
+#click-to-register,
+#view-users {
+  font-size: 60px;
+  margin-bottom: 7%;
 }

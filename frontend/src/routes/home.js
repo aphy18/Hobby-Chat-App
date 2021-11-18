@@ -143,13 +143,13 @@ export default function Home() {
           {home.id ? <a
             href="/messageList"
             className="home-page-view-users"
-            data-aos="zoom-in-up"
+            id="click-to-register"
+            data-aos="zoom-in-down"
             data-aos-duration="500"
           >
             View the user message list here
-          </a> : <a href="/register" className="home-page-view-users" data-aos="zoom-in-up"
+          </a> : <a href="/register" className="home-page-view-users" id="view-users" data-aos="zoom-in-down"
             data-aos-duration="500">Click to register</a>}
-       
           <div className="footer">
             <p>Contact me at aphason1@gmail.com</p>
             <p>Github: aphy18</p>

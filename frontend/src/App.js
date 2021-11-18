@@ -5,9 +5,9 @@ import Home from './routes/home';
 import Profile from './routes/profile';
 import MessageList from './routes/messageList';
 import Message from './routes/message';
+import ChangePassword from './routes/changePassword';
 import Nav from './components/Nav';
 import NewHobby from './components/NewHobby';
-import Particles from "react-particles-js";
 
 
 
@@ -34,12 +34,11 @@ function App() {
         <Nav />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/register" component={Register} />
           <Route exact path={`/profile/${userObj.id}`} component={Profile} />
           <Route exact path={`/hobby/${userObj.id}`} component={NewHobby} />
           <Route exact path="/messagelist" component={MessageList} />
           <Route exact path="/message/:id" component={Message} />
+          <Route exact path="/changepassword" component={ChangePassword} />
         </Switch>
       </Router>
     )
