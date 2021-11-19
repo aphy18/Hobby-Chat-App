@@ -13,3 +13,4 @@ VALUES ('jump rope', 'advanced','$300', '6 years', 1),
 
 ('video games', 'intermediate', '$650', '6 years', 5),
 ('Ruby', 'beginner', '$0', '1 month', 5);
+

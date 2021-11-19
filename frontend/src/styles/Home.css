@@ -91,22 +91,11 @@
 }
 
 .footer {
-  border: 2px solid red;
-  background-color: grey;
+  background-color: black;
   height: 160px;
   width: 100%;
+  color: white;
 }
-
-
-
-/* .header-container,
-.master-about-container,
-.master-features-container,
-.footer {
-  width: 100%;
-  margin: 0 0 4% 0;
-  
-} */
 
 .about-us {
   border: 2px solid red;
@@ -198,7 +187,6 @@
   font-size: 40px;
   text-decoration: none;
   color: black;
-  border: 2px solid black;
 }
 
 #click-to-register,

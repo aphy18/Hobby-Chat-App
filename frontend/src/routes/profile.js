@@ -4,8 +4,10 @@ import useForm from '../customHooks/useForm.js'
 import axios from 'axios';
 import Hobby from '../components/Hobby.js'
 
+// as the app is right now, if a user does not have hobbies seeded they cant go into /profile/:id
+
 export default function Profile() {
-  const { values, handleChange, handleSubmit } = useForm(handleProfile)
+  const { values, handleChange, handleSubmit } = useForm(sendProfileData)
   let userObj = JSON.parse(localStorage.getItem('user'))
   
   const [profile, setProfile] = useState(false);
@@ -13,20 +15,6 @@ export default function Profile() {
   const [hobbyData, setHobbyData] = useState([]);
   const [textLength, setTextLength] = useState(0);
   // const [disabled, setDisabled] = useState(true)
- 
-
-  function sendProfileData(){
-    for (let attr in profileData) {
-      if (!values[attr]) {
-        values[attr] = profileData[attr];
-      }
-    }
-    axios.put(`http://localhost:8080/profile/${userObj.id}`, { values })
-    setProfile(false);
-    localStorage.setItem('user',JSON.stringify(values))
-    alert('changes saved')
-    window.location.reload()
-  }
 
   async function getProfileData() {
     if (userObj === null) {
@@ -37,8 +25,26 @@ export default function Profile() {
     setProfileData(getUserData.data[0]);
     setHobbyData(getUserData.data);
   }
-    
-    useEffect(() => {
+ 
+  function sendProfileData() {
+    for (let attr in profileData) {
+      if (!values[attr]) {
+        values[attr] = profileData[attr];
+      }
+    }
+    if (values.username.length > 15) {
+      alert('Error: Username must be less than 15 characters')
+      return;
+    }
+
+    axios.put(`http://localhost:8080/profile/${userObj.id}`, { values })
+    setProfile(false);
+    localStorage.setItem('user', JSON.stringify(values))
+    alert('changes saved')
+    window.location.reload()
+  }
+  
+  useEffect(() => {
       getProfileData();
     },[])
 
@@ -53,9 +59,7 @@ export default function Profile() {
 
     console.log('THIS PROFILE DATA -->', profileData)
  
-  function handleProfile() {
-    console.log('form submitted')
-  }
+
 
   
 

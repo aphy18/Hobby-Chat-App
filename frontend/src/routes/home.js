@@ -154,8 +154,8 @@ export default function Home() {
           <div className="footer">
             <p>Contact me at aphason1@gmail.com</p>
             <p>Github: aphy18</p>
-            <p>Frontend Libraries: ParticleJS, Animate on Scroll, Socket io Client, Font Awesome, Axios</p>
-            <p>Backend Libraries: Express, Nodemon</p>
+            <p>Frontend Libraries: React, ParticleJS, Animate on Scroll, Socket io Client, Font Awesome, Axios</p>
+            <p>Backend Libraries: Express, Nodemon, Socket io</p>
           </div>
           
         </div>
