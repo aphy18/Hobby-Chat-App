@@ -21,7 +21,28 @@ export default function Home() {
     }
     const userData = await axios.get(`http://localhost:8080`);
     setHome(userData.data);
+    
+    const userArr = userData.data
+    for (let obj of Object.keys(userArr)) {
+      if (userArr[obj].id === userObj.id) {
+        setHome(userArr[obj])
+      }
+    }
   }
+
+  // for (let obj of Object.keys(home)) {
+  //   if (home[obj].id === userObj.id) {
+  //     console.log('Thee object id ---->', home[obj].id)
+  //     console.log('winneer home object -->', home[obj])
+  //     setHome(home[obj]);
+  //   }
+  // }
+
+  console.log('home state', home)
+
+ 
+
+
 
   useEffect(() => {
     getUserData();
@@ -32,15 +53,7 @@ export default function Home() {
     }, 1000);
   }, []);
 
-  for (let obj of Object.keys(home)) {
-    if (home[obj].id === userObj.id) {
-      console.log("YES", home[obj]);
-      setHome(home[obj]);
-    }
-  }
-
-  console.log("new state", home);
-
+  
   if (loading && home) {
     return (
       <div className="master-loading-container">

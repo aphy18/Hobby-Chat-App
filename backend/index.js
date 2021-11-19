@@ -182,7 +182,23 @@ app.post('/messageList', async(req,res) => {
   }
 });
 
-// put messageList ?
+app.put('/changepassword', async(req,res) => {
+  try {
+    const { password, password_confirm } = req.body.values;
+    const { id } = req.body.userObj;
+    const updatePassword = await pool.query(`
+    UPDATE person
+    SET person_password = $1,
+    password_confirm = $2
+    WHERE id = ${id}`,[password, password_confirm]);
+    res.json(updatePassword.rows);
+  } catch (err) {
+    console.log(err.message);
+  }
+});
+
+
+
 
 app.get('/message/:id', async(req,res) => {
   try {
