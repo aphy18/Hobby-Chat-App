@@ -20,29 +20,17 @@ export default function Home() {
       return;
     }
     const userData = await axios.get(`http://localhost:8080`);
-    setHome(userData.data);
     
     const userArr = userData.data
-    for (let obj of Object.keys(userArr)) {
-      if (userArr[obj].id === userObj.id) {
-        setHome(userArr[obj])
+
+    for (let obj of userArr) {
+      if (obj.id === userObj.id) {
+        setHome(obj)
       }
     }
   }
 
-  // for (let obj of Object.keys(home)) {
-  //   if (home[obj].id === userObj.id) {
-  //     console.log('Thee object id ---->', home[obj].id)
-  //     console.log('winneer home object -->', home[obj])
-  //     setHome(home[obj]);
-  //   }
-  // }
-
   console.log('home state', home)
-
- 
-
-
 
   useEffect(() => {
     getUserData();
