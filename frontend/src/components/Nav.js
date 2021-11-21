@@ -6,6 +6,8 @@ export default function Nav() {
   const { logout, user, setUser } = useContext(authContext);
   const [nav, setNav] = useState(false);
   let userObj = JSON.parse(localStorage.getItem('user'))
+
+  
   const changeShadow = () => {
     if (window.scrollY > 0) {
       setNav(true)

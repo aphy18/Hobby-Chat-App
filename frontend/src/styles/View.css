@@ -1,0 +1,29 @@
+.view-container {
+  border: 2px solid black;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.view-header-container {
+  border: 2px solid blue;
+  display: flex;
+  justify-content: center;
+}
+
+.view-body-container {
+  border: 2px solid black;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  height: 1200px;
+}
+
+
+.user-container {
+  border: 2px solid red;
+  width: 400px;
+  height: 200px;
+  margin: 10px;
+}

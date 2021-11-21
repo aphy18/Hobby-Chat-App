@@ -31,7 +31,7 @@ app.get('/', async(req,res) => {
 app.get('/view', async(req,res) => {
   try {
     const getUser = await pool.query(
-      `SELECT username FROM person;`
+      `SELECT username, person_bio, hobby_name, level_of_expertise, amount_of_time_doing_hobby, my_spending_estimate FROM person JOIN hobby ON person.id = person_id;`
     );
     res.json(getUser.rows);
     console.log('VIEW PAGE', getUser.rows);
