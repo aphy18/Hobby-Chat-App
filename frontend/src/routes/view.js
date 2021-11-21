@@ -24,7 +24,17 @@ export default function View() {
   const mapOverEverything = data.map(user => {
     return (
       <div className="user-container">
-        <p>{user.username}</p>
+        <div className="user-header-container">
+        <span className="user-image"><i class="fas fa-user"></i></span>
+        <span className="user-name">{user.username}</span>
+      </div>
+      <div>
+        <p>Bio: {user.person_bio}</p>
+        <p>Hobby: {user.hobby_name}</p>
+        <p>Experience: {user.level_of_expertise}</p>
+        <p>Spending: {user.my_spending_estimate}</p>
+        <p>Time Spent: {user.amount_of_time_doing_hobby}</p>
+      </div>
       </div>
     )
   })

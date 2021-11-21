@@ -24,6 +24,20 @@
 .user-container {
   border: 2px solid red;
   width: 400px;
-  height: 200px;
+  height: 220px;
   margin: 10px;
+}
+
+.user-header-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2%;
+}
+
+.user-image {
+  margin-left: 1%;
+}
+
+.user-name {
+  margin-right: 1.5%;
 }

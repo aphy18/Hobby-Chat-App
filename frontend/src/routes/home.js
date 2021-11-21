@@ -148,7 +148,7 @@ export default function Home() {
             data-aos="zoom-in-down"
             data-aos-duration="500"
           >
-            View the user message list here
+            View All of Our Users Here !
           </a> : <a href="/register" className="home-page-view-users" id="view-users" data-aos="zoom-in-down"
             data-aos-duration="500">Click to register</a>}
           <div className="footer">
