@@ -31,12 +31,26 @@ app.get('/', async(req,res) => {
 app.get('/view', async(req,res) => {
   try {
     const getUser = await pool.query(
-      `SELECT username, person_bio, hobby_name, level_of_expertise, amount_of_time_doing_hobby, my_spending_estimate FROM person JOIN hobby ON person.id = person_id;`
+      `SELECT person.id, username, person_bio, hobby_name, level_of_expertise, amount_of_time_doing_hobby, my_spending_estimate FROM person JOIN hobby ON person.id = person_id;`
     );
     res.json(getUser.rows);
     console.log('VIEW PAGE', getUser.rows);
   } catch (err) {
     console.log(err.message);
+  }
+});
+
+app.post('/view', async(req,res) => {
+  try {
+    const senderID = req.body.userObj.id;
+    const receiverID = req.body.receiverObj.id;
+    console.log('req.body', req.body);
+    const establishFriendReq = await pool.query(`
+    INSERT INTO friend_request (sender_id, receiver_id) VALUES ($1, $2)`, [senderID, receiverID]);
+    console.log('establish', establishFriendReq.rows);
+    res.json(establishFriendReq.rows);
+  } catch (err) {
+    console.log('error message',err.message);
   }
 });
 

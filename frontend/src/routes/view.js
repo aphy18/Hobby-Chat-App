@@ -5,6 +5,8 @@ import '../styles/View.css';
 import MessageOption from '../components/MessageOption';
 import axios from 'axios';
 
+// The POST request, we put the sender and receiver in a table
+
 export default function View() {
 
  let userObj = JSON.parse(localStorage.getItem('user'))
@@ -21,8 +23,10 @@ export default function View() {
     userData()
   },[])
   
-  async function sendFriendRequest(receiverObj) {
-    await axios.post('http://localhost:8080/view', { userObj, receiverObj })
+  function sendFriendRequest(receiverObj) {
+    axios.post('http://localhost:8080/view', { userObj, receiverObj })
+    console.log('current user object -->', userObj)
+    console.log('receiver object -->', receiverObj)
   }
 
   data.map(user => {
