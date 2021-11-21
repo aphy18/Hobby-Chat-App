@@ -10,8 +10,12 @@
 	position: sticky;
 	top: 0;
   z-index: 2;
-
 }
+
+.nav.active{
+  box-shadow: 5px 10px 18px #1a1919;
+}
+
 
 .nav-span {
   /* border: 2px solid black; */

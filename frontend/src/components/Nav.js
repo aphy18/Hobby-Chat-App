@@ -1,12 +1,18 @@
 import '../styles/Nav.css';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { authContext } from '../provider/AuthProvider';
 
 export default function Nav() {
   const { logout, user, setUser } = useContext(authContext);
-
+  const [nav, setNav] = useState(false);
   let userObj = JSON.parse(localStorage.getItem('user'))
-
+  const changeShadow = () => {
+    if (window.scrollY > 0) {
+      setNav(true)
+    }
+    else setNav(false);
+  }
+  window.addEventListener('scroll', changeShadow);
   // user (which was once null) is now being set to the res.json in the local storage
   useEffect(() => {
     if (userObj) {
@@ -17,7 +23,7 @@ export default function Nav() {
   //  if the user exists (the data from the local storage)
   if (user) {
     return (
-      <nav className="nav">
+      <nav className={nav ? 'nav active' : 'nav'}>
         <span className="nav-span">{userObj.username}</span>
         <ul className="nav-list">
           <a href='/' className="nav-item"><i class="fas fa-home"></i></a>
@@ -35,7 +41,7 @@ export default function Nav() {
     )
   } else {
     return (
-      <nav className="nav">
+      <nav className={nav ? 'nav active' : 'nav'}>
         <span className="nav-span"></span>
         <ul className="nav-list">
           <a href='/' className="nav-item"><i class="fas fa-home"></i></a>
