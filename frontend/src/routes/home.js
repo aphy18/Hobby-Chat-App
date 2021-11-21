@@ -133,7 +133,7 @@ export default function Home() {
               id="contact"
             >
               <div className="features-description">
-              <p className="features-text">Message users who share your interests!</p>
+              <p className="features-text">Message users from your friends list!</p>
               </div>
               <div className="features-image">
                 <p className="features-icon"><i class="fas fa-comment-dots"></i></p>
