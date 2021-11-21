@@ -2,11 +2,11 @@
   height: 80px;
   width: 100%;
   margin: 0px;
-  /* border: 2px solid navy; */
+  /* border: 2px solid black; */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: black;
+  background-color: rgb(250, 234, 206);
 	position: sticky;
 	top: 0;
   z-index: 2;
@@ -24,7 +24,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: black;
   
 }
 
@@ -40,7 +40,7 @@
 
 .nav-item {
   list-style: none;
-  color: white;
+  color: black;
   text-decoration: none;
 }
 

@@ -28,6 +28,19 @@ app.get('/', async(req,res) => {
   }
 });
 
+app.get('/view', async(req,res) => {
+  try {
+    const getUser = await pool.query(
+      `SELECT username FROM person;`
+    );
+    res.json(getUser.rows);
+    console.log('VIEW PAGE', getUser.rows);
+  } catch (err) {
+    console.log(err.message);
+  }
+});
+
+
 app.get('/register', async(req,res) => {
   try {
     const getData = await pool.query(
@@ -153,34 +166,25 @@ app.post('/hobby/:id', async(req,res) => {
   }
 });
 
-app.get('/messageList', async(req,res) => {
-  try {
-    const getAllUserInfo = await pool.query(
-      `SELECT id, username, first_name, last_name, person_gender, 
-        person_address, person_email, person_bio FROM person ORDER BY id`
-    );
-    res.json(getAllUserInfo.rows);
-    console.log('All user info --->', getAllUserInfo.rows);
-  } catch (err) {
-    console.log(err.message);
-  }
-});
 
-// this is where receiver_id is set
+// // this is where receiver_id is set
 
-app.post('/messageList', async(req,res) => {
-  try {
-    const { arr } = req.body;
-    console.log('req.bodyyyyy -->', req.body);
+// app.post('/messageList', async(req,res) => {
+//   try {
+//     const { arr } = req.body;
+//     console.log('req.bodyyyyy -->', req.body);
   
-    const postCurrentUser = await pool.query(`
-    INSERT INTO id_storage (receiver_id) VALUES ($1)`, [arr]);
-    console.log('current user rows', postCurrentUser.rows[0]);
-    res.json(postCurrentUser.rows[0]);
-  } catch (err) {
-    console.log(err.message);
-  }
-});
+//     const postCurrentUser = await pool.query(`
+//     INSERT INTO id_storage (receiver_id) VALUES ($1)`, [arr]);
+//     console.log('current user rows', postCurrentUser.rows[0]);
+//     res.json(postCurrentUser.rows[0]);
+//   } catch (err) {
+//     console.log(err.message);
+//   }
+// });
+
+
+
 
 app.put('/changepassword', async(req,res) => {
   try {
