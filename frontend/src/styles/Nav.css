@@ -41,6 +41,10 @@
 }
 
 /* yahya css */
+.nav-item .fixed{
+
+}
+
 .nav-expand{
 display: none;
 }
@@ -68,6 +72,7 @@ display: none;
 }
 @keyframes expansion{
   0%{
+    
   }
   100%{
     width: 500px;

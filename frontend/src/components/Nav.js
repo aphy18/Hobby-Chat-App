@@ -46,7 +46,7 @@ export default function Nav() {
             <p>|</p>
             <a href='/#contact' className="nav-item">contact</a>
           </div>
-          <a href='/register' className="nav-item"><i class="fas fa-user-plus"></i></a>
+          <a href='/register' className="nav-item fixed"><i class="fas fa-user-plus fixed"></i></a>
           <a href='/login' className="nav-item"><i class="fas fa-sign-in-alt"></i></a>
         </ul>
       </nav>
