@@ -7,7 +7,9 @@ import axios from 'axios';
 
 export default function View() {
 
-  const [data,setData] = useState([])
+ let userObj = JSON.parse(localStorage.getItem('user'))
+ const [data,setData] = useState([])
+ const storeNonLoggedInUsers = [];
 
   async function userData() {
     const getUserData = await axios.get('http://localhost:8080/view')
@@ -19,25 +21,40 @@ export default function View() {
     userData()
   },[])
   
-  console.log('this is data',data)
+  async function sendFriendRequest(receiverObj) {
+    await axios.post('http://localhost:8080/view', { userObj, receiverObj })
+  }
 
-  const mapOverEverything = data.map(user => {
+  data.map(user => {
+    if (user.username !== userObj.username) {
+      storeNonLoggedInUsers.push(user)
+    }
+  })
+
+  const mapOverEverything = storeNonLoggedInUsers.map(user => {
     return (
       <div className="user-container">
         <div className="user-header-container">
         <span className="user-image"><i class="fas fa-user"></i></span>
         <span className="user-name">{user.username}</span>
       </div>
-      <div>
-        <p>Bio: {user.person_bio}</p>
-        <p>Hobby: {user.hobby_name}</p>
-        <p>Experience: {user.level_of_expertise}</p>
-        <p>Spending: {user.my_spending_estimate}</p>
-        <p>Time Spent: {user.amount_of_time_doing_hobby}</p>
+      <div className="user-body-container">
+      <div className="user-stats">
+        <p style={{fontWeight: 'bold'}}><i>{user.person_bio}</i></p>
+        <span>Hobby: {user.hobby_name}</span>
+        <span>Experience: {user.level_of_expertise}</span>
+        <span>Spending: {user.my_spending_estimate}</span>
+        <span>Time Spent: {user.amount_of_time_doing_hobby}</span>
+       </div>
+       <div className="add-this-user">
+         <p><i onClick={() => sendFriendRequest(user)} class="fas fa-user-plus"></i></p>
+         <span>Add</span>
+       </div>
       </div>
       </div>
     )
   })
+ 
 
  return (
    <>

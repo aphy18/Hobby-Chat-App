@@ -22,7 +22,7 @@
 
 
 .user-container {
-  border: 2px solid red;
+  border: 5px double red;
   width: 400px;
   height: 220px;
   margin: 10px;
@@ -40,4 +40,35 @@
 
 .user-name {
   margin-right: 1.5%;
+}
+
+.user-body-container {
+  /* border: 2px solid purple; */
+  display: flex;
+  justify-content: space-between;
+  height: 170px;
+}
+
+.user-stats {
+  /* border: 2px solid black; */
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+}
+
+.bold-bio {
+  font-weight: bolder;
+}
+
+.add-this-user {
+  /* border: 2px solid black; */
+  font-size: 20px;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
