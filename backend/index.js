@@ -31,10 +31,14 @@ app.get('/', async(req,res) => {
 app.get('/view', async(req,res) => {
   try {
     const getUser = await pool.query(
-      `SELECT person.id, username, person_bio, hobby_name, level_of_expertise, amount_of_time_doing_hobby, my_spending_estimate FROM person JOIN hobby ON person.id = person_id;`
+      `SELECT person.id, username, person_bio, hobby.* FROM person JOIN hobby ON person.id = person_id;`
     );
+    const getFriendRequests = await pool.query(`
+    SELECT * FROM friend_request`);
     res.json(getUser.rows);
+    // res.json(getFriendRequests.rows);
     console.log('VIEW PAGE', getUser.rows);
+    console.log('GET FRIEND REQUESTS -->', getFriendRequests.rows);
   } catch (err) {
     console.log(err.message);
   }
@@ -77,7 +81,20 @@ app.post('/friends', async(req,res) => {
     INSERT INTO friends (username, friend_username) VALUES ($1, $2)`, [sender_username, username]);
     res.json(firstPost.rows);
     res.json(secondPost.rows);
+    
 
+  } catch (err) {
+    console.log(err.message);
+  }
+});
+
+app.put('/friends', async(req,res) => {
+  try {
+    console.log('req body 88 -->', req.body);
+    const { sender_id, receiver_id } = req.body.requestObj;
+    const deleteRequest = await pool.query(`
+    DELETE FROM friend_request WHERE receiver_id = $1 AND sender_id = $2`,[receiver_id, sender_id]);
+    res.json(deleteRequest.rows);
   } catch (err) {
     console.log(err.message);
   }
@@ -209,26 +226,6 @@ app.post('/hobby/:id', async(req,res) => {
   }
 });
 
-
-// // this is where receiver_id is set
-
-// app.post('/messageList', async(req,res) => {
-//   try {
-//     const { arr } = req.body;
-//     console.log('req.bodyyyyy -->', req.body);
-  
-//     const postCurrentUser = await pool.query(`
-//     INSERT INTO id_storage (receiver_id) VALUES ($1)`, [arr]);
-//     console.log('current user rows', postCurrentUser.rows[0]);
-//     res.json(postCurrentUser.rows[0]);
-//   } catch (err) {
-//     console.log(err.message);
-//   }
-// });
-
-
-
-
 app.put('/changepassword', async(req,res) => {
   try {
     const { password, password_confirm } = req.body.values;
@@ -243,9 +240,6 @@ app.put('/changepassword', async(req,res) => {
     console.log(err.message);
   }
 });
-
-
-
 
 app.get('/message/:id', async(req,res) => {
   try {

@@ -21,7 +21,8 @@ CREATE TABLE friend_request (
   id SERIAL PRIMARY KEY,
   sender_username VARCHAR(255) NOT NULL,
   sender_id INTEGER NOT NULL,
-  receiver_id INTEGER NOT NULL
+  receiver_id INTEGER NOT NULL,
+  person_id INTEGER REFERENCES person(id) ON DELETE CASCADE
 );
 
 CREATE TABLE friends (

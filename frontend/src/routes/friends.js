@@ -22,6 +22,7 @@ export default function Friends() {
 
   function acceptFriendReq(requestObj) {
     axios.post('http://localhost:8080/friends', { userObj, requestObj})
+    axios.put('http://localhost:8080/friends', { requestObj })
     alert('friend request accepted !')
   }
 
@@ -40,7 +41,6 @@ export default function Friends() {
   return (
    <>
     <h1>Friends Page</h1>
-
     {mapOverRequests}
     </>
   )
