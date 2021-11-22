@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS person CASCADE;
 DROP TABLE IF EXISTS hobby CASCADE;
-DROP TABLE IF EXISTS friend_request;
+DROP TABLE IF EXISTS friend_request CASCADE;
+DROP TABLE IF EXISTS friends CASCADE;
 
 CREATE TABLE person (
   id SERIAL PRIMARY KEY,
@@ -21,6 +22,12 @@ CREATE TABLE friend_request (
   sender_username VARCHAR(255) NOT NULL,
   sender_id INTEGER NOT NULL,
   receiver_id INTEGER NOT NULL
+);
+
+CREATE TABLE friends (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(255) NOT NULL,
+  friend_username VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE hobby (

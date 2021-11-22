@@ -55,6 +55,34 @@ app.post('/view', async(req,res) => {
   }
 });
 
+app.get('/friends', async(req,res) => {
+  try {
+    const getFriendReq = await pool.query(`SELECT * FROM friend_request`);
+    console.log('getting all friend requests', getFriendReq.rows);
+    res.json(getFriendReq.rows);
+  } catch (err) {
+    console.log(err.message);
+  }
+});
+
+
+app.post('/friends', async(req,res) => {
+  try {
+    console.log('req.body of friends',req.body);
+    const { username } = req.body.userObj;
+    const { sender_username } = req.body.requestObj;
+    const firstPost = await pool.query(`
+    INSERT INTO friends (username, friend_username) VALUES ($1, $2)`, [username,sender_username]);
+    const secondPost = await pool.query(`
+    INSERT INTO friends (username, friend_username) VALUES ($1, $2)`, [sender_username, username]);
+    res.json(firstPost.rows);
+    res.json(secondPost.rows);
+
+  } catch (err) {
+    console.log(err.message);
+  }
+});
+
 
 app.get('/register', async(req,res) => {
   try {
