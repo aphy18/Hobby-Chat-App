@@ -27,6 +27,7 @@ export default function View() {
     axios.post('http://localhost:8080/view', { userObj, receiverObj })
     console.log('current user object -->', userObj)
     console.log('receiver object -->', receiverObj)
+    alert(`friend request sent to ${receiverObj.username}`)
   }
 
   data.map(user => {

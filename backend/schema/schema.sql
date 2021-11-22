@@ -18,6 +18,7 @@ CREATE TABLE person (
 
 CREATE TABLE friend_request (
   id SERIAL PRIMARY KEY,
+  sender_username VARCHAR(255) NOT NULL,
   sender_id INTEGER NOT NULL,
   receiver_id INTEGER NOT NULL
 );

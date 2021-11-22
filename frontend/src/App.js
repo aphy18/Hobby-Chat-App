@@ -8,6 +8,7 @@ import Message from './routes/message';
 import ChangePassword from './routes/changePassword';
 import Nav from './components/Nav';
 import NewHobby from './components/NewHobby';
+import Friends from './routes/friends';
 
 
 
@@ -32,6 +33,7 @@ export default function App() {
           <Route exact path="/view" component={View} />
           <Route exact path="/message/:id" component={Message} />
           <Route exact path="/changepassword" component={ChangePassword} />
+          <Route exact path="/friends" component={Friends} />
           </> 
          }
         </Switch>

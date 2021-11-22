@@ -44,9 +44,10 @@ app.post('/view', async(req,res) => {
   try {
     const senderID = req.body.userObj.id;
     const receiverID = req.body.receiverObj.id;
+    const { username } = req.body.userObj;
     console.log('req.body', req.body);
     const establishFriendReq = await pool.query(`
-    INSERT INTO friend_request (sender_id, receiver_id) VALUES ($1, $2)`, [senderID, receiverID]);
+    INSERT INTO friend_request (sender_username, sender_id, receiver_id) VALUES ($1, $2, $3)`, [username, senderID, receiverID]);
     console.log('establish', establishFriendReq.rows);
     res.json(establishFriendReq.rows);
   } catch (err) {
