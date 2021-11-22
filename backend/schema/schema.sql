@@ -20,9 +20,9 @@ CREATE TABLE person (
 CREATE TABLE friend_request (
   id SERIAL PRIMARY KEY,
   sender_username VARCHAR(255) NOT NULL,
+  receiver_username VARCHAR(255) NOT NULL,
   sender_id INTEGER NOT NULL,
-  receiver_id INTEGER NOT NULL,
-  person_id INTEGER REFERENCES person(id) ON DELETE CASCADE
+  receiver_id INTEGER NOT NULL
 );
 
 CREATE TABLE friends (

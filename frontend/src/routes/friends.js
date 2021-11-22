@@ -24,15 +24,24 @@ export default function Friends() {
     axios.post('http://localhost:8080/friends', { userObj, requestObj})
     axios.put('http://localhost:8080/friends', { requestObj })
     alert('friend request accepted !')
+    window.location.reload();
   }
 
+  function declineFriendReq(requestObj) {
+    axios.put('http://localhost:8080/friends', { requestObj })
+    alert('friend request rejected !')
+    window.location.reload();
+  }
+
+  // change to username
+
   const mapOverRequests = data.map(req => {
-    if (req.receiver_id === userObj.id) {
+    if (req.receiver_username === userObj.username) {
       return (
         <div className="request-container">
          <p>{req.sender_username} wants to be your friend ! Will you accept {req.sender_username}'s friend request ?</p>
          <button onClick={() => acceptFriendReq(req)}>Yes</button>
-         <button>No</button>
+         <button onClick={() => declineFriendReq(req)}>No</button>
         </div>
       )
     }

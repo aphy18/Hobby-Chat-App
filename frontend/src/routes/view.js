@@ -30,6 +30,8 @@ export default function View() {
     alert(`friend request sent to ${receiverObj.username}`)
   }
 
+  
+
   data.map(user => {
     if (user.username !== userObj.username) {
       storeNonLoggedInUsers.push(user)
