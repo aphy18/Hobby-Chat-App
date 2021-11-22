@@ -14,17 +14,27 @@ export default function Requests() {
     setData(getUserData.data)
   }
 
-  console.log('data 15', data)
 
   useEffect(() => {
     userData()
   },[])
 
-  function acceptFriendReq(requestObj) {
+  async function acceptFriendReq(requestObj) {
+    // MAYBE an app.get /friends to see if the friendship already exists before doing the next two
+
+    const getFriends = await axios.get('http://localhost:8080/friends')
+    console.log('get friends -->', getFriends);
+    
+    console.log('request information -->', requestObj)
+
+
+
+
     axios.post('http://localhost:8080/requests', { userObj, requestObj})
+    // the put is for deleing the request
     axios.put('http://localhost:8080/requests', { requestObj })
     alert('friend request accepted !')
-    window.location.reload();
+    // window.location.reload();
   }
 
   function declineFriendReq(requestObj) {

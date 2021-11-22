@@ -47,13 +47,13 @@ app.get('/view', async(req,res) => {
 app.post('/view', async(req,res) => {
   // receiver name is the guy getting the friend request
   try {
-    const senderID = req.body.userObj.id;
-    const receiverID = req.body.receiverObj.id;
+    const { id } = req.body.userObj;
+    const { person_id } = req.body.receiverObj;
     const senderName = req.body.userObj.username;
     const receiverName = req.body.receiverObj.username;
     console.log('req.body', req.body);
     const establishFriendReq = await pool.query(`
-    INSERT INTO friend_request (sender_username, receiver_username, sender_id, receiver_id) VALUES ($1, $2, $3, $4)`, [senderName, receiverName, senderID, receiverID]);
+    INSERT INTO friend_request (sender_username, receiver_username, sender_id, receiver_id) VALUES ($1, $2, $3, $4)`, [senderName, receiverName, id, person_id]);
     console.log('establish', establishFriendReq.rows);
     res.json(establishFriendReq.rows);
   } catch (err) {
@@ -97,6 +97,17 @@ app.put('/requests', async(req,res) => {
     const deleteRequest = await pool.query(`
     DELETE FROM friend_request WHERE receiver_id = $1 AND sender_id = $2`,[receiver_id, sender_id]);
     res.json(deleteRequest.rows);
+  } catch (err) {
+    console.log(err.message);
+  }
+});
+
+app.get('/friends', async(req,res) => {
+  try {
+    const getFriends = await pool.query(`
+    SELECT * FROM friends`);
+    console.log('get friends', getFriends.rows);
+    res.json(getFriends.rows);
   } catch (err) {
     console.log(err.message);
   }
