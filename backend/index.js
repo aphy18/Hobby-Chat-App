@@ -45,7 +45,6 @@ app.get('/view', async(req,res) => {
 });
 
 app.post('/view', async(req,res) => {
-  // receiver name is the guy getting the friend request
   try {
     const { id } = req.body.userObj;
     const { person_id } = req.body.receiverObj;
