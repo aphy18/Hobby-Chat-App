@@ -3,13 +3,13 @@ import axios from "axios"
 import '../styles/Friends.css'
 
 
-export default function Friends() {
+export default function Requests() {
 
   const [data,setData] = useState([])
   const userObj = JSON.parse(localStorage.getItem('user'))
 
   async function userData() {
-    const getUserData = await axios.get('http://localhost:8080/friends')
+    const getUserData = await axios.get('http://localhost:8080/requests')
     console.log('getting userData -->', getUserData)
     setData(getUserData.data)
   }
@@ -21,14 +21,14 @@ export default function Friends() {
   },[])
 
   function acceptFriendReq(requestObj) {
-    axios.post('http://localhost:8080/friends', { userObj, requestObj})
-    axios.put('http://localhost:8080/friends', { requestObj })
+    axios.post('http://localhost:8080/requests', { userObj, requestObj})
+    axios.put('http://localhost:8080/requests', { requestObj })
     alert('friend request accepted !')
     window.location.reload();
   }
 
   function declineFriendReq(requestObj) {
-    axios.put('http://localhost:8080/friends', { requestObj })
+    axios.put('http://localhost:8080/requests', { requestObj })
     alert('friend request rejected !')
     window.location.reload();
   }
@@ -49,7 +49,7 @@ export default function Friends() {
 
   return (
    <>
-    <h1>Friends Page</h1>
+    <h1>Friend Request Page</h1>
     {mapOverRequests}
     </>
   )

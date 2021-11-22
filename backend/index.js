@@ -61,7 +61,7 @@ app.post('/view', async(req,res) => {
   }
 });
 
-app.get('/friends', async(req,res) => {
+app.get('/requests', async(req,res) => {
   try {
     const getFriendReq = await pool.query(`SELECT * FROM friend_request`);
     console.log('getting all friend requests', getFriendReq.rows);
@@ -72,7 +72,7 @@ app.get('/friends', async(req,res) => {
 });
 
 
-app.post('/friends', async(req,res) => {
+app.post('/requests', async(req,res) => {
   try {
     console.log('req.body of friends',req.body);
     const { username } = req.body.userObj;
@@ -90,7 +90,7 @@ app.post('/friends', async(req,res) => {
   }
 });
 
-app.put('/friends', async(req,res) => {
+app.put('/requests', async(req,res) => {
   try {
     console.log('req body 88 -->', req.body);
     const { sender_id, receiver_id } = req.body.requestObj;
