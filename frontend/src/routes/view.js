@@ -32,7 +32,6 @@ export default function View() {
     console.log('30 friend -->', friendData)
 
     for (let obj of friendData) {
-      
       if ((obj.username === userObj.username && obj.friend_username === receiverObj.username) || (obj.friend_username === userObj.username && obj.username === receiverObj.username)) {
         alert(`unable to send a friend request.${receiverObj.username} is already friends with you.`)
         return; 
