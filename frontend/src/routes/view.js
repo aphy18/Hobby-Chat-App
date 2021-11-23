@@ -11,7 +11,6 @@ export default function View() {
 
  let userObj = JSON.parse(localStorage.getItem('user'))
  const [data,setData] = useState([])
- const [friend,setFriend] = useState([]);
  const storeNonLoggedInUsers = [];
 
   async function userData() {
@@ -27,11 +26,19 @@ export default function View() {
   async function sendFriendRequest(receiverObj) {
     // app.get /friends to see if the friendship already exists before sending a request
     const checkIfFriendShipExists = await axios.get('http://localhost:8080/friends')
-    setFriend(checkIfFriendShipExists.data)
 
-
-
+    const friendData = checkIfFriendShipExists.data
     
+    console.log('30 friend -->', friendData)
+
+    for (let obj of friendData) {
+      
+      if ((obj.username === userObj.username && obj.friend_username === receiverObj.username) || (obj.friend_username === userObj.username && obj.username === receiverObj.username)) {
+        alert(`unable to send a friend request.${receiverObj.username} is already friends with you.`)
+        return; 
+      }
+    }
+
     axios.post('http://localhost:8080/view', { userObj, receiverObj })
     console.log('current user object -->', userObj)
     console.log('receiver object -->', receiverObj)
