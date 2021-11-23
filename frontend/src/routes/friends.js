@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import '../styles/Friends.css'
 
 
 
@@ -30,7 +31,9 @@ export default function Friends() {
 
   const allFriends = arr.map(friend => {
     return (
-      <p>{friend.friend_username}</p>
+      <div className="friend-container">
+        <p>{friend.friend_username}</p>
+      </div>
     )
   })
   

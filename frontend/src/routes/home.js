@@ -152,8 +152,8 @@ export default function Home() {
           </a> : <a href="/register" className="home-page-view-users" id="view-users" data-aos="zoom-in-down"
             data-aos-duration="500">Click to register</a>}
           <div className="footer">
-            <p>Contact me at aphason1@gmail.com</p>
-            <p>Github: aphy18</p>
+            <p className="footer-email"><i class="fas fa-envelope"></i>aphason1@gmail.com</p>
+            <p className="footer-github" id="footer-github"><i class="fab fa-github"></i> aphy18</p>
             <p>Frontend Libraries: React, React Spinner, ParticleJS, Animate on Scroll, Socket io Client, Font Awesome, Axios</p>
             <p>Backend Libraries: Express, Nodemon, Socket io</p>
           </div>

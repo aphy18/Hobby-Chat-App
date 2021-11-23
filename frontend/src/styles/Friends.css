@@ -1,3 +1,6 @@
-.request-container {
+.friend-container {
   border: 2px solid black;
+  width: 85%;
+  height: 100px;
+  margin: 1%;
 }

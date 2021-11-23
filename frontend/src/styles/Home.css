@@ -88,10 +88,10 @@
 }
 
 .footer {
-  background-color: black;
-  height: 160px;
+  background-color: rgb(241, 218, 179);
+  height: 220px;
   width: 100%;
-  color: white;
+  color: black;
 }
 
 .about-us {
@@ -193,3 +193,20 @@
   font-size: 60px;
   margin-bottom: 7%;
 }
+
+.footer-email,
+.footer-github {
+  width: 230px;
+  height: 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  margin-left: 0.5%;
+}
+
+.footer-github {
+  width: 95px;
+}
+
+

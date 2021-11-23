@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
-import '../styles/Friends.css'
+import '../styles/Requests.css'
 
 
 export default function Requests() {
