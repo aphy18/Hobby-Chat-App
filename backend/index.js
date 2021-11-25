@@ -33,15 +33,17 @@ app.get('/view', async(req,res) => {
     const getUser = await pool.query(
       `SELECT person.id, username, person_bio, hobby.* FROM person JOIN hobby ON person.id = person_id;`
     );
-    const getFriendRequests = await pool.query(`
-    SELECT * FROM friend_request`);
     res.json(getUser.rows);
-    // res.json(getFriendRequests.rows);
     console.log('VIEW PAGE', getUser.rows);
-    console.log('GET FRIEND REQUESTS -->', getFriendRequests.rows);
   } catch (err) {
     console.log(err.message);
   }
+});
+
+app.get('/checkrequests', async(req,res) => {
+  const getFriendRequests = await pool.query(`
+    SELECT * FROM friend_request`);
+  res.json(getFriendRequests.rows);
 });
 
 app.post('/view', async(req,res) => {

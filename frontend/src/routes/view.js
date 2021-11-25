@@ -26,15 +26,25 @@ export default function View() {
   async function sendFriendRequest(receiverObj) {
     // app.get /friends to see if the friendship already exists before sending a request
     const checkIfFriendShipExists = await axios.get('http://localhost:8080/friends')
-
-    const friendData = checkIfFriendShipExists.data
+    const checkIfRequestPending = await axios.get('http://localhost:8080/checkrequests')
     
-    console.log('30 friend -->', friendData)
+    const friendData = checkIfFriendShipExists.data
+    const requestData = checkIfRequestPending.data;
+    
+    console.log('friend data -->', friendData)
+    console.log('request data --->', requestData)
 
     for (let obj of friendData) {
       if ((obj.username === userObj.username && obj.friend_username === receiverObj.username) || (obj.friend_username === userObj.username && obj.username === receiverObj.username)) {
         alert(`unable to send a friend request.${receiverObj.username} is already friends with you.`)
         return; 
+      }
+    }
+
+    for (let obj of requestData) {
+      if (obj.sender_username === userObj.username && obj.receiver_username === receiverObj.username) {
+        alert(`Request has already been sent to ${receiverObj.username}. Please be patient for their response`)
+        return;
       }
     }
 

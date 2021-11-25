@@ -154,8 +154,8 @@ export default function Home() {
           <div className="footer">
             <p className="footer-email"><i class="fas fa-envelope"></i>aphason1@gmail.com</p>
             <p className="footer-github" id="footer-github"><i class="fab fa-github"></i> aphy18</p>
-            <p>Frontend Libraries: React, React Spinner, ParticleJS, Animate on Scroll, Socket io Client, Font Awesome, Axios</p>
-            <p>Backend Libraries: Express, Nodemon, Socket io</p>
+            <p className="frontend-libraries">Frontend Libraries: React, React Spinner, ParticleJS, Animate on Scroll, Socket io Client, Font Awesome, Axios</p>
+            <p className="backend-libraries">Backend Libraries: Express, Nodemon, Socket io</p>
           </div>
           
         </div>
