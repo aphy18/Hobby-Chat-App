@@ -4,16 +4,17 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  background-color: rgb(230, 176, 76);
 }
 
 .view-header-container {
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
   display: flex;
   justify-content: center;
 }
 
 .view-body-container {
-  border: 2px solid black;
+  /* border: 2px solid black; */
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
@@ -22,10 +23,11 @@
 
 
 .user-container {
-  border: 5px double red;
+  border: 5px double black;
   width: 400px;
   height: 220px;
   margin: 10px;
+  background-color: rgb(241, 218, 179);
 }
 
 .user-header-container {

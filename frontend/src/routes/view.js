@@ -2,8 +2,9 @@
 // store username and id, store it in a message table on POST, on GET receive it back
 import { useEffect, useState } from 'react';
 import '../styles/View.css';
-import MessageOption from '../components/MessageOption';
+import ParticleBackground from '../components/Particles';
 import axios from 'axios';
+import Particles from 'react-particles-js';
 
 // The POST request, we put the sender and receiver in a table
 
@@ -94,7 +95,9 @@ export default function View() {
    <h1>View Users</h1>
   </div>
   <div className="view-body-container">
+    <ParticleBackground />
      {mapOverEverything}
+     <ParticleBackground />
   </div>
    </div>
    </>

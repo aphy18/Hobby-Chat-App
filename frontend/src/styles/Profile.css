@@ -156,7 +156,7 @@
 }
 
 .profile-button-container {
-  border: 2px solid black;
+  /* border: 2px solid black; */
   width: 90%;
   height: 100px;
   display: flex;

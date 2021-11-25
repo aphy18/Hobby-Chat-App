@@ -52,7 +52,7 @@ export default function Login(props) {
     console.log('current email', currentEmail)
 
     if (currentEmail.length === 0) {
-      setError('email does not exist');
+      setError('Email does not exist. Please try again');
       return;
     }
     
@@ -61,7 +61,7 @@ export default function Login(props) {
         if (personInfo.person_password === values.password) {
           console.log('your in -->', personInfo)
         } else {
-          setError('password is incorrect')
+          setError('Password is incorrect.')
           return;
         }
       }
@@ -90,7 +90,7 @@ export default function Login(props) {
   return (
     <>
      <div className="master-login-container">
-       <h2 className="login-header">Sign into your Account !</h2>
+       <h2 className="login-header">Login to Start Chatting</h2>
       <div className="login-container">
        <form className="login-form" onSubmit={handleSubmit}>
          <input type="email" name="email" placeholder="email"className="input-field" onChange={handleChange} required></input>

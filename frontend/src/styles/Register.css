@@ -28,6 +28,7 @@
   width: 100%;
   height: 900px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -35,11 +36,12 @@
 .register-container {
   width: 70%;
   height: 63%;
-  border: 2px solid black;
+  border: 2px solid rgb(230, 176, 76);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: rgb(250, 234, 206);
 }
 
 .register-header {
@@ -113,7 +115,9 @@
 }
 
 .error {
-  color: red;
+  color: rgb(233, 166, 43);
+  font-size: 22px;
+  opacity: 1;
 }
 
 

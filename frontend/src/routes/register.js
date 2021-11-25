@@ -65,10 +65,8 @@ export default function Register() {
   return (
     <>
     <div className="master-register-container">
+    <h1 className="register-header">Register an Account to Get Started !</h1>
      <div className="register-container">
-     
-      <h1 className="register-header"><i>Register</i></h1>
-     
       <form className="register-form" onSubmit={handleSubmit}>
         <div className="register-form-left-and-right">
         <div className="register-form-left">
