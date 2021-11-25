@@ -90,13 +90,13 @@ export default function Login(props) {
   return (
     <>
      <div className="master-login-container">
+       <h2 className="login-header">Sign into your Account !</h2>
       <div className="login-container">
-       <h1 className="login"><i>Login</i></h1>
        <form className="login-form" onSubmit={handleSubmit}>
          <input type="email" name="email" placeholder="email"className="input-field" onChange={handleChange} required></input>
          <input type="password" name="password" placeholder="password" className="input-field" onChange={handleChange}  required></input>
          {!error ? null : <p className="error" id="error">{error}</p>}
-         <button type="submit" className="form-button-submit">Submit</button>
+         <button type="submit" className="form-button-submit">Login</button>
        </form>
      </div>
      </div>
