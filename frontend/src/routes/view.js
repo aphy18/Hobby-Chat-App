@@ -1,10 +1,7 @@
-
-// store username and id, store it in a message table on POST, on GET receive it back
 import { useEffect, useState } from 'react';
 import '../styles/View.css';
 import ParticleBackground from '../components/Particles';
 import axios from 'axios';
-import Particles from 'react-particles-js';
 
 // The POST request, we put the sender and receiver in a table
 

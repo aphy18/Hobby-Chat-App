@@ -41,9 +41,11 @@ export default function Requests() {
     if (req.receiver_username === userObj.username) {
       return (
         <div className="request-container">
-         <p>{req.sender_username} wants to be your friend ! Will you accept {req.sender_username}'s friend request ?</p>
-         <button onClick={() => acceptFriendReq(req)}>Yes</button>
-         <button onClick={() => declineFriendReq(req)}>No</button>
+         <p className="request-question">Incoming Friend Request: {req.sender_username}</p>
+         <div className="request-btn-container">
+           <button className="accept-request-btn" onClick={() => acceptFriendReq(req)}>Accept</button>
+           <button className="decline-request-btn" onClick={() => declineFriendReq(req)}>Decline</button>
+        </div>
         </div>
       )
     }
