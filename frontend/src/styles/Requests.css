@@ -3,7 +3,7 @@
   width: 50%;
   height: 80px;
   background-color: rgb(250, 234, 206);
-  margin-left: 1.25%;
+  margin: 1.25%;
   display: flex;
   justify-content: space-between;
 }
@@ -25,10 +25,10 @@
 
 .accept-request-btn,
 .decline-request-btn {
-  width: 150px;
+  width: 90px;
   height: 50px;
   margin: 1%;
-  font-size: 19px;
+  font-size: 22px;
   color: white;
   border: none;
   border-radius: 7px;
@@ -38,6 +38,14 @@
   background-color: rgb(55, 187, 55);
 }
 
+.accept-request-btn:hover {
+  background-color: rgb(73, 218, 73);
+}
+
 .decline-request-btn {
   background-color: red;
+}
+
+.decline-request-btn:hover {
+  background-color: rgb(240, 75, 75);
 }

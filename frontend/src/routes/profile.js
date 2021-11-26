@@ -114,7 +114,7 @@ export default function Profile() {
       <div className="profile-button-container">
       <button className="profile-button" onClick={() => sendProfileData()}>Save Changes</button>
       <button className="profile-button" onClick={() => setProfile(false)}>Cancel</button>
-      <button className="profile-button">Change Password</button>
+      <a href="/changepassword"><button className="profile-button">Change Password</button></a>
       <button className="profile-button">Upload Profile Picture</button>
       </div>
       <form className="new-profile-form" onSubmit={handleSubmit}>
