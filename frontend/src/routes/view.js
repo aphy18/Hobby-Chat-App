@@ -25,7 +25,6 @@ export default function View() {
     // app.get /friends to see if the friendship already exists before sending a request
     const checkIfFriendShipExists = await axios.get('http://localhost:8080/friends')
     const checkIfRequestPending = await axios.get('http://localhost:8080/checkrequests')
-    
     const friendData = checkIfFriendShipExists.data
     const requestData = checkIfRequestPending.data;
     
