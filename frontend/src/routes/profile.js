@@ -33,7 +33,12 @@ export default function Profile() {
       }
     }
     if (values.username.length > 15) {
-      alert('Error: Username must be less than 15 characters')
+      alert('Error: Username must be less than 15 characters');
+      return;
+    }
+
+    if (values.person_bio.length > 50) {
+      alert('bio exceeds character count of 50')
       return;
     }
 
@@ -59,10 +64,6 @@ export default function Profile() {
 
     console.log('THIS PROFILE DATA -->', profileData)
  
-
-
-  
-
   if (profileData && !profile) {
     return (
       <>
@@ -132,7 +133,7 @@ export default function Profile() {
       <div className="bio-container">
         <p className="bio-header">Bio:</p>
         <textarea name="person_bio" value={values.bio} className="bio" onChange={handleChange} placeholder="Talk a bit about yourself"></textarea>
-        <p>{textLength}/100</p>
+        <p>{textLength}/50</p>
       </div>
       </form>
       </div>

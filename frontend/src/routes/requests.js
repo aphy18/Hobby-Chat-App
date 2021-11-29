@@ -4,11 +4,11 @@ import '../styles/Requests.css'
 
 
 export default function Requests() {
-
-  const [data,setData] = useState([])
-  const [req,setReq] = useState(0)
-  const [store,setStore] = useState(false)
+  
   const storeRequests = [];
+  const [data,setData] = useState([])
+  const [req,setReq] = useState(storeRequests.length)
+  const [store,setStore] = useState(false)
   const userObj = JSON.parse(localStorage.getItem('user'))
 
   async function userData() {
@@ -42,13 +42,13 @@ export default function Requests() {
     axios.post('http://localhost:8080/requests', { userObj, requestObj})
     // deleting the request
     axios.put('http://localhost:8080/requests', { requestObj })
-    alert('friend request accepted !')
+    // alert('friend request accepted !')
     window.location.reload();
   }
 
   function declineFriendReq(requestObj) {
     axios.put('http://localhost:8080/requests', { requestObj })
-    alert('friend request rejected !')
+    // alert('friend request rejected !')
     window.location.reload();
   }
 

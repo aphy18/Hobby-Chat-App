@@ -1,13 +1,13 @@
 import '../styles/Nav.css';
 import { useContext, useEffect, useState } from 'react';
 import { authContext } from '../provider/AuthProvider';
+import axios from 'axios';
 
 export default function Nav() {
   const { logout, user, setUser } = useContext(authContext);
   const [nav, setNav] = useState(false);
   let userObj = JSON.parse(localStorage.getItem('user'))
 
-  
   const changeShadow = () => {
     if (window.scrollY > 0) {
       setNav(true)
@@ -20,6 +20,7 @@ export default function Nav() {
     if (userObj) {
       setUser(userObj)
     }
+    
   }, [])
   
   return (
@@ -38,6 +39,7 @@ export default function Nav() {
           <>
             <span className="nav-item" onClick={() => logout()}><i class="fas fa-sign-in-alt"></i></span>
             <a href="/friends" className="nav-item"><i class="fas fa-user-friends"></i></a>
+            <a href="/requests" className="nav-item"><i class="fas fa-inbox"></i></a>
             <a href={`/profile/${userObj.id}`} className="nav-item"><i class="fas fa-user-cog"></i></a>
           </>
           : <>

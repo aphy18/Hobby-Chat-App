@@ -83,4 +83,9 @@ display: none;
   }
 }
 
-/* yahya css */
+.notification {
+  color: red;
+  font-size: 15px;
+}
+
+
