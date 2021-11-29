@@ -37,7 +37,6 @@ export default function Requests() {
 
 
   async function acceptFriendReq(requestObj) {
-    console.log('re information -->', requestObj)
     // saving the friendship
     axios.post('http://localhost:8080/requests', { requestObj })
     // deleting the request
@@ -58,6 +57,7 @@ export default function Requests() {
         <div className="request-container">
          <p className="request-question">{req.sender_username} wants to be your friend.</p>
          <div className="request-btn-container">
+           {/* Made these callbacks because the 'req' object can't exist outside the scope of the mapOverRequests variable */}
            <button className="accept-request-btn" onClick={() => acceptFriendReq(req)}><i class="fas fa-check"></i></button>
            <button className="decline-request-btn" onClick={() => declineFriendReq(req)}><i class="fas fa-ban"></i></button>
         </div>

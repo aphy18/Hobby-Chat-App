@@ -19,6 +19,7 @@ export default function Friends() {
     getFriendData()
   },[])
   
+  // all friendships are duplicated, only taking 1 of each
   data.map(obj => {
     if (obj.username === userObj.username) {
       arr.push(obj)
@@ -33,7 +34,7 @@ export default function Friends() {
     return (
       <div className="friend-container">
         <p className="friend-username"><b>{friend.friend_username}</b></p>
-        <a href={`/message/${userObj.id}/:id`} className="message-friend-icon"><i class="far fa-comments"></i></a>
+        <a href={`/message/${friend.sender_id}/${friend.receiver_id}`} className="message-friend-icon"><i class="far fa-comments"></i></a>
       </div>
     )
   })

@@ -79,7 +79,7 @@ app.post('/requests', async(req,res) => {
     const { receiver_username, sender_username, sender_id, receiver_id } = req.body.requestObj;
 
     const firstPost = await pool.query(`
-    INSERT INTO friends (username, friend_username, sender_id, receiver_id) VALUES ($1, $2, $3, $4)`, [receiver_username,sender_username, sender_id, receiver_id]);
+    INSERT INTO friends (username, friend_username, sender_id, receiver_id) VALUES ($1, $2, $3, $4)`, [receiver_username,sender_username, receiver_id, sender_id]);
     const secondPost = await pool.query(`
     INSERT INTO friends (username, friend_username, sender_id, receiver_id) VALUES ($1, $2, $3, $4)`, [sender_username,receiver_username, sender_id, receiver_id]);
 
