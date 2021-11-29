@@ -76,16 +76,15 @@ app.get('/requests', async(req,res) => {
 app.post('/requests', async(req,res) => {
   try {
     console.log('req.body of friends',req.body);
-    const { username } = req.body.userObj;
-    const { sender_username } = req.body.requestObj;
+    const { receiver_username, sender_username, sender_id, receiver_id } = req.body.requestObj;
+
     const firstPost = await pool.query(`
-    INSERT INTO friends (username, friend_username) VALUES ($1, $2)`, [username,sender_username]);
+    INSERT INTO friends (username, friend_username, sender_id, receiver_id) VALUES ($1, $2, $3, $4)`, [receiver_username,sender_username, sender_id, receiver_id]);
     const secondPost = await pool.query(`
-    INSERT INTO friends (username, friend_username) VALUES ($1, $2)`, [sender_username, username]);
+    INSERT INTO friends (username, friend_username, sender_id, receiver_id) VALUES ($1, $2, $3, $4)`, [sender_username,receiver_username, sender_id, receiver_id]);
+
     res.json(firstPost.rows);
     res.json(secondPost.rows);
-    
-
   } catch (err) {
     console.log(err.message);
   }

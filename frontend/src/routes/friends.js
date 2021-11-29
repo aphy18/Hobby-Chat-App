@@ -32,7 +32,8 @@ export default function Friends() {
   const allFriends = arr.map(friend => {
     return (
       <div className="friend-container">
-        <p>{friend.friend_username}</p>
+        <p className="friend-username"><b>{friend.friend_username}</b></p>
+        <a href={`/message/${userObj.id}/:id`} className="message-friend-icon"><i class="far fa-comments"></i></a>
       </div>
     )
   })
@@ -43,7 +44,7 @@ export default function Friends() {
   
   return (
     <>
-    <h1>Your Friends Page</h1>
+    <h1>Friends</h1>
     {allFriends}
     </>
   )

@@ -28,7 +28,10 @@ CREATE TABLE friend_request (
 CREATE TABLE friends (
   id SERIAL PRIMARY KEY,
   username VARCHAR(255) NOT NULL,
-  friend_username VARCHAR(255) NOT NULL
+  friend_username VARCHAR(255) NOT NULL,
+  sender_id INTEGER NOT NULL,
+  receiver_id INTEGER NOT NULL
+
 );
 
 CREATE TABLE hobby (

@@ -39,10 +39,9 @@ export default function Requests() {
   async function acceptFriendReq(requestObj) {
     console.log('re information -->', requestObj)
     // saving the friendship
-    axios.post('http://localhost:8080/requests', { userObj, requestObj})
+    axios.post('http://localhost:8080/requests', { requestObj })
     // deleting the request
     axios.put('http://localhost:8080/requests', { requestObj })
-    // alert('friend request accepted !')
     window.location.reload();
   }
 
