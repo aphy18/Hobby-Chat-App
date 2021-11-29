@@ -133,7 +133,7 @@ export default function Profile() {
       <div className="bio-container">
         <p className="bio-header">Bio:</p>
         <textarea name="person_bio" value={values.bio} className="bio" onChange={handleChange} placeholder="Talk a bit about yourself"></textarea>
-        <p>{textLength}/50</p>
+        <p className={textLength >= 50 ? 'bio-length-over' : null}>{textLength}/50</p>
       </div>
       </form>
       </div>

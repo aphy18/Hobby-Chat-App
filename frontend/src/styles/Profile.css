@@ -177,3 +177,7 @@
   background-color: rgb(230, 154, 167);
   color: white;
 }
+
+.bio-length-over {
+  color: red;
+}
