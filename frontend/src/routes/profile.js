@@ -14,6 +14,7 @@ export default function Profile() {
   const [profileData, setProfileData] = useState({});
   const [hobbyData, setHobbyData] = useState([]);
   const [textLength, setTextLength] = useState(0);
+  const [username,setUsername] = useState(0);
   // const [disabled, setDisabled] = useState(true)
 
   async function getProfileData() {
@@ -59,6 +60,9 @@ export default function Profile() {
     if (values.person_bio) {
       setTextLength(values.person_bio.length)
     }
+    if (values.username) {
+      setUsername(values.username.length)
+    }
     },[values])
   
 
@@ -95,7 +99,6 @@ export default function Profile() {
       <div className="hobby-form" id="hobby-form">
         <div className="hobby-header-container">
           <h3 className="hobby-header">Hobbies</h3>
-          {/* <span className="hobby-underline"></span> */}
         </div>
         <div className="hobby-info-container">
           <Hobby hobbyData={hobbyData}/>
@@ -123,7 +126,7 @@ export default function Profile() {
        <span><i class="fas fa-user"></i></span>
       </div>
       <div className="new-user-info">
-       <span>username:</span><textarea name="username" value={values.username} className="new-text" placeholder="enter a new username" onChange={handleChange}></textarea>
+       <span>username:</span><textarea name="username" value={values.username} className="new-text" placeholder="enter a new username" onChange={handleChange}></textarea><span className={username > 15 ? 'bio-length-over' : null}>{username}/15</span>
        <span>first name:</span><textarea name="first_name" value={values.first_name} className="new-text" placeholder="enter a first name" onChange={handleChange}></textarea>
        <span>last name:</span><textarea name="last_name" value={values.last_name} className="new-text" placeholder="enter a last name" onChange={handleChange}></textarea>
        <span>gender:</span><textarea name="person_gender" value={values.gender} className="new-text" placeholder="enter a new gender" onChange={handleChange}></textarea>
@@ -133,7 +136,7 @@ export default function Profile() {
       <div className="bio-container">
         <p className="bio-header">Bio:</p>
         <textarea name="person_bio" value={values.bio} className="bio" onChange={handleChange} placeholder="Talk a bit about yourself"></textarea>
-        <p className={textLength >= 50 ? 'bio-length-over' : null}>{textLength}/50</p>
+        <p className={textLength > 50 ? 'bio-length-over' : null}>{textLength}/50</p>
       </div>
       </form>
       </div>

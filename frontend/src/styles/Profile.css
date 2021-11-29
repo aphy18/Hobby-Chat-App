@@ -51,11 +51,11 @@
 
 .user-info {
   border: 2px solid red;
-  width: 90%;
+  width: 98%;
   height: 300px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenl;
+  justify-content: space-evenly;
 }
 
 .new-user-info {
@@ -127,7 +127,7 @@
 
 .bio-container {
   border: 2px solid red;
-  width: 90%;
+  width: 98%;
   height: 300px;
   display: flex;
   flex-direction: column;
@@ -141,6 +141,10 @@
 .bio {
   width: 90%;
   height: 50%;
+}
+
+.bio-length-over {
+  color: red;
 }
 
 .profile-picture {
@@ -178,6 +182,3 @@
   color: white;
 }
 
-.bio-length-over {
-  color: red;
-}
