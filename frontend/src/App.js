@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import Login from './routes/login';
 import Register from './routes/register';
 import Home from './routes/home';
@@ -15,6 +17,35 @@ import Friends from './routes/friends';
 
 export default function App() {
   let userObj = JSON.parse(localStorage.getItem('user'))
+  const [data,setData] = useState([])
+  const arr = [];
+
+  async function getFriendData() {
+    const getFriends = await axios.get('http://localhost:8080/friends')
+    setData(getFriends.data)
+  }
+
+  useEffect(() => {
+    getFriendData()
+  },[])
+  
+  // all friendships are duplicated, only taking 1 of each
+  if (userObj) {
+    data.map(obj => {
+      if (obj.username === userObj.username) {
+        arr.push(obj)
+      }
+    })
+  }
+
+  const allFriends = arr.map(friend => {
+    console.log('number', friend.receiver_id)
+    return (
+      <Route exact path={`/message/${friend.receiver_id}`} component={Message} />
+
+    )
+  })
+ 
   
   return (
       <Router>
@@ -33,10 +64,10 @@ export default function App() {
           <Route exact path={`/profile/${userObj.id}`} component={Profile} />
           <Route exact path={`/hobby/${userObj.id}`} component={NewHobby} />
           <Route exact path="/view" component={View} />
-          <Route exact path="/message/:id" component={Message} />
           <Route exact path="/changepassword" component={ChangePassword} />
           <Route exact path="/requests" component={Requests} />
           <Route exact path="/friends" component={Friends} />
+          {allFriends}
           </> 
          }
         </Switch>

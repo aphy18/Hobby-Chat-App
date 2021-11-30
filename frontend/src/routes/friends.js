@@ -31,6 +31,7 @@ export default function Friends() {
 
 
   const allFriends = arr.map(friend => {
+    console.log('number', friend.receiver_id)
     return (
       <div className="friend-container">
         <p className="friend-username"><b>{friend.friend_username}</b></p>

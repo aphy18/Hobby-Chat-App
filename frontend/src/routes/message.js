@@ -8,13 +8,13 @@ import useForm from '../customHooks/useForm';
 export default function Message() {
 
   async function request(){
-    await axios.get('http://localhost:8080/message')
+    await axios.get('http://localhost:8080/message/:id')
   }
 
   useEffect(() => {
     request()
   },[])
-  
+
   return (
     <div className="master-message-container">
       <div className="message-form-container">
