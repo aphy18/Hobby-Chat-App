@@ -3,6 +3,8 @@ import { useContext, useEffect, useState } from 'react';
 import { authContext } from '../provider/AuthProvider';
 import axios from 'axios';
 
+// when a user logs in
+
 export default function Nav() {
   const { logout, user, setUser } = useContext(authContext);
   const [nav, setNav] = useState(false);

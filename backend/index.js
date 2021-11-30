@@ -254,31 +254,18 @@ app.put('/changepassword', async(req,res) => {
   }
 });
 
-app.get('/message/:id', async(req,res) => {
+app.get('/message', async(req,res) => {
   try {
-    console.log('REQ BODY 165', req.body);
-    const getUserInfo = await pool.query(`SELECT receiver_id FROM id_storage`);
-    console.log('id storage and send message', getUserInfo.rows);
-    const seeMessage = await pool.query(`SELECT * FROM send_message`);
-    console.log('all messages',seeMessage.rows);
-    res.json(getUserInfo.rows);
+    console.log('blah blah message');
+    const getFriends = await pool.query(`
+    SELECT * FROM friends`);
+    console.log('get friends on message page', getFriends.rows);
+    res.json(getFriends.rows);
   } catch (err) {
     console.log(err.message);
   }
 });
 
-app.post('/message/:id', async(req,res) => {
-  const { message } = req.body.values;
-  const { id, username } = req.body.userObj;
-  const receiverId = parseInt(req.params.id);
-
-  try {
-    const postMessage = await pool.query(`INSERT INTO send_message (text_message, sender_username, sender_id, receiver_id) VALUES ($1, $2, $3, $4)`, [message, username, id, receiverId]);
-    res.json(postMessage.rows);
-  } catch (err) {
-    console.log(err.message);
-  }
-});
 
 server.listen(port, () => {
   console.log(`app listening on port ${port}`);

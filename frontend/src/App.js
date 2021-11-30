@@ -15,7 +15,8 @@ import Friends from './routes/friends';
 
 export default function App() {
   let userObj = JSON.parse(localStorage.getItem('user'))
-    return (
+  
+  return (
       <Router>
         <Nav />
         <Switch>
@@ -32,7 +33,7 @@ export default function App() {
           <Route exact path={`/profile/${userObj.id}`} component={Profile} />
           <Route exact path={`/hobby/${userObj.id}`} component={NewHobby} />
           <Route exact path="/view" component={View} />
-          <Route exact path="/message/:id/:id" component={Message} />
+          <Route exact path="/message/:id" component={Message} />
           <Route exact path="/changepassword" component={ChangePassword} />
           <Route exact path="/requests" component={Requests} />
           <Route exact path="/friends" component={Friends} />

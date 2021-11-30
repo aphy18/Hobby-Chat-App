@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS person CASCADE;
+DROP TABLE IF EXISTS user_conversations CASCADE;
 DROP TABLE IF EXISTS hobby CASCADE;
 DROP TABLE IF EXISTS friend_request CASCADE;
 DROP TABLE IF EXISTS friends CASCADE;
@@ -41,6 +42,13 @@ CREATE TABLE hobby (
   my_spending_estimate VARCHAR(255) NOT NULL,
   amount_of_time_doing_hobby VARCHAR(255) NOT NULL,
   person_id INTEGER REFERENCES person(id) ON DELETE CASCADE
+);
+
+CREATE TABLE user_conversations (
+  id SERIAL PRIMARY KEY,
+  person_message VARCHAR(255) NOT NULL,
+  sender_id INTEGER NOT NULL,
+  receiver_id INTEGER NOT NULL
 );
 
 
