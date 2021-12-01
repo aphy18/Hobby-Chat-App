@@ -38,15 +38,17 @@ export default function App() {
     })
   }
 
+  // pass receiverId as props
+  // i am trying to get a query response on this page so i can save the messages
+
+  
+
   const allFriends = arr.map(friend => {
-    console.log('number', friend.receiver_id)
     return (
       <Route exact path={`/message/${friend.receiver_id}`} component={Message} />
-
     )
   })
  
-  
   return (
       <Router>
         <Nav />

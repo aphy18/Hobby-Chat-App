@@ -254,13 +254,13 @@ app.put('/changepassword', async(req,res) => {
   }
 });
 
-app.get('/message/:id', async(req,res) => {
+app.get('/message', async(req,res) => {
   try {
-    const { id } = req.params;
-    console.log('on message page', req.params);
-    const messageFriend = await pool.query(`SELECT * FROM friends WHERE receiver_id = $1`,[id]);
-    console.log('messageFriend',messageFriend.rows);
-    res.json(messageFriend.rows);
+    console.log('on message page');
+    const getFriends = await pool.query(`
+    SELECT * FROM friends`);
+    console.log(getFriends.rows);
+    res.json(getFriends.rows);
   } catch (err) {
     console.log('err message',err.message);
   }
