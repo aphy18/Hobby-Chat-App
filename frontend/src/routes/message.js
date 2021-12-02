@@ -33,20 +33,22 @@ export default function Message() {
 
   console.log('arr 37 -->',arr)
 
-  function sendMessage(){
-
+  async function sendMessage(){
+    const saveMessage = await axios.post('http://localhost:8080/message', { values,arr })
+    console.log('saving message',saveMessage)
   }
-
+ 
   return (
     <div className="master-message-container">
       <div className="message-form-container">
         <form className="message-form">
-         <textarea name="mesaage" value={values.message} className="input-area" type="text" placeholder="message"></textarea>
+         <textarea name="message" value={values.message} className="input-area" type="text" placeholder="message" onChange={handleChange}></textarea>
          <button className="message-page-button" onClick={handleSubmit}>Send</button>
         </form>
       </div>
     <div className="chat-log">
-
+      {/* make a seperate variable for displaying messages, map over an array of
+      messages and put them in the chat log (going to need to use socket io for the live messaging effect) */}
     </div>
     </div>
   )

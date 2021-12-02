@@ -266,6 +266,19 @@ app.get('/message', async(req,res) => {
   }
 });
 
+app.post('/message',async(req,res) => {
+  try {
+    console.log('sending message req.body',req.body);
+    const { message } = req.body.values;
+    const { sender_id,receiver_id } = req.body.arr[0];
+    const saveMessage = await pool.query(`INSERT INTO user_conversations (person_message,sender_id,receiver_id) VALUES ($1, $2, $3)`,[message,sender_id,receiver_id]);
+    console.log('saving message -->',saveMessage.rows);
+    res.json(saveMessage.rows);
+  } catch (err) {
+    console.log(err.message);
+  }
+});
+
 
 server.listen(port, () => {
   console.log(`app listening on port ${port}`);
