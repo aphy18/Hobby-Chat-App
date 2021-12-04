@@ -23,8 +23,8 @@ export default function AuthProvider(props){
     setAccountInfo
     .then(() => {
       console.log('refresh')
-  })
-}
+    })
+  }
    
   function logout() {
   window.location.href = '/login'

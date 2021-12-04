@@ -17,6 +17,7 @@ export default function Message() {
   const { values, setValues, handleChange, handleSubmit } = useForm(sendMessage)
   const arr = [];
   const [socketInfo,setSocketInfo] = useState([])
+  const [pass,setPass] = useState(false)
   const [message,setMessage] = useState(false)
   const [getData,setGetData] = useState([]);
   const splitPathName = parseInt(window.location.pathname.split('/')[2]);
@@ -31,15 +32,12 @@ export default function Message() {
     request()
   },[])
 
-  // console.log('data',data)
 
   getData.map(obj => {
     if (obj.username === userObj.username && obj.receiver_id === splitPathName) {
       arr.push(obj)
     }
   })
-
-  // console.log('arr 37 -->',arr)
 
   function sendMessage(){
     axios.post('http://localhost:8080/message', { values,arr })
@@ -54,38 +52,39 @@ export default function Message() {
 
   useEffect(() => {
     receiveMessage()
+    // console.log('soket 72',socketInfo)
   },[message])
 
   
   async function receiveMessage(){
     const array = [];
-    await socket.on('message', (data) => {
-      array.push(data)
+    socket.on('message', (data) => {
+    array.push(data)
      console.log('array 65',array)
+    //  array.push(...socketInfo)
+     setSocketInfo(array)
     })
-    array.push(...socketInfo)
-    setSocketInfo(array)
-    // console.log('socket info 68',socketInfo)
+    setPass(true)
+    console.log('socket68',socketInfo)
   }
 
+  const mapOverMessages = socketInfo.map(obj => {
+    return (
+      <p>{obj.handler}: {obj.message}</p>
+    )
+  })
 
-  
-
-  function focus(){
-    console.log(inputRef.current.value)
-  }
   
   return (
     <div className="master-message-container">
       <div className="message-form-container">
         <form className="message-form" onSubmit={handleSubmit}>
-         <textarea ref={inputRef} name="message" value={values.message} className="input-area" type="text" placeholder="message" onChange={handleChange}></textarea>
+         <textarea name="message" value={values.message} className="input-area" type="text" placeholder="message" onChange={handleChange}></textarea>
          <button className="message-page-button" onClick={() => emitMessage()}>Send</button>
-         <button onClick={focus}>button</button>
         </form>
       </div>
     <div className="chat-log" id="chat-log">
-     { }
+      {mapOverMessages}
     </div>
     </div>
   )
