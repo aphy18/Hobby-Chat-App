@@ -16,8 +16,7 @@ export default function Message() {
   const inputRef = useRef()
   const { values, setValues, handleChange, handleSubmit } = useForm(sendMessage)
   const arr = [];
-  const storeMessages = [];
-  const [socketInfo,setSocketInfo] = useState({})
+  const [socketInfo,setSocketInfo] = useState([])
   const [message,setMessage] = useState(false)
   const [getData,setGetData] = useState([]);
   const splitPathName = parseInt(window.location.pathname.split('/')[2]);
@@ -42,9 +41,10 @@ export default function Message() {
 
   // console.log('arr 37 -->',arr)
 
-  async function sendMessage(){
-    await axios.post('http://localhost:8080/message', { values,arr })
+  function sendMessage(){
+    axios.post('http://localhost:8080/message', { values,arr })
     setValues({})
+    
   }
 
   async function emitMessage(){
@@ -57,18 +57,19 @@ export default function Message() {
   },[message])
 
   
-  function receiveMessage(){
-    socket.on('message', (data) => {
-      console.log('this is socket messsage data',data)
-      const userMessage = React.createElement('p',{class: 'user-message'},`${data.handler}: ${data.message}`)
-      console.log('USER MESSAGE',userMessage)
-      ReactDOM.render(userMessage,document.getElementById('chat-log'))
+  async function receiveMessage(){
+    const array = [];
+    await socket.on('message', (data) => {
+      array.push(data)
+     console.log('array 65',array)
     })
+    array.push(...socketInfo)
+    setSocketInfo(array)
+    // console.log('socket info 68',socketInfo)
   }
 
-  console.log(storeMessages)
-  
 
+  
 
   function focus(){
     console.log(inputRef.current.value)
@@ -84,8 +85,7 @@ export default function Message() {
         </form>
       </div>
     <div className="chat-log" id="chat-log">
-      {/* make a seperate variable for displaying messages, map over an array of
-      messages and put them in the chat log (going to need to use socket io for the live messaging effect) */}
+     { }
     </div>
     </div>
   )
