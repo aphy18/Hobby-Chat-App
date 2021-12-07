@@ -1,4 +1,4 @@
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect } from "react";
 import "../styles/Home.css";
 import "../styles/Body.css";
 import Aos from "aos";

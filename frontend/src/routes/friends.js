@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import '../styles/Friends.css'
 
-
+// when u change ur username friends doesnt work
 
 export default function Friends() {
 
@@ -17,7 +17,7 @@ export default function Friends() {
   
   useEffect(() => {
     getFriendData()
-  },[])
+  },[]);
   
   // all friendships are duplicated, only taking 1 of each
   data.map(obj => {
@@ -39,10 +39,7 @@ export default function Friends() {
       </div>
     )
   })
-  
 
-
-  // data.filter (where username === userObj.username)
   
   return (
     <>

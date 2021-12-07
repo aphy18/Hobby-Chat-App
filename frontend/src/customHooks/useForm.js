@@ -6,8 +6,8 @@ export default function useForm(callback, initVal = {}) {
   const handleChange = e => {
     const { name, value } = e.target
 
-    console.log('name -->', name);
-    console.log('value -->', value);
+    // console.log('name -->', name);
+    // console.log('value -->', value);
     
 
     setValues({

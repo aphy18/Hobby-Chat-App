@@ -5,6 +5,7 @@ const port = 8080;
 
 const cors = require('cors');
 const server = require('http').createServer(app);
+// asterick is not recommended
 const io = require('socket.io')(server, { cors: { origin: "*" }});
 
 const pool = require('./db');
@@ -280,6 +281,16 @@ app.post('/message',async(req,res) => {
 });
 
 
+app.get('/getmessage',async(req,res) => {
+  try {
+    const getMessage = await pool.query(`SELECT * FROM user_coversations`);
+    res.json(getMessage.rows);
+  } catch (err) {
+    console.log(err.message);
+  }
+});
+
+
 server.listen(port, () => {
   console.log(`app listening on port ${port}`);
 });
@@ -297,6 +308,7 @@ io.on('connection', (socket) => {
   socket.on('message', (data, value) => {
     io.emit('message', data);
     console.log("data from message -->", data);
+    console.log('the value',value);
   });
 });
 

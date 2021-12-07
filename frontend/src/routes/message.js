@@ -4,7 +4,7 @@ import '../styles/Message.css'
 import io from 'socket.io-client';
 import axios from 'axios'
 import useForm from '../customHooks/useForm';
-import ReactDOM from 'react-dom';
+import PulseLoader from "react-spinners/PulseLoader";
 
 export default function Message() {
 
@@ -12,25 +12,30 @@ export default function Message() {
     socket.on('connection', () => {
        console.log('connected')
     })
-
-  const inputRef = useRef()
+  
   const { values, setValues, handleChange, handleSubmit } = useForm(sendMessage)
   const arr = [];
-  const [socketInfo,setSocketInfo] = useState([])
-  const [pass,setPass] = useState(false)
-  const [message,setMessage] = useState(false)
   const [getData,setGetData] = useState([]);
+  const [state,setState] = useState([])
+  const [loading,setLoading] = useState(false)
   const splitPathName = parseInt(window.location.pathname.split('/')[2]);
   let userObj = JSON.parse(localStorage.getItem('user'));
+  
+  useEffect(() => {
+    friendData()
+    socket.on('message',data => {
+      setLoading(true)
+      setTimeout(() => {
+        setLoading(false);
+      }, 300) 
+      setState([...state,data])
+    })
+  },[])
 
-  async function request(){
+  async function friendData(){
     const getFriendData = await axios.get('http://localhost:8080/message')
     setGetData(getFriendData.data)
   }
-
-  useEffect(() => {
-    request()
-  },[])
 
 
   getData.map(obj => {
@@ -41,47 +46,28 @@ export default function Message() {
 
   function sendMessage(){
     axios.post('http://localhost:8080/message', { values,arr })
-    setValues({})
-    
+    socket.emit('message',{ handler: userObj.username, message: values.message })
+    setValues('')
   }
 
-  async function emitMessage(){
-    await socket.emit('message',{ handler: userObj.username, message: values.message })
-    setMessage(true)
-  }
 
-  useEffect(() => {
-    receiveMessage()
-    // console.log('soket 72',socketInfo)
-  },[message])
-
-  
-  async function receiveMessage(){
-    const array = [];
-    socket.on('message', (data) => {
-    array.push(data)
-     console.log('array 65',array)
-    //  array.push(...socketInfo)
-     setSocketInfo(array)
-    })
-    setPass(true)
-    console.log('socket68',socketInfo)
-  }
-
-  const mapOverMessages = socketInfo.map(obj => {
+  const mapOverMessages = state.map((obj,index) => {
     return (
-      <p>{obj.handler}: {obj.message}</p>
+      <p key={index}>{obj.handler}: {obj.message}</p>
     )
   })
 
-  
+
+  console.log('stooote 55',state)
+
   return (
     <div className="master-message-container">
       <div className="message-form-container">
         <form className="message-form" onSubmit={handleSubmit}>
          <textarea name="message" value={values.message} className="input-area" type="text" placeholder="message" onChange={handleChange}></textarea>
-         <button className="message-page-button" onClick={() => emitMessage()}>Send</button>
+         <button className="message-page-button">Send</button>
         </form>
+        {loading ? <PulseLoader className="loading" loading={loading} size={20} /> : null}
       </div>
     <div className="chat-log" id="chat-log">
       {mapOverMessages}
