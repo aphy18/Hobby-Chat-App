@@ -14,6 +14,7 @@ export default function Message() {
     })
   
   const { values, setValues, handleChange, handleSubmit } = useForm(sendMessage)
+  const storeMsg = [];
   const arr = [];
   const [getData,setGetData] = useState([]);
   const [state,setState] = useState([])
@@ -27,8 +28,10 @@ export default function Message() {
       setLoading(true)
       setTimeout(() => {
         setLoading(false);
-      }, 300) 
-      setState([...state,data])
+      }, 500) 
+      storeMsg.push(data)
+      setState(storeMsg)
+      console.log('use effect array',storeMsg)
     })
   },[])
 
@@ -43,23 +46,25 @@ export default function Message() {
       arr.push(obj)
     }
   })
-
+  
   function sendMessage(){
     axios.post('http://localhost:8080/message', { values,arr })
     socket.emit('message',{ handler: userObj.username, message: values.message })
-    setValues('')
+    setValues({})
   }
+   
+  // console.log('55',!loading)
 
-
-  const mapOverMessages = state.map((obj,index) => {
+  const mapOverState = state.map(obj => {
     return (
-      <p key={index}>{obj.handler}: {obj.message}</p>
+      <p>{obj.handler}: {obj.message}</p>
     )
   })
+  
+  
 
-
-  console.log('stooote 55',state)
-
+  console.log('this is state 66',state)
+  
   return (
     <div className="master-message-container">
       <div className="message-form-container">
@@ -70,7 +75,7 @@ export default function Message() {
         {loading ? <PulseLoader className="loading" loading={loading} size={20} /> : null}
       </div>
     <div className="chat-log" id="chat-log">
-      {mapOverMessages}
+      {storeMsg !== [] ? mapOverState : null}
     </div>
     </div>
   )
