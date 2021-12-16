@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
 
 .profile-container {
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
   width: 100%;
   height: 1200px;
   display: flex;
@@ -11,7 +11,8 @@
 }
 
 .profile-and-hobby-container {
-  border: 2px solid purple;
+  border: 2px solid rgb(230, 176, 76);
+  background-color: rgb(250, 234, 206);
   width: 98%;
   height: 80%;
   display: flex;
@@ -22,7 +23,8 @@
 
 .profile-form,
 .hobby-form {
-  border: 2px solid green;
+  border: 2px solid rgb(230, 176, 76);
+  background-color: white;
   width: 500px;
   height: 800px;
   display: flex;
@@ -41,7 +43,8 @@
 .new-profile-form {
  width: 900px;
  height: 1000px;
- border: 2px solid black;
+ border: 2px solid rgb(230, 176, 76);
+ background-color: rgb(250, 234, 206);
  display: flex;
  flex-direction: column;
  justify-content: space-evenly;
@@ -50,7 +53,7 @@
 }
 
 .user-info {
-  border: 2px solid red;
+  /* border: 2px solid red; */
   width: 98%;
   height: 300px;
   display: flex;
@@ -59,7 +62,7 @@
 }
 
 .new-user-info {
-  border: 2px solid red;
+  /* border: 2px solid red; */
   width: 90%;
   height: 450px;
   display: flex;
@@ -69,7 +72,7 @@
 
 .hobby-header-container {
   width: 90%;
-  border: 3px outset black;
+  border-bottom: 3px outset black;
   height: 100px;
   display: flex;
   justify-content: center;
@@ -87,7 +90,7 @@
 }
 
 .hobby-info-container {
-  border: 2px solid purple;
+  /* border: 2px solid purple; */
   width: 90%;
   height: 79%;
   flex-wrap: wrap;
@@ -107,7 +110,6 @@
 
 .hobby-info {
   border: 5px double black;
-  background-color: rgb(236, 185, 193);
   align-items: center;
   width: 300px;
   height: 150px;
@@ -126,7 +128,7 @@
 }
 
 .bio-container {
-  border: 2px solid red;
+  /* border: 2px solid red; */
   width: 98%;
   height: 300px;
   display: flex;
@@ -144,7 +146,7 @@
 }
 
 .bio-length-over {
-  color: red;
+  color: rgb(230, 176, 76);
 }
 
 .profile-picture {
@@ -174,11 +176,13 @@
   width: 120px;
   height: 60px;
   border-radius: 20px;
-  background-color: rgb(238, 203, 209);
+  background-color: rgb(230, 176, 76);
+  transition: 0.4s background-color ease;
+  border: none;
 }
 
 .profile-button:hover {
-  background-color: rgb(230, 154, 167);
-  color: white;
+  background-color: rgb(241, 218, 179);
+  /* color: white; */
 }
 

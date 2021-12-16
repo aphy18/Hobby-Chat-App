@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import '../styles/Message.css'
 import io from 'socket.io-client';
 import axios from 'axios'
@@ -46,6 +46,8 @@ export default function Message() {
       arr.push(obj)
     }
   })
+
+  // make textarea blank on submit
   
   function sendMessage(){
     axios.post('http://localhost:8080/message', { values,arr })
@@ -60,10 +62,6 @@ export default function Message() {
       <p>{obj.handler}: {obj.message}</p>
     )
   })
-  
-  
-
-  console.log('this is state 66',state)
   
   return (
     <div className="master-message-container">

@@ -34,12 +34,12 @@ export default function Profile() {
       }
     }
     if (values.username.length > 15) {
-      alert('Error: Username must be less than 15 characters');
+      alert('Error: Went past character count for username');
       return;
     }
 
     if (values.person_bio.length > 50) {
-      alert('bio exceeds character count of 50')
+      alert('Error: Went past character count for bio')
       return;
     }
 
