@@ -120,11 +120,8 @@ app.put('/friends', async(req,res) => {
     const { sender_id } = req.body.obj;
     const { receiver_id } = req.body.obj;
     const removeFriendOne = await pool.query(`
-    DELETE FROM friends WHERE sender_id = $1 and receiver_id = $2`,[sender_id, receiver_id]);
-    const removeFriendTwo = await pool.query(`
-    DELETE FROM friends WHERE receiver_id = $1 and sender_id = $2`,[receiver_id, sender_id]);
+    DELETE FROM friends WHERE sender_id = $1 AND receiver_id = $2 OR sender_id = $2 AND receiver_id = $1`,[sender_id, receiver_id]);
     res.json(removeFriendOne.rows);
-    res.json(removeFriendTwo.rows);
   } catch (err) {
     console.log(err.message);
   }
