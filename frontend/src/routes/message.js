@@ -47,6 +47,8 @@ export default function Message() {
     }
   })
 
+  console.log('getdata',arr)
+
   // make textarea blank on submit
   
   function sendMessage(){
@@ -55,7 +57,7 @@ export default function Message() {
     setValues({})
   }
    
-  // console.log('55',!loading)
+ 
 
   const mapOverState = state.map(obj => {
     return (
