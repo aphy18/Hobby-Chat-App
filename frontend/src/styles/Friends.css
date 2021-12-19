@@ -13,8 +13,22 @@
   margin-left: 1.25%;
 }
 
+.message-icon-trash-container {
+  width: 100px;
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: space-between;
+}
+
 .message-friend-icon {
   font-size: 21px;
   margin-right: 1.5%;
+  /* border: 2px solid black; */
   color: black;
+  font-size: 25px;
+}
+
+.trash-icon {
+  width: 50px;
+  font-size: 25px;
 }
