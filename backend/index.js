@@ -114,6 +114,22 @@ app.get('/friends', async(req,res) => {
   }
 });
 
+app.put('/friends', async(req,res) => {
+  try {
+    console.log('req.body delete friend',req.body);
+    const { sender_id } = req.body.obj;
+    const { receiver_id } = req.body.obj;
+    const removeFriendOne = await pool.query(`
+    DELETE FROM friends WHERE sender_id = $1 and receiver_id = $2`,[sender_id, receiver_id]);
+    const removeFriendTwo = await pool.query(`
+    DELETE FROM friends WHERE receiver_id = $1 and sender_id = $2`,[receiver_id, sender_id]);
+    res.json(removeFriendOne.rows);
+    res.json(removeFriendTwo.rows);
+  } catch (err) {
+    console.log(err.message);
+  }
+});
+
 
 app.get('/register', async(req,res) => {
   try {

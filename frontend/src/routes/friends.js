@@ -26,8 +26,11 @@ export default function Friends() {
     }
   })
 
-  function DeleteFriend(){
-    axios.put('http://localhost:8080/friends')
+  function DeleteFriend(obj){
+    console.log('obj to delete',obj)
+    axios.put('http://localhost:8080/friends', { obj })
+    alert('friend deleted')
+    window.location.reload()
   }
   
   console.log('arr -->', arr)
@@ -41,7 +44,7 @@ export default function Friends() {
         <p className="friend-username"><b>{friend.friend_username}</b></p>
         <div className="message-icon-trash-container">
         <a href={`/message/${friend.receiver_id}`} className="message-friend-icon"><i class="far fa-comments"></i></a>
-        <span className="trash-icon"><i class="fas fa-trash" onClick={() => DeleteFriend()}></i></span>
+        <span className="trash-icon"><i class="fas fa-trash" onClick={() => DeleteFriend(friend)}></i></span>
         </div>
       </div>
     )
