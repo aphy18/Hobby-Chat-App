@@ -3,9 +3,8 @@ import '../styles/Body.css'
 import { useState, useContext, useEffect } from 'react';
 import useForm from '../customHooks/useForm'
 import axios from 'axios';
-import { useHistory } from 'react-router-dom'
 import { authContext } from '../provider/AuthProvider';
-import ParticleBackground from "../components/Particles";
+import LoginPopup from '../components/LoginPopup';
 
 
 
@@ -19,7 +18,7 @@ export default function Login(props) {
   const [renderData,setRenderData] = useState(false)
   const email = values.email;
   const password = values.password;
-  const [loginValidation, setLoginValidation] = useState(false);
+  const [trigger,setTrigger] = useState(false);
   
   // console logs are saved when we push to the 'frozen world' the window.histroy.go() refreshes the page
 
@@ -66,9 +65,7 @@ export default function Login(props) {
         }
       }
     }
-
-
-    setLoginValidation(true)
+    
     setValues({})
     userLogin()
   }
@@ -86,7 +83,8 @@ export default function Login(props) {
     })
   }
 
-  if (!loginValidation) {
+  console.log('trigger 87',trigger)
+
   return (
     <>
      <div className="master-login-container">
@@ -99,16 +97,8 @@ export default function Login(props) {
          <button type="submit" className="form-button-submit">Login</button>
        </form>
      </div>
+     <LoginPopup trigger={true} />
      </div>
      </>
     )
- } else {
-   return (
-     
-    <div className="master-login-container">
-       <p>HELLO</p>
-    </div>
-    
-   )
-  }
 }

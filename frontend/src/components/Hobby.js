@@ -18,19 +18,10 @@ export default function Hobby(props){
   })
   
   
-  
   return (
     <div className="hobby-holder">
       {getHobbyData}
     </div>
   )
-  
 
-  
-    
-
-
-
-  
- 
 }
