@@ -1,0 +1,14 @@
+.pop-up-container {
+  border: 2px solid black;
+  width: 400px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  background-color: blue;
+  position: absolute;
+  top: 23%;
+}
+
+.pop-up-button {
+  align-self: flex-end
+}

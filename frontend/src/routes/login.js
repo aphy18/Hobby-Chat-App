@@ -94,10 +94,10 @@ export default function Login(props) {
          <input type="email" name="email" placeholder="email"className="input-field" onChange={handleChange} required></input>
          <input type="password" name="password" placeholder="password" className="input-field" onChange={handleChange}  required></input>
          {!error ? null : <p className="error" id="error">{error}</p>}
-         <button type="submit" className="form-button-submit">Login</button>
+         <button type="submit" className="form-button-submit" onClick={() => setTrigger(true)}>Login</button>
        </form>
      </div>
-     <LoginPopup trigger={true} />
+     <LoginPopup trigger={trigger} setTrigger={setTrigger} />
      </div>
      </>
     )
