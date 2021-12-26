@@ -87,7 +87,7 @@ export default function Login(props) {
 
   return (
     <>
-     <div className="master-login-container">
+     <div className={trigger ? "trigger-master-login-container" : "master-login-container"}>
        <h2 className="login-header">Login to Start Chatting</h2>
       <div className="login-container">
        <form className="login-form" onSubmit={handleSubmit}>
@@ -97,8 +97,8 @@ export default function Login(props) {
          <button type="submit" className="form-button-submit" onClick={() => setTrigger(true)}>Login</button>
        </form>
      </div>
-     <LoginPopup trigger={trigger} setTrigger={setTrigger} />
      </div>
+     <LoginPopup trigger={trigger} setTrigger={setTrigger} />
      </>
     )
 }

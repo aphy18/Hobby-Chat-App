@@ -1,12 +1,11 @@
 .pop-up-container {
-  border: 2px solid black;
-  width: 400px;
+  width: 60%;
   height: 100px;
   display: flex;
   flex-direction: column;
-  background-color: blue;
   position: absolute;
-  top: 23%;
+  top: 30%;
+  background-color: white;
 }
 
 .pop-up-button {
