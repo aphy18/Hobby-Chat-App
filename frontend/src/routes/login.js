@@ -19,6 +19,7 @@ export default function Login(props) {
   const email = values.email;
   const password = values.password;
   const [trigger,setTrigger] = useState(false);
+  const [btnDisabled,setBtnDisabled] = useState(false);
   
   // console logs are saved when we push to the 'frozen world' the window.histroy.go() refreshes the page
 
@@ -66,7 +67,8 @@ export default function Login(props) {
       }
     }
 
-    // setTrigger(true)
+    setTrigger(true)
+    setBtnDisabled(true)
     setValues({})
     userLogin()
   }
@@ -96,7 +98,7 @@ export default function Login(props) {
          <input type="email" name="email" placeholder="email"className="input-field" onChange={handleChange} required></input>
          <input type="password" name="password" placeholder="password" className="input-field" onChange={handleChange}  required></input>
          {!error ? null : <p className="error" id="error">{error}</p>}
-         <button type="submit" className="form-button-submit" onClick={() => setTrigger(true)}>Login</button>
+         <button type="submit" className="form-button-submit">Login</button>
        </form>
      </div>
      </div>

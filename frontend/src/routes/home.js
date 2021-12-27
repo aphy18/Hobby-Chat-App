@@ -3,7 +3,7 @@ import "../styles/Home.css";
 import "../styles/Body.css";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import PulseLoader from "react-spinners/PulseLoader";
+import MoonLoader from "react-spinners/MoonLoader";
 import axios from "axios";
 import ParticleBackground from "../components/Particles";
 
@@ -45,7 +45,7 @@ export default function Home() {
   if (loading && home) {
     return (
       <div className="master-loading-container">
-        <PulseLoader className="loading" loading={loading} size={35} />
+        <MoonLoader className="loading" loading={loading} size={50} />
       </div>
     );
   } else {
