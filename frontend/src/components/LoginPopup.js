@@ -11,7 +11,7 @@ export default function LoginPopup(props) {
 
 
     return (props.trigger) ? (
-      <div className='pop-up-container' data-aos="zoom-in-down">
+      <div className='pop-up-container' data-aos="zoom-in">
         <button className='pop-up-button' onClick={() => props.setTrigger(false)}>Close</button>
         <p>You have logged in! Click <a href="/">here</a> to go to home page</p>
       </div>

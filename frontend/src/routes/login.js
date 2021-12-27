@@ -65,7 +65,8 @@ export default function Login(props) {
         }
       }
     }
-    
+
+    // setTrigger(true)
     setValues({})
     userLogin()
   }
@@ -91,6 +92,7 @@ export default function Login(props) {
        <h2 className="login-header">Login to Start Chatting</h2>
       <div className="login-container">
        <form className="login-form" onSubmit={handleSubmit}>
+       <LoginPopup trigger={trigger} setTrigger={setTrigger} />
          <input type="email" name="email" placeholder="email"className="input-field" onChange={handleChange} required></input>
          <input type="password" name="password" placeholder="password" className="input-field" onChange={handleChange}  required></input>
          {!error ? null : <p className="error" id="error">{error}</p>}
@@ -98,7 +100,6 @@ export default function Login(props) {
        </form>
      </div>
      </div>
-     <LoginPopup trigger={trigger} setTrigger={setTrigger} />
      </>
     )
 }
