@@ -97,7 +97,7 @@ export default function Login(props) {
       <div className="master-login-container">
         <h2 className="login-header">Login to Start Chatting</h2>
        <div className="login-container">
-        <form className="login-form" onSubmit={handleSubmit}>
+        <form className="login-form-loading" onSubmit={handleSubmit}>
         <MoonLoader className="loading" loading={loading} size={50} />
         </form>
       </div>

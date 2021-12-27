@@ -52,6 +52,16 @@
   margin-bottom: 3%;
 }
 
+.login-form-loading {
+  /* border: 2px solid blue; */
+  width: 90%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3%;
+}
+
 .input-field {
   font-size: 22px;
   height: 42px;
