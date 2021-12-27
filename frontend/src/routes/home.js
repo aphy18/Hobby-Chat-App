@@ -16,7 +16,6 @@ export default function Home() {
   async function getUserData() {
     console.log("base home", home);
     if (userObj === null) {
-      console.log("end of the road");
       return;
     }
     const userData = await axios.get(`http://localhost:8080`);
