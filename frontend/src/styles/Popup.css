@@ -1,13 +1,17 @@
 .pop-up-container {
-  width: 60%;
-  height: 100px;
+  width: 50%;
+  height: 70px;
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 30%;
+  justify-content: center;
+  align-items: center;
+  top: 15%;
+  left: 20%;
   background-color: white;
 }
 
 .pop-up-button {
-  align-self: flex-end
+  align-self: flex-end;
+  margin: 5px;
 }
