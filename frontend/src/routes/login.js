@@ -90,15 +90,15 @@ export default function Login(props) {
 
   return (
     <>
-     <div className={trigger ? "trigger-master-login-container" : "master-login-container"}>
+     <div className="master-login-container">
        <h2 className="login-header">Login to Start Chatting</h2>
-      <div className="login-container">
+      <div className={trigger ? "trigger-login-container" : "login-container"}>
        <form className="login-form" onSubmit={handleSubmit}>
-       <LoginPopup trigger={trigger} setTrigger={setTrigger} />
+       <LoginPopup trigger={trigger} />
          <input type="email" name="email" placeholder="email"className="input-field" onChange={handleChange} required></input>
          <input type="password" name="password" placeholder="password" className="input-field" onChange={handleChange}  required></input>
          {!error ? null : <p className="error" id="error">{error}</p>}
-         <button type="submit" className="form-button-submit">Login</button>
+         <button type="submit" className="form-button-submit" disabled={trigger ? true : false}>Login</button>
        </form>
      </div>
      </div>
