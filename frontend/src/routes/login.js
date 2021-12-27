@@ -5,6 +5,7 @@ import useForm from '../customHooks/useForm'
 import axios from 'axios';
 import { authContext } from '../provider/AuthProvider';
 import LoginPopup from '../components/LoginPopup';
+import MoonLoader from "react-spinners/MoonLoader";
 
 
 
@@ -19,7 +20,8 @@ export default function Login(props) {
   const email = values.email;
   const password = values.password;
   const [trigger,setTrigger] = useState(false);
-  const [btnDisabled,setBtnDisabled] = useState(false);
+  const [loading,setLoading] = useState(false)
+ 
   
   // console logs are saved when we push to the 'frozen world' the window.histroy.go() refreshes the page
 
@@ -66,9 +68,12 @@ export default function Login(props) {
         }
       }
     }
-
+    
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
     setTrigger(true)
-    setBtnDisabled(true)
     setValues({})
     userLogin()
   }
@@ -86,7 +91,35 @@ export default function Login(props) {
     })
   }
 
-  console.log('trigger 87',trigger)
+  if (loading) {
+    return (
+      <>
+      <div className="master-login-container">
+        <h2 className="login-header">Login to Start Chatting</h2>
+       <div className="login-container">
+        <form className="login-form" onSubmit={handleSubmit}>
+        <MoonLoader className="loading" loading={loading} size={50} />
+        </form>
+      </div>
+      </div>
+      </>
+    )
+  }
+
+  if (trigger) {
+    return (
+    <>
+    <div className="master-login-container">
+      <h2 className="login-header">Login to Start Chatting</h2>
+     <div className="trigger-login-container">
+      <form className="login-form" onSubmit={handleSubmit}>
+      <LoginPopup trigger={trigger} />
+      </form>
+    </div>
+    </div>
+    </>
+   )
+  }
 
   return (
     <>
@@ -98,7 +131,7 @@ export default function Login(props) {
          <input type="email" name="email" placeholder="email"className="input-field" onChange={handleChange} required></input>
          <input type="password" name="password" placeholder="password" className="input-field" onChange={handleChange}  required></input>
          {!error ? null : <p className="error" id="error">{error}</p>}
-         <button type="submit" className="form-button-submit" disabled={trigger ? true : false}>Login</button>
+         <button type="submit" className="form-button-submit">Login</button>
        </form>
      </div>
      </div>
