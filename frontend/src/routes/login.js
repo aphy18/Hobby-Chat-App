@@ -110,12 +110,9 @@ export default function Login(props) {
     return (
     <>
     <div className="master-login-container">
-      <h2 className="login-header">Login to Start Chatting</h2>
      <div className="trigger-login-container">
-      <form className="login-form" onSubmit={handleSubmit}>
       <LoginPopup trigger={trigger} />
-      </form>
-    </div>
+     </div>
     </div>
     </>
    )

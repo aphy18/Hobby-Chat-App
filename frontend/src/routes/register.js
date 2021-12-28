@@ -3,7 +3,7 @@ import '../styles/Body.css'
 import { useState, useEffect } from 'react'
 import useForm from '../customHooks/useForm'
 import axios from 'axios'
-import { useHistory } from 'react-router-dom'
+import MoonLoader from "react-spinners/MoonLoader";
 
 export default function Register() {
   
@@ -11,7 +11,8 @@ export default function Register() {
   const [error,setError] = useState(null)
   const [data,setData] = useState([])
   const [renderData,setRenderData] = useState(false)
-  const history = useHistory();
+  const [loading,setLoading] = useState(false)
+  const [trigger,setTrigger] = useState(false)
 
   useEffect(() => {
     getData()
@@ -49,7 +50,11 @@ export default function Register() {
     submitFormData()
     console.log('form submitted')
     setValues({})
-    history.push('/login')
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+    setTrigger(true)
     
   }
 
@@ -60,6 +65,31 @@ export default function Register() {
         return res.data;
       })
     }
+
+  if (loading) {
+    return (
+      <>
+      <div className="master-register-container">
+     <div className="register-container">
+      <MoonLoader loading={loading} size={50} />
+    </div>
+    </div>
+    </>
+    )
+  }
+
+  if (trigger) {
+    return (
+    <>
+      <div className="master-register-container">
+        <h1 className="register-header">Register an Account to Get Started !</h1>
+        <div className="register-container">
+          <MoonLoader loading={loading} size={50} />
+        </div>
+      </div>
+    </>
+    )
+  }
     
 
   return (
