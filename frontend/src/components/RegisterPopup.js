@@ -6,10 +6,16 @@ import { useEffect } from 'react';
 // make a /setup page
 
 export default function RegisterPopup() {
+
+  useEffect(() => {
+    Aos.init({duration: 500})
+  })
+
+
   return (
       <>
-      <div className='pop-up-container'>
-      <p>Click <a href="/login">here</a> to login or take a minute to set up the rest of your account <a href='/#'>here</a></p>
+      <div className='registration-hobby-container' data-aos='zoom-in'>
+        
       </div>
       </>
     )
