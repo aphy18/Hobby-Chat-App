@@ -10,11 +10,11 @@ export default function LoginPopup(props) {
   })
 
 
-    return (props.trigger) ? (
+    return (
       <div className='pop-up-container' data-aos="zoom-in">
         <p className='logged-in'>You have logged in! Click <a href="/">here</a> to go to home page</p>
       </div>
-    ) : ""
+    )
   
   
 }

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import useForm from '../customHooks/useForm'
 import axios from 'axios'
 import MoonLoader from "react-spinners/MoonLoader";
+import RegisterPopup from '../components/RegisterPopup'
 
 export default function Register() {
   
@@ -82,9 +83,8 @@ export default function Register() {
     return (
     <>
       <div className="master-register-container">
-        <h1 className="register-header">Register an Account to Get Started !</h1>
-        <div className="register-container">
-          <MoonLoader loading={loading} size={50} />
+        <div className="trigger-register-container">
+         <RegisterPopup />
         </div>
       </div>
     </>

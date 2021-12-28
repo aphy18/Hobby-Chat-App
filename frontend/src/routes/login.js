@@ -124,7 +124,6 @@ export default function Login(props) {
        <h2 className="login-header">Login to Start Chatting</h2>
       <div className={trigger ? "trigger-login-container" : "login-container"}>
        <form className="login-form" onSubmit={handleSubmit}>
-       <LoginPopup trigger={trigger} />
          <input type="email" name="email" placeholder="email"className="input-field" onChange={handleChange} required></input>
          <input type="password" name="password" placeholder="password" className="input-field" onChange={handleChange}  required></input>
          {!error ? null : <p className="error" id="error">{error}</p>}
