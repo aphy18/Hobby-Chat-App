@@ -50,6 +50,7 @@ export default function RegisterPopup(props) {
     return (
       <div className='registration-hobby-container'>
         <p>Ok you're all set</p>
+        <a href='/login'>Click here to login</a>
       </div>
     )
   }
@@ -61,7 +62,7 @@ export default function RegisterPopup(props) {
         <p>To start fill in a hobby</p>
         <form className='register-hobby-form' onSubmit={handleSubmit}>
           <label>Hobby Name</label>
-          <input className='register-hobby-input' type="text" name="hobby_name" value={values.hobby_name} onChange={handleChange}></input>
+          <input className='register-hobby-input' type="text" name="hobby_name" value={values.hobby_name} onChange={handleChange} placeholder='drawing'></input>
           <label>Your Expertise Level</label>
           <select className='register-hobby-input' name="level_of_expertise" value={values.level_of_expertise} className="" onChange={handleChange}>
           <option>Select an Experience Level</option>
@@ -70,10 +71,10 @@ export default function RegisterPopup(props) {
           <option value="advanced">Experienced</option>
           </select>
           <label>Spending Estimate</label>
-          <input className='register-hobby-input' type="text" name="my_spending_estimate" value={values.my_spending_estimate} onChange={handleChange}></input>
+          <input className='register-hobby-input' type="text" name="my_spending_estimate" value={values.my_spending_estimate} onChange={handleChange} placeholder='$100'></input>
           <label>Time Spent Doing Hobby</label>
-          <input className='register-hobby-input' type="text" name="amount_of_time" value={values.amount_of_time} onChange={handleChange}></input>
-          {error ? <p>{error}</p> : null}
+          <input className='register-hobby-input' type="text" name="amount_of_time" value={values.amount_of_time} onChange={handleChange} placeholder='2 years'></input>
+          {error ? <p className='err'>{error}</p> : null}
           <button>Submit</button>
         </form>
       </div>
