@@ -7,12 +7,14 @@ import axios from 'axios';
 
 // make a /setup page
 
-export default function RegisterPopup() {
+export default function RegisterPopup(props) {
 
+  const currentUserID = props.user.id
+ 
   const { values, setValues, handleChange, handleSubmit } = useForm(submitRegistration)
 
   function submitRegistration(){
-    axios.post('http://localhost:8080/firsthobby', { values })
+    axios.post('http://localhost:8080/firsthobby', { values, currentUserID })
     setValues({})
     console.log('submitted the form')
   }

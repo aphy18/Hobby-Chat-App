@@ -87,7 +87,7 @@ export default function Register() {
     <>
       <div className="master-register-container">
         <div className="trigger-register-container">
-         <RegisterPopup />
+         <RegisterPopup user={user} />
         </div>
       </div>
     </>
