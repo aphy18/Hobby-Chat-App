@@ -3,6 +3,7 @@ import '../styles/Popup.css'
 import Aos from "aos";
 import { useEffect } from 'react';
 import useForm from '../customHooks/useForm';
+import axios from 'axios';
 
 // make a /setup page
 
@@ -11,12 +12,16 @@ export default function RegisterPopup() {
   const { values, setValues, handleChange, handleSubmit } = useForm(submitRegistration)
 
   function submitRegistration(){
-
+    axios.post('http://localhost:8080/firsthobby', { values })
+    setValues({})
+    console.log('submitted the form')
   }
 
   useEffect(() => {
     Aos.init({duration: 500})
   })
+
+  console.log('values 24', values)
 
 
   return (

@@ -162,12 +162,13 @@ app.post('/register', async(req,res) => {
   }
 });
 
-
 app.post('/firsthobby', async(req,res) => {
   try {
-    const { hobby_name, level_of_expertise, my_spending_estimate, amount_of_time_doing_hobby } = req.body.values;
+    console.log('req body',req.body);
+    const { hobby_name, level_of_expertise, my_spending_estimate, amount_of_time } = req.body.values;
     const firstHobby = await pool.query(`
-    INSERT INTO hobby (hobby_name, level_of_expertise, my_spending_estimate, amount_of_time_doing_hobby) VALUES ($1, $2, $3, $4)`,[hobby_name,level_of_expertise,my_spending_estimate,amount_of_time_doing_hobby]);
+    INSERT INTO hobby (hobby_name, level_of_expertise, my_spending_estimate, amount_of_time_doing_hobby) VALUES ($1, $2, $3, $4)`,[hobby_name, level_of_expertise, my_spending_estimate, amount_of_time]);
+    res.json(firstHobby.rows);
   } catch (err) {
     console.log(err.message);
   }

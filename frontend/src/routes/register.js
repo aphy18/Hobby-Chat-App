@@ -14,6 +14,7 @@ export default function Register() {
   const [renderData,setRenderData] = useState(false)
   const [loading,setLoading] = useState(false)
   const [trigger,setTrigger] = useState(false)
+  const [user,setUser] = useState([])
 
   useEffect(() => {
     getData()
@@ -26,7 +27,7 @@ export default function Register() {
     setRenderData(true)
   }
 
-  function handleRegistration() {
+  async function handleRegistration() {
 
     for (let email of data) {
       if (email.person_email === values.email) {
@@ -42,31 +43,33 @@ export default function Register() {
 
     } 
     
-    if (values.password.length < 8) {
-      setError('password must be at least 8 characters')
-      console.log('error -->', error)
-      return;
-    }
+    // if (values.password.length < 8) {
+    //   setError('password must be at least 8 characters')
+    //   console.log('error -->', error)
+    //   return;
+    // }
     
     submitFormData()
-    console.log('form submitted')
     setValues({})
     setLoading(true)
     setTimeout(() => {
       setLoading(false);
     }, 1000);
     setTrigger(true)
-    
   }
+
+  
 
   function submitFormData() {
     axios.post(`http://localhost:8080/register`, { values })
       .then((res) => {
         console.log('response data -->', res.data)
+        setUser(res.data)
         return res.data;
       })
     }
 
+    console.log('user 72',user)
   if (loading) {
     return (
       <>
