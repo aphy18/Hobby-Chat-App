@@ -1,22 +1,30 @@
 import React from 'react'
 import '../styles/Popup.css'
 import Aos from "aos";
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import useForm from '../customHooks/useForm';
 import axios from 'axios';
+import MoonLoader from "react-spinners/MoonLoader";
 
 // make a /setup page
 
 export default function RegisterPopup(props) {
 
   const currentUserID = props.user.id
- 
   const { values, setValues, handleChange, handleSubmit } = useForm(submitRegistration)
+  const [formSubmit,setFormSubmit] = useState(false);
+  const [loading,setLoading] = useState(false)
 
   function submitRegistration(){
     axios.post('http://localhost:8080/firsthobby', { values, currentUserID })
     setValues({})
     console.log('submitted the form')
+    setFormSubmit(true)
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    },2000)
+
   }
 
   useEffect(() => {
@@ -24,6 +32,21 @@ export default function RegisterPopup(props) {
   })
 
   console.log('values 24', values)
+
+  if (loading && formSubmit) {
+    return (
+      <div className='registration-hobby-container'>
+        <p>One Moment....</p>
+        <MoonLoader size={50} />
+      </div>
+    )
+  } else if (!loading && formSubmit) {
+    return (
+      <div className='registration-hobby-container'>
+        <p>Ok you're all set</p>
+      </div>
+    )
+  }
 
 
   return (
