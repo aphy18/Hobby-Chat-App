@@ -14,8 +14,14 @@ export default function RegisterPopup(props) {
   const { values, setValues, handleChange, handleSubmit } = useForm(submitRegistration)
   const [formSubmit,setFormSubmit] = useState(false);
   const [loading,setLoading] = useState(false)
+  const [error,setError] = useState(null)
 
   function submitRegistration(){
+    if (!values.hobby_name || !values.amount_of_time || !values.level_of_expertise|| !values.my_spending_estimate) {
+      setError('please fill out all fields')
+      return;
+    }
+
     axios.post('http://localhost:8080/firsthobby', { values, currentUserID })
     setValues({})
     console.log('submitted the form')
@@ -67,6 +73,7 @@ export default function RegisterPopup(props) {
           <input className='register-hobby-input' type="text" name="my_spending_estimate" value={values.my_spending_estimate} onChange={handleChange}></input>
           <label>Time Spent Doing Hobby</label>
           <input className='register-hobby-input' type="text" name="amount_of_time" value={values.amount_of_time} onChange={handleChange}></input>
+          {error ? <p>{error}</p> : null}
           <button>Submit</button>
         </form>
       </div>
