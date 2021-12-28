@@ -44,6 +44,16 @@
   background-color: rgb(250, 234, 206);
 }
 
+.trigger-register-container {
+  width: 70%;
+  height: 63%;
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.2);
+}
+
 .register-header {
   align-self: center;
 }
