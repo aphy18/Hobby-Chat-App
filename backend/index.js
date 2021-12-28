@@ -152,11 +152,22 @@ app.post('/register', async(req,res) => {
 
     const userRegistration = await pool.query(
       `INSERT INTO person (username, first_name, last_name, person_gender, person_address, person_email, person_password, password_confirm) 
-      values ($1, $2, $3, $4, $5, $6, $7, $8)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
       RETURNING * `, [username, first_name, last_name, gender, address, email, password, password_confirm]);
 
     res.json(userRegistration.rows[0]);
     console.log('User registration ---->', userRegistration.rows[0]);
+  } catch (err) {
+    console.log(err.message);
+  }
+});
+
+
+app.post('/firsthobby', async(req,res) => {
+  try {
+    const { hobby_name, level_of_expertise, my_spending_estimate, amount_of_time_doing_hobby } = req.body.values;
+    const firstHobby = await pool.query(`
+    INSERT INTO hobby (hobby_name, level_of_expertise, my_spending_estimate, amount_of_time_doing_hobby) VALUES ($1, $2, $3, $4)`,[hobby_name,level_of_expertise,my_spending_estimate,amount_of_time_doing_hobby]);
   } catch (err) {
     console.log(err.message);
   }
