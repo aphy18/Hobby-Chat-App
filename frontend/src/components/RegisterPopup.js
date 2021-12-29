@@ -24,7 +24,7 @@ export default function RegisterPopup(props) {
 
     axios.post('http://localhost:8080/firsthobby', { values, currentUserID })
     setValues({})
-    console.log('submitted the form')
+    console.log('submited the form')
     setFormSubmit(true)
     setLoading(true)
     setTimeout(() => {
@@ -61,21 +61,27 @@ export default function RegisterPopup(props) {
       <div className='registration-hobby-container' data-aos='zoom-in'>
         <p>To start fill in a hobby</p>
         <form className='register-hobby-form' onSubmit={handleSubmit}>
+          <div className='hobby-one-two-container'>
+          <div className='hobby-form-one'>
           <label>Hobby Name</label>
           <input className='register-hobby-input' type="text" name="hobby_name" value={values.hobby_name} onChange={handleChange} placeholder='drawing'></input>
           <label>Your Expertise Level</label>
-          <select className='register-hobby-input' name="level_of_expertise" value={values.level_of_expertise} className="" onChange={handleChange}>
+          <select className='register-hobby-input' name="level_of_expertise" value={values.level_of_expertise} onChange={handleChange}>
           <option>Select an Experience Level</option>
           <option value="beginner">Beginner</option>
           <option value="intermediate">Intermediate</option>
           <option value="advanced">Experienced</option>
           </select>
+          </div>
+          <div className='hobby-form-two'>
           <label>Spending Estimate</label>
           <input className='register-hobby-input' type="text" name="my_spending_estimate" value={values.my_spending_estimate} onChange={handleChange} placeholder='$100'></input>
           <label>Time Spent Doing Hobby</label>
           <input className='register-hobby-input' type="text" name="amount_of_time" value={values.amount_of_time} onChange={handleChange} placeholder='2 years'></input>
           {error ? <p className='err'>{error}</p> : null}
-          <button>Submit</button>
+          </div>
+          </div>
+        <button className='pop-up-button'>Submit</button>
         </form>
       </div>
       </>
