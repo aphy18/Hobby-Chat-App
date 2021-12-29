@@ -2,7 +2,7 @@
   width: 400px;
   height: 70px;
   background-color: white;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   display: flex;
   align-self: center;
   z-index: 10;
@@ -26,7 +26,7 @@
 .register-hobby-form {
   width: 850px;
   height: 500px;
-  border: 2px solid red;
+  /* border: 2px solid red; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -46,7 +46,7 @@
 }
 
 .hobby-one-two-container {
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -57,7 +57,7 @@
 
 .hobby-form-one,
 .hobby-form-two {
-  border: 2px solid black;
+  /* border: 2px solid black; */
   width: 300px;
   height: 80%;
   display: flex;
@@ -73,13 +73,16 @@
   height: 60px;
   background-color: rgb(230, 176, 76);
   transition: 0.4s background-color ease;
-  border: 1px solid black;
   margin-bottom: 7px;
   font-size: 19px;
+  border: none;
+  transition: border-radius 0.4s ease-out, font-size 0.4s ease-out;
  
 }
 
 .pop-up-button:hover {
-  background-color: rgb(241, 218, 179);
+  background-color: rgba(230, 176, 76,0.7);
+  border-radius: 50px;
+  font-size: 22px;
   /* color: white; */
 }
