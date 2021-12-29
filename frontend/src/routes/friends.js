@@ -7,7 +7,10 @@ import '../styles/Friends.css'
 export default function Friends() {
 
   const [data,setData] = useState([])
+  const [remove,setRemove] = useState(false)
   const arr = [];
+  const [friendDeletion,setFriendDeletion] = useState(null);
+  const [friendObj,setFriendObj] = useState({})
   const userObj = JSON.parse(localStorage.getItem('user'))
 
   async function getFriendData() {
@@ -26,6 +29,13 @@ export default function Friends() {
     }
   })
 
+  function confirmDeletion(person){
+    setRemove(true);
+    console.log('person -->',person)
+    setFriendObj(person)
+    setFriendDeletion(person.friend_username)
+  }
+
   function DeleteFriend(obj){
     console.log('obj to delete',obj)
     axios.put('http://localhost:8080/friends', { obj })
@@ -33,28 +43,52 @@ export default function Friends() {
     window.location.reload()
   }
   
-  console.log('arr -->', arr)
-  console.log("friend data --->", data)
+  // console.log('arr -->', arr)
+  // console.log("friend data --->", data)
 
 
   const allFriends = arr.map(friend => {
-    console.log('number', friend.receiver_id)
     return (
       <div className="friend-container">
         <p className="friend-username"><b>{friend.friend_username}</b></p>
         <div className="message-icon-trash-container">
         <a href={`/message/${friend.receiver_id}`} className="message-friend-icon"><i class="far fa-comments"></i></a>
-        <span className="trash-icon"><i class="fas fa-trash" onClick={() => DeleteFriend(friend)}></i></span>
+        <span className="trash-icon"><i class="fas fa-trash" onClick={() => confirmDeletion(friend)}></i></span>
         </div>
       </div>
     )
   })
 
+  // function spliceSameObject(obj) {
+  //   console.log('array before',arr)
+  //   arr.map(friend => {
+  //     console.log(friend.friend_username)
+  //     if (friend.friend_username === obj.friend_username) {
+  //       arr.splice(friend,1)
+  //     }
+  //   })
+  //   console.log('spliced array',arr)
+  //   return arr;
+  // }
+
   
-  return (
+
+  return (!remove) ? (
     <>
     <h1>Friends</h1>
     {allFriends}
+    </>
+  ) : (
+    <>
+    <h1>Friends</h1>
+    <div className="friend-container">
+       <p className="remove-friend-text">Remove {friendDeletion} from friends list?</p>
+       <div className="request-btn-container">
+       <button className='accept-request-btn' onClick={() => DeleteFriend(friendObj)}>Yes</button>
+       <button className='decline-request-btn' onClick={() => setRemove(false)}>No</button>
+       </div>
+      </div>
+      {/* {spliceSameObject(friendObj)} */}
     </>
   )
 }
