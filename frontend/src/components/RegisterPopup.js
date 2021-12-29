@@ -59,13 +59,13 @@ export default function RegisterPopup(props) {
   return (
       <>
       <div className='registration-hobby-container' data-aos='zoom-in'>
-        <p>To start fill in a hobby</p>
+        <h1>To start fill in a hobby!</h1>
         <form className='register-hobby-form' onSubmit={handleSubmit}>
           <div className='hobby-one-two-container'>
           <div className='hobby-form-one'>
-          <label>Hobby Name</label>
+          <h2>Hobby Name</h2>
           <input className='register-hobby-input' type="text" name="hobby_name" value={values.hobby_name} onChange={handleChange} placeholder='drawing'></input>
-          <label>Your Expertise Level</label>
+          <h2>Your Expertise Level</h2>
           <select className='register-hobby-input' name="level_of_expertise" value={values.level_of_expertise} onChange={handleChange}>
           <option>Select an Experience Level</option>
           <option value="beginner">Beginner</option>
@@ -74,9 +74,9 @@ export default function RegisterPopup(props) {
           </select>
           </div>
           <div className='hobby-form-two'>
-          <label>Spending Estimate</label>
+          <h2>Spending Estimate</h2>
           <input className='register-hobby-input' type="text" name="my_spending_estimate" value={values.my_spending_estimate} onChange={handleChange} placeholder='$100'></input>
-          <label>Time Spent Doing Hobby</label>
+          <h2>Time Spent Doing Hobby</h2>
           <input className='register-hobby-input' type="text" name="amount_of_time" value={values.amount_of_time} onChange={handleChange} placeholder='2 years'></input>
           {error ? <p className='err'>{error}</p> : null}
           </div>
