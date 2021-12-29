@@ -15,8 +15,8 @@
 .registration-hobby-container {
   width: 90%;
   height: 90%;
-  border: 2px solid black;
-  background-color: white;
+  border: 2px solid rgb(230, 176, 76);
+  background-color: rgb(241, 218, 179);
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -26,26 +26,27 @@
 .register-hobby-form {
   width: 850px;
   height: 500px;
-  /* border: 2px solid red; */
+  border: 2px solid red;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
 }
 
 .register-hobby-input {
-  font-size: 18px;
+  font-size: 21px;
   width: 250px;
   margin: 6px 0;
 }
 
 .err {
-  color: red;
+  color: rgb(233, 166, 43);
   align-self: center;
+  font-size: 18px;
 }
 
 .hobby-one-two-container {
-  /* border: 2px solid blue; */
+  border: 2px solid blue;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -62,17 +63,19 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  
 }
 
 
 
 .pop-up-button {
-  width: 120px;
+  width: 200px;
   height: 60px;
-  border-radius: 20px;
   background-color: rgb(230, 176, 76);
   transition: 0.4s background-color ease;
-  border: none;
+  border: 1px solid black;
+  margin-bottom: 7px;
+  font-size: 19px;
  
 }
 

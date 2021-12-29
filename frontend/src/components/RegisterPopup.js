@@ -67,7 +67,7 @@ export default function RegisterPopup(props) {
           <input className='register-hobby-input' type="text" name="hobby_name" value={values.hobby_name} onChange={handleChange} placeholder='drawing'></input>
           <h2>Your Expertise Level</h2>
           <select className='register-hobby-input' name="level_of_expertise" value={values.level_of_expertise} onChange={handleChange}>
-          <option>Select an Experience Level</option>
+          <option>Experience Level</option>
           <option value="beginner">Beginner</option>
           <option value="intermediate">Intermediate</option>
           <option value="advanced">Experienced</option>
@@ -78,9 +78,9 @@ export default function RegisterPopup(props) {
           <input className='register-hobby-input' type="text" name="my_spending_estimate" value={values.my_spending_estimate} onChange={handleChange} placeholder='$100'></input>
           <h2>Time Spent Doing Hobby</h2>
           <input className='register-hobby-input' type="text" name="amount_of_time" value={values.amount_of_time} onChange={handleChange} placeholder='2 years'></input>
-          {error ? <p className='err'>{error}</p> : null}
           </div>
           </div>
+        {error ? <p className='err'>{error}</p> : null}
         <button className='pop-up-button'>Submit</button>
         </form>
       </div>
