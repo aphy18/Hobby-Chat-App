@@ -59,20 +59,6 @@ export default function Friends() {
     )
   })
 
-  // function spliceSameObject(obj) {
-  //   console.log('array before',arr)
-  //   arr.map(friend => {
-  //     console.log(friend.friend_username)
-  //     if (friend.friend_username === obj.friend_username) {
-  //       arr.splice(friend,1)
-  //     }
-  //   })
-  //   console.log('spliced array',arr)
-  //   return arr;
-  // }
-
-  
-
   return (!remove) ? (
     <>
     <h1>Friends</h1>
@@ -81,6 +67,7 @@ export default function Friends() {
   ) : (
     <>
     <h1>Friends</h1>
+    {allFriends}
     <div className="friend-container">
        <p className="remove-friend-text">Remove {friendDeletion} from friends list?</p>
        <div className="request-btn-container">
@@ -88,7 +75,6 @@ export default function Friends() {
        <button className='decline-request-btn' onClick={() => setRemove(false)}>No</button>
        </div>
       </div>
-      {/* {spliceSameObject(friendObj)} */}
     </>
   )
 }
