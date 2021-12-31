@@ -42,15 +42,15 @@ export default function RegisterPopup(props) {
   if (loading && formSubmit) {
     return (
       <div className='registration-hobby-container'>
-        <p>One Moment....</p>
+        <p className='loading-message'>One Moment....</p>
         <MoonLoader size={50} />
       </div>
     )
   } else if (!loading && formSubmit) {
     return (
       <div className='registration-hobby-container'>
-        <p>Ok you're all set</p>
-        <a href='/login'>Click here to login</a>
+        <p className='loading-message'>Ok you're all set</p>
+        <a id='popup-click-here' href='/login'>Click here to login</a>
       </div>
     )
   }

@@ -69,20 +69,31 @@
 
 
 .pop-up-button {
-  width: 200px;
+  width: 150px;
   height: 60px;
   background-color: rgb(230, 176, 76);
+  color: white;
   transition: 0.4s background-color ease;
   margin-bottom: 7px;
   font-size: 19px;
   border: none;
-  transition: border-radius 0.4s ease-out, font-size 0.4s ease-out;
- 
 }
 
 .pop-up-button:hover {
   background-color: rgba(230, 176, 76,0.7);
-  border-radius: 50px;
-  font-size: 22px;
-  /* color: white; */
+}
+
+.loading-message {
+  font-size: 24px;
+}
+
+#popup-click-here {
+  text-decoration: none;
+  font-size: 24px;
+  color: black;
+  transition: color 0.3s ease;
+}
+
+#popup-click-here:hover {
+  color: rgb(230, 176, 76);
 }
