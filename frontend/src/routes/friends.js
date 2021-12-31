@@ -39,7 +39,6 @@ export default function Friends() {
   function DeleteFriend(obj){
     console.log('obj to delete',obj)
     axios.put('http://localhost:8080/friends', { obj })
-    alert('friend deleted')
     window.location.reload()
   }
   
@@ -67,7 +66,6 @@ export default function Friends() {
   ) : (
     <>
     <h1>Friends</h1>
-    {allFriends}
     <div className="friend-container">
        <p className="remove-friend-text">Remove {friendDeletion} from friends list?</p>
        <div className="request-btn-container">
@@ -75,6 +73,7 @@ export default function Friends() {
        <button className='decline-request-btn' onClick={() => setRemove(false)}>No</button>
        </div>
       </div>
+      {allFriends}
     </>
   )
 }

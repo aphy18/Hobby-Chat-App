@@ -34,10 +34,10 @@ export default function Home() {
   useEffect(() => {
     getUserData();
     setLoading(true);
-    Aos.init({ duration: 1200 });
+    Aos.init({ duration: 1000 });
     setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, 800);
   }, []);
 
   

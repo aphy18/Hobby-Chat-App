@@ -72,7 +72,7 @@ export default function Login(props) {
     setLoading(true)
     setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, 800);
     setTrigger(true)
     setValues({})
     userLogin()
@@ -110,6 +110,7 @@ export default function Login(props) {
     return (
     <>
     <div className="master-login-container">
+      <h2 className='login-header'>Successfully Logged In <i class="fas fa-check"></i></h2>
      <div className="trigger-login-container">
       <LoginPopup trigger={trigger} />
      </div>
